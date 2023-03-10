@@ -60,6 +60,20 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions 'flavor'
+    productFlavors {
+        dev {
+            dimension 'flavor'
+            applicationIdSuffix '.dev'
+            manifestPlaceholders = [appName: '(d)TRIP TONIC']
+        }
+        prod {
+            dimension 'flavor'
+            applicationIdSuffix ''
+            manifestPlaceholders = [appName: 'TRIP TONIC']
+        }
+    }
 }
 
 flutter {
