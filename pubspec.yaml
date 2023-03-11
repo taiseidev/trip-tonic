@@ -27,10 +27,20 @@ dependencies:
   # Logger
   logger: ^1.2.2
 
+  # Secure
+  flutter_config: ^2.0.0
+
+  # Map
+  google_maps_flutter: ^2.2.5
+
+  # Localization
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+  lyrebird: ^0.5.0+1
+
   # Other
   cupertino_icons: ^1.0.2
-  google_maps_flutter: ^2.2.5
-  flutter_config: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -45,3 +55,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
