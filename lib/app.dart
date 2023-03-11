@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/color_schemes.g.dart';
-import 'package:trip_tonic/home_page.dart';
-import 'package:trip_tonic/utils/global_key.dart';
+import 'package:trip_tonic/router/router.dart';
 import 'package:trip_tonic/utils/loading.dart';
 import 'package:trip_tonic/utils/scaffold_messenger_key.dart';
 
@@ -11,12 +10,13 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
+    return MaterialApp.router(
+      title: 'TRIP TONIC',
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
-      navigatorKey: ref.watch(navigatorKeyProvider),
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      routerConfig: ref.watch(routerProvider),
       builder: (context, child) {
         final isLoading = ref.watch(loadingProvider);
         return Stack(
@@ -29,7 +29,6 @@ class App extends ConsumerWidget {
           ],
         );
       },
-      home: const HomePage(),
     );
   }
 }
