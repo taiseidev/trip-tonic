@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:trip_tonic/color_schemes.g.dart';
 import 'package:trip_tonic/firebase_options_dev.dart' as dev;
 import 'package:trip_tonic/firebase_options_prod.dart' as prod;
 
@@ -34,7 +35,7 @@ Future<void> main() async {
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => MyApp(),
+      builder: (context) => const MyApp(),
     ),
   );
 }
@@ -44,8 +45,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyAppa(),
+    return MaterialApp(
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      home: const MyAppa(),
     );
   }
 }
@@ -55,8 +58,11 @@ class MyAppa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('AppBar'),
+      ),
+      body: const Center(
         child: Text('テスト'),
       ),
     );
