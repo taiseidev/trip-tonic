@@ -5,6 +5,9 @@ import 'package:trip_tonic/extensions/ref_extension.dart';
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
+  static const pageName = 'home';
+  static const pagePath = '/home';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.handleAsyncValue<void>(
