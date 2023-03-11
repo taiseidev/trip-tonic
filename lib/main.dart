@@ -1,7 +1,7 @@
+// ignore: depend_on_referenced_packages
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:trip_tonic/color_schemes.g.dart';
 import 'package:trip_tonic/firebase_options_dev.dart' as dev;
@@ -24,17 +24,12 @@ Future<void> main() async {
 
   // FirebaseUser を取得する
   final firebaseUser = await FirebaseAuth.instance.userChanges().first;
-  print('uid = ${firebaseUser?.uid}');
   if (firebaseUser == null) {
     // 未サインインなら匿名ユーザーでサインインする
-    final credential = await FirebaseAuth.instance.signInAnonymously();
-    final uid = credential.user!.uid;
-    print('Signed in: uid = $uid');
   }
 
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode,
       builder: (context) => const MyApp(),
     ),
   );
