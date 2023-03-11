@@ -136,3 +136,5 @@ macos/
 windows/
 
 .fvm/flutter_sdk
+
+.env
