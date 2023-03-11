@@ -4,19 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:trip_tonic/extensions/ref_extension.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends HookConsumerWidget {
+  HomePage({super.key});
+
+  final Completer<GoogleMapController> _controller = Completer();
 
   static const pageName = 'home';
   static const pagePath = '/home';
-
-  @override
-  State<HomePage> createState() => MapSampleState();
-}
-
-class MapSampleState extends State<HomePage> {
-  final Completer<GoogleMapController> _controller = Completer();
 
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
@@ -31,8 +27,17 @@ class MapSampleState extends State<HomePage> {
   );
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
+
+    ref.handleAsyncValue(
+      loginStateProvider,
+      completeMessage: '完了しました🚀',
+      complete: (context, _) {
+        print('完了');
+      },
+    );
+
     return Scaffold(
       body: GoogleMap(
         mapType: MapType.hybrid,
@@ -40,16 +45,11 @@ class MapSampleState extends State<HomePage> {
         onMapCreated: _controller.complete,
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
+        onPressed: () => ref.read(userServiceProvider).login(),
         label: Text(l10n.test),
         icon: const Icon(Icons.directions_boat),
       ),
     );
-  }
-
-  Future<void> _goToTheLake() async {
-    final controller = await _controller.future;
-    await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }
 

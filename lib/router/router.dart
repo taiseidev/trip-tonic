@@ -13,8 +13,7 @@ final routerProvider = Provider(
       GoRoute(
         name: HomePage.pageName,
         path: HomePage.pagePath,
-        builder: (BuildContext context, GoRouterState state) =>
-            const HomePage(),
+        builder: (BuildContext context, GoRouterState state) => HomePage(),
       ),
     ],
   ),
