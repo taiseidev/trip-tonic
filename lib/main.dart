@@ -19,7 +19,7 @@ Future<void> main() async {
     ProviderScope(
       child: DevicePreview(
         enabled: flavor == dev,
-        builder: (context) => const MyApp(),
+        builder: (context) => const TripTonic(),
       ),
     ),
   );
