@@ -5,6 +5,7 @@ import 'package:trip_tonic/home_page.dart';
 import 'package:trip_tonic/utils/global_key.dart';
 
 final routerProvider = Provider(
+  name: 'routerProvider',
   (ref) => GoRouter(
     navigatorKey: ref.watch(navigatorKeyProvider),
     initialLocation: HomePage.pagePath,

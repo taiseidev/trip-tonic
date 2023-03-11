@@ -8,6 +8,7 @@ import 'package:trip_tonic/app.dart';
 import 'package:trip_tonic/firebase_options_dev.dart' as d;
 import 'package:trip_tonic/firebase_options_prod.dart' as p;
 import 'package:trip_tonic/utils/constants.dart';
+import 'package:trip_tonic/utils/logger.dart';
 
 const flavor = String.fromEnvironment('FLAVOR');
 
@@ -24,6 +25,7 @@ Future<void> main() async {
 
   runApp(
     ProviderScope(
+      observers: [ProviderLogger()],
       child: DevicePreview(
         enabled: flavor == dev,
         builder: (context) => const App(),
