@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:trip_tonic/color_schemes.g.dart';
 import 'package:trip_tonic/home_page.dart';
 import 'package:trip_tonic/utils/global_key.dart';
@@ -23,17 +22,7 @@ class TripTonic extends ConsumerWidget {
           return Stack(
             children: [
               child!,
-              // ローディングを表示する
-              if (isLoading)
-                ColoredBox(
-                  color: Colors.black26,
-                  child: Center(
-                    child: LoadingAnimationWidget.fourRotatingDots(
-                      color: Colors.white,
-                      size: 70,
-                    ),
-                  ),
-                ),
+              if (isLoading) const Loading(),
             ],
           );
         },

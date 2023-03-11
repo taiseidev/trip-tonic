@@ -12,9 +12,9 @@ class HomePage extends ConsumerWidget {
       completeMessage: '🚀ログイン完了🚀',
       complete: (context, _) async {
         // ログインできたらホーム画面に遷移する
-        print('ログイン完了');
       },
     );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('AppBar'),
