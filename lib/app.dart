@@ -16,17 +16,15 @@ class TripTonic extends ConsumerWidget {
       navigatorKey: ref.watch(navigatorKeyProvider),
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-      builder: (context, child) => Consumer(
-        builder: (context, ref, _) {
-          final isLoading = ref.watch(loadingProvider);
-          return Stack(
-            children: [
-              child!,
-              if (isLoading) const Loading(),
-            ],
-          );
-        },
-      ),
+      builder: (context, child) {
+        final isLoading = ref.watch(loadingProvider);
+        return Stack(
+          children: [
+            child!,
+            if (isLoading) const Loading(),
+          ],
+        );
+      },
       home: const HomePage(),
     );
   }
