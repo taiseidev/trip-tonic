@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:trip_tonic/extensions/context_extension.dart';
 import 'package:trip_tonic/presentation/home_page.dart';
 import 'package:trip_tonic/presentation/main/app_bar_title.dart';
+import 'package:trip_tonic/presentation/profile/profile_page.dart';
 
 enum TabType {
   home(Icons.home_outlined, HomePage()),
@@ -29,9 +30,21 @@ class MainPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final currentIndex = useState<int>(defaultIndex);
+    final currentTabType = TabType.values[currentIndex.value];
     return Scaffold(
       appBar: AppBar(
-        title: AppBarTitle(type: TabType.values[currentIndex.value]),
+        title: AppBarTitle(type: currentTabType),
+        actions: [
+          // プロフィールページのみ設定ボタンを表示
+          if (currentTabType == TabType.profile)
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.settings),
+              ),
+            )
+        ],
       ),
       body: Stack(
         children: List.generate(

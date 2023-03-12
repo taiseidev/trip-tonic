@@ -16,7 +16,15 @@ class App extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: darkColorScheme,
+        textTheme: const TextTheme(
+          titleSmall: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
       routerConfig: ref.watch(routerProvider),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
