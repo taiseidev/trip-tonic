@@ -9,15 +9,10 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [
-          const Gap(40),
-          const UserProfileSection(),
-          const Gap(40),
-          Column(
-            children: const [
-              Text('Favorite'),
-            ],
-          ),
+        children: const [
+          Gap(40),
+          UserProfileSection(),
+          Gap(40),
         ],
       ),
     );

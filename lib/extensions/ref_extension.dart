@@ -31,6 +31,10 @@ extension WidgetRefEx on WidgetRef {
                 messengerState?.showSnackBar(
                   SnackBar(
                     content: Text(completeMessage),
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 );
               }
