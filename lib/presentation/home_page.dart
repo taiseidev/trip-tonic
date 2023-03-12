@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -9,24 +10,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/extensions/ref_extension.dart';
 import 'package:trip_tonic/model/api_service.dart';
 
-class HomePage extends HookConsumerWidget {
-  HomePage({super.key});
+class MapPage extends HookConsumerWidget {
+  MapPage({super.key});
 
   final Completer<GoogleMapController> _controller = Completer();
-
-  static const pageName = 'home';
-  static const pagePath = '/home';
 
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
-  );
-
-  static const CameraPosition _kLake = CameraPosition(
-    bearing: 192.8334901395799,
-    target: LatLng(37.43296265331129, -122.08832357078792),
-    tilt: 59.440717697143555,
-    zoom: 19.151926040649414,
   );
 
   @override
@@ -36,9 +27,7 @@ class HomePage extends HookConsumerWidget {
     ref.handleAsyncValue(
       loginStateProvider,
       completeMessage: '完了しました',
-      complete: (context, _) {
-        print('完了');
-      },
+      complete: (context, _) {},
     );
 
     return Scaffold(
@@ -49,7 +38,7 @@ class HomePage extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => ref.read(userServiceProvider).login(),
-        label: Text(l10n.test),
+        label: Text(l10n.notification),
         icon: const Icon(Icons.directions_boat),
       ),
     );
@@ -106,5 +95,61 @@ class UserService {
         );
         debugPrint(content.object);
       });
+  }
+}
+
+// 下記タブ確認用のサンプル画面
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  static const pageName = 'home';
+  static const pagePath = '/home';
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('ホーム画面'),
+      ),
+    );
+  }
+}
+
+class HistoryPage extends StatelessWidget {
+  const HistoryPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('履歴画面'),
+      ),
+    );
+  }
+}
+
+class NotificationPage extends StatelessWidget {
+  const NotificationPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('お知らせ画面'),
+      ),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('プロフィール画面'),
+      ),
+    );
   }
 }
