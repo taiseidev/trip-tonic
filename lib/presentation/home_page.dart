@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -19,13 +20,6 @@ class MapPage extends HookConsumerWidget {
     zoom: 14.4746,
   );
 
-  static const CameraPosition _kLake = CameraPosition(
-    bearing: 192.8334901395799,
-    target: LatLng(37.43296265331129, -122.08832357078792),
-    tilt: 59.440717697143555,
-    zoom: 19.151926040649414,
-  );
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
@@ -33,9 +27,7 @@ class MapPage extends HookConsumerWidget {
     ref.handleAsyncValue(
       loginStateProvider,
       completeMessage: '完了しました',
-      complete: (context, _) {
-        print('完了');
-      },
+      complete: (context, _) {},
     );
 
     return Scaffold(
