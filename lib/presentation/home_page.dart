@@ -1,14 +1,11 @@
 import 'dart:async';
 
 // ignore: depend_on_referenced_packages
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/extensions/ref_extension.dart';
-import 'package:trip_tonic/model/api_service.dart';
 
 class MapPage extends HookConsumerWidget {
   MapPage({super.key});
@@ -64,36 +61,7 @@ class UserService {
     ref.read(loginStateProvider.notifier)
       ..state = const AsyncValue.loading()
       ..state = await AsyncValue.guard(() async {
-        final apiKey = await FlutterConfig.get('CHAT_GPT_API_KEY');
-        final dio = Dio();
-        dio.interceptors.add(LogInterceptor());
-        final body = PostData(
-          body: ''' 
-        あなたはプロの旅行プランナーです。下記の情報に沿って旅行プランを作成してください。
-        なお、話し方は20代女性をイメージした話し方にしてください。
-
-        目的地：京都
-        日程：2023/3/15 ~ 2023/3/17
-        人数：5人
-        目的：京都の歴史的建造物を楽しむ旅行
-        交通手段：電車優先
-
-        回答の形式は下記の形式でお願いします。
-        --------------------------------------------------------
-        前置きと目的地の簡単な説明
-        --------------------------------------------------------
-        ◯日目
-        - {{目的地（住所）}} 目的地の説明
-        | （交通手段（ex: 電車）、料金（ex: 230円））
-        - {{目的地（住所）}} 目的地の説明
-        --------------------------------------------------------
-        ''',
-        );
-        final content = await ApiService(dio).createPost(
-          'Bearer $apiKey',
-          body,
-        );
-        debugPrint(content.object);
+        await Future<void>.delayed(const Duration(seconds: 3));
       });
   }
 }
@@ -136,19 +104,6 @@ class NotificationPage extends StatelessWidget {
     return const Scaffold(
       body: Center(
         child: Text('お知らせ画面'),
-      ),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('プロフィール画面'),
       ),
     );
   }

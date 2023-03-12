@@ -1,9 +1,12 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/extensions/context_extension.dart';
+import 'package:trip_tonic/extensions/ref_extension.dart';
 import 'package:trip_tonic/presentation/home_page.dart';
 import 'package:trip_tonic/presentation/main/app_bar_title.dart';
+import 'package:trip_tonic/presentation/profile/profile_page.dart';
 
 enum TabType {
   home(Icons.home_outlined, HomePage()),
@@ -17,7 +20,7 @@ enum TabType {
 }
 
 /// タブナビゲーションの実装、アプリケーションの初期化処理を担う
-class MainPage extends HookWidget {
+class MainPage extends HookConsumerWidget {
   const MainPage({super.key});
 
   static const pageName = 'main';
@@ -27,11 +30,40 @@ class MainPage extends HookWidget {
   static const radius = 32.0;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final currentIndex = useState<int>(defaultIndex);
+    final currentTabType = TabType.values[currentIndex.value];
+
+    ref.handleAsyncValue(
+      loginStateProvider,
+      completeMessage: '完了しました',
+      complete: (context, _) {},
+    );
+
+    useEffect(
+      () {
+        Future(() {
+          ref.read(userServiceProvider).login();
+        });
+        return null;
+      },
+      [],
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: AppBarTitle(type: TabType.values[currentIndex.value]),
+        title: AppBarTitle(type: currentTabType),
+        actions: [
+          // プロフィールページのみ設定ボタンを表示
+          if (currentTabType == TabType.profile)
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.settings),
+              ),
+            )
+        ],
       ),
       body: Stack(
         children: List.generate(
