@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/color_schemes.g.dart';
 import 'package:trip_tonic/router/router.dart';
@@ -17,6 +18,8 @@ class App extends ConsumerWidget {
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       routerConfig: ref.watch(routerProvider),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       builder: (context, child) {
         final isLoading = ref.watch(loadingProvider);
         return Stack(

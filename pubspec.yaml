@@ -27,10 +27,25 @@ dependencies:
   # Logger
   logger: ^1.2.2
 
+  # Secure
+  flutter_config: ^2.0.0
+
+  # Map
+  google_maps_flutter: ^2.2.5
+
+  # Localization
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+  lyrebird: ^0.5.0+1
+
+  # API Client
+  retrofit: ^4.0.1
+
   # Other
   cupertino_icons: ^1.0.2
-  google_maps_flutter: ^2.2.5
-  flutter_config: ^2.0.0
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.0
 
 dev_dependencies:
   flutter_test:
@@ -42,6 +57,11 @@ dev_dependencies:
 
   # Dev
   device_preview: ^1.1.0
+  build_runner: ^2.3.3
+  freezed: ^2.3.2
+  json_serializable: ^6.6.1
+  retrofit_generator: ^6.0.0+1
 
 flutter:
   uses-material-design: true
+  generate: true

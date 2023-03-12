@@ -10,6 +10,10 @@ analyze:
 format:
 	fvm flutter format lib/
 
+.PHONY: lyrebird 
+lyrebird:
+	fvm flutter pub global run lyrebird
+
 .PHONY: format-analyze
 format-analyze:
 	fvm flutter format --dry-run lib/

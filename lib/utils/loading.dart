@@ -27,7 +27,7 @@ class Loading extends StatelessWidget {
       color: Colors.black26,
       child: Center(
         child: LoadingAnimationWidget.fourRotatingDots(
-          color: const Color(0xFF006687),
+          color: const Color.fromARGB(255, 128, 219, 249),
           size: 70,
         ),
       ),
