@@ -1,4 +1,7 @@
 {
     "@@locale": "en",
-    "test": "test"
+    "home": "home",
+    "history": "history",
+    "notification": "notification",
+    "profile": "profile"
 }

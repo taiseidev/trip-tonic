@@ -1,4 +1,7 @@
 {
     "@@locale": "ja",
-    "test": "テスト"
+    "home": "ホーム",
+    "history": "履歴",
+    "notification": "お知らせ",
+    "profile": "プロフィール"
 }
