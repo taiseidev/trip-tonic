@@ -6,6 +6,7 @@ import 'package:trip_tonic/extensions/context_extension.dart';
 import 'package:trip_tonic/extensions/ref_extension.dart';
 import 'package:trip_tonic/presentation/home_page.dart';
 import 'package:trip_tonic/presentation/main/app_bar_title.dart';
+import 'package:trip_tonic/presentation/notification/notification_page.dart';
 import 'package:trip_tonic/presentation/profile/profile_page.dart';
 
 enum TabType {
@@ -52,6 +53,7 @@ class MainPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         title: AppBarTitle(type: currentTabType),
         actions: [
           // プロフィールページのみ設定ボタンを表示
@@ -78,6 +80,7 @@ class MainPage extends HookConsumerWidget {
         backgroundColor: context.theme.primary,
         onPressed: () {
           // 旅行プラン作成画面へ遷移
+          ref.read(userServiceProvider).login();
         },
         child: const Icon(
           Icons.trip_origin_outlined,

@@ -50,6 +50,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
   gap: ^2.0.1
+  custom_sliding_segmented_control: ^1.7.4
 
 dev_dependencies:
   flutter_test:
@@ -69,3 +70,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - assets/images/

@@ -75,9 +75,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('ホーム画面'),
+        child: Image.asset('assets/images/girl.png'),
       ),
     );
   }
@@ -91,19 +91,6 @@ class HistoryPage extends StatelessWidget {
     return const Scaffold(
       body: Center(
         child: Text('履歴画面'),
-      ),
-    );
-  }
-}
-
-class NotificationPage extends StatelessWidget {
-  const NotificationPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('お知らせ画面'),
       ),
     );
   }
