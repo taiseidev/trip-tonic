@@ -13,7 +13,7 @@ class _ApiService implements ApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://api.openai.com/v1/chat/';
+    baseUrl ??= 'https://asia-northeast1-trip-tonic-dev.cloudfunctions.net/';
   }
 
   final Dio _dio;
@@ -21,29 +21,20 @@ class _ApiService implements ApiService {
   String? baseUrl;
 
   @override
-  Future<ChatCompletion> createPost(
-    token,
-    postData,
-  ) async {
+  Future<ChatCompletion> createPost(param) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{
-      r'Content-Type': 'application/json',
-      r'Authorization': token,
-    };
-    _headers.removeWhere((k, v) => v == null);
-    final _data = <String, dynamic>{};
-    _data.addAll(postData.toJson());
+    final queryParameters = <String, dynamic>{r'param': param};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ChatCompletion>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
-      contentType: 'application/json',
     )
             .compose(
               _dio.options,
-              'completions',
+              'requestChatGPT',
               queryParameters: queryParameters,
               data: _data,
             )

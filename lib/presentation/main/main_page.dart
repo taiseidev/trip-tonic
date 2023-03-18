@@ -4,8 +4,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/extensions/context_extension.dart';
 import 'package:trip_tonic/extensions/ref_extension.dart';
+import 'package:trip_tonic/presentation/history/history_page.dart';
 import 'package:trip_tonic/presentation/home_page.dart';
 import 'package:trip_tonic/presentation/main/app_bar_title.dart';
+import 'package:trip_tonic/presentation/notification/notification_page.dart';
+import 'package:trip_tonic/presentation/plan/plan_page.dart';
 import 'package:trip_tonic/presentation/profile/profile_page.dart';
 
 enum TabType {
@@ -51,7 +54,9 @@ class MainPage extends HookConsumerWidget {
     );
 
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         title: AppBarTitle(type: currentTabType),
         actions: [
           // プロフィールページのみ設定ボタンを表示
@@ -77,7 +82,10 @@ class MainPage extends HookConsumerWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: context.theme.primary,
         onPressed: () {
-          // 旅行プラン作成画面へ遷移
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PlanPage()),
+          );
         },
         child: const Icon(
           Icons.trip_origin_outlined,
@@ -87,6 +95,7 @@ class MainPage extends HookConsumerWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
+        splashColor: context.theme.primary,
         icons: TabType.values.map((tab) => tab.icon).toList(),
         activeIndex: currentIndex.value,
         activeColor: context.theme.primary,
