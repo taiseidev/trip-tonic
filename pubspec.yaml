@@ -51,6 +51,11 @@ dependencies:
   json_annotation: ^4.8.0
   gap: ^2.0.1
   custom_sliding_segmented_control: ^1.7.4
+  draggable_home: ^1.0.4
+  accordion: ^2.5.1
+  dio: ^5.0.2
+  google_place: ^0.4.7
+  geocoding: ^2.1.0
 
 dev_dependencies:
   flutter_test:
