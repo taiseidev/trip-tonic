@@ -3,23 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/extensions/context_extension.dart';
-import 'package:trip_tonic/extensions/ref_extension.dart';
 import 'package:trip_tonic/presentation/history/history_page.dart';
-import 'package:trip_tonic/presentation/home_page.dart';
 import 'package:trip_tonic/presentation/main/app_bar_title.dart';
 import 'package:trip_tonic/presentation/notification/notification_page.dart';
 import 'package:trip_tonic/presentation/plan/plan_page.dart';
 import 'package:trip_tonic/presentation/profile/profile_page.dart';
 
+/// タブ一覧
 enum TabType {
-  home(Icons.home_outlined, HomePage()),
-  history(Icons.history_outlined, HistoryPage()),
-  notification(Icons.notifications_none_outlined, NotificationPage()),
-  profile(Icons.account_circle_outlined, ProfilePage());
+  home(Icons.home_outlined),
+  history(Icons.history_outlined),
+  notification(Icons.notifications_none_outlined),
+  profile(Icons.account_circle_outlined);
 
-  const TabType(this.icon, this.page);
+  const TabType(this.icon);
   final IconData icon;
-  final Widget page;
 }
 
 /// タブナビゲーションの実装、アプリケーションの初期化処理を担う
@@ -37,24 +35,25 @@ class MainPage extends HookConsumerWidget {
     final currentIndex = useState<int>(defaultIndex);
     final currentTabType = TabType.values[currentIndex.value];
 
-    ref.handleAsyncValue(
-      loginStateProvider,
-      completeMessage: '完了しました',
-      complete: (context, _) {},
-    );
+    // ref.handleAsyncValue(
+    //   loginStateProvider,
+    //   completeMessage: '完了しました',
+    //   complete: (context, _) {},
+    // );
 
-    useEffect(
-      () {
-        Future(() {
-          ref.read(userServiceProvider).login();
-        });
-        return null;
-      },
-      [],
-    );
+    // useEffect(
+    //   () {
+    //     Future(() {
+    //       ref.read(userServiceProvider).login();
+    //     });
+    //     return null;
+    //   },
+    //   [],
+    // );
 
     return Scaffold(
       extendBody: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         surfaceTintColor: Colors.white,
         title: AppBarTitle(type: currentTabType),
@@ -75,17 +74,28 @@ class MainPage extends HookConsumerWidget {
           TabType.values.length,
           (index) => Offstage(
             offstage: index != currentIndex.value,
-            child: TabType.values[index].page,
+            child: (() {
+              switch (TabType.values[index]) {
+                case TabType.home:
+                  return const HomePage();
+                case TabType.history:
+                  return const HistoryPage();
+                case TabType.notification:
+                  return const NotificationPage();
+                case TabType.profile:
+                  return const ProfilePage();
+              }
+            })(),
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: context.theme.primary,
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => PlanPage()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute<void>(builder: (context) => PlanPage()),
+          // );
         },
         child: const Icon(
           Icons.trip_origin_outlined,

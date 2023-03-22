@@ -21,9 +21,9 @@ class _ApiService implements ApiService {
   String? baseUrl;
 
   @override
-  Future<ChatCompletion> createPost(param) async {
+  Future<ChatCompletion> createPost(content) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'param': param};
+    final queryParameters = <String, dynamic>{r'content': content};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio

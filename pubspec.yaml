@@ -56,6 +56,7 @@ dependencies:
   dio: ^5.0.2
   geocoding: ^2.1.0
   google_place: ^0.4.7
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,7 @@ dev_dependencies:
   # Dev
   device_preview: ^1.1.0
   build_runner: ^2.3.3
+  flutter_gen_runner:
   freezed: ^2.3.2
   json_serializable: ^6.6.1
   retrofit_generator: ^6.0.0+1
@@ -78,3 +80,4 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/map_style.json

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/presentation/home_page.dart';
 import 'package:trip_tonic/presentation/main/main_page.dart';
 import 'package:trip_tonic/presentation/notification/notification_detail_page.dart';
 import 'package:trip_tonic/utils/global_key.dart';
@@ -18,12 +17,12 @@ final routerProvider = Provider(
         builder: (BuildContext context, GoRouterState state) =>
             const MainPage(),
       ),
-      GoRoute(
-        name: HomePage.pageName,
-        path: HomePage.pagePath,
-        builder: (BuildContext context, GoRouterState state) =>
-            const HomePage(),
-      ),
+      // GoRoute(
+      //   name: HomePage.pageName,
+      //   path: HomePage.pagePath,
+      //   builder: (BuildContext context, GoRouterState state) =>
+      //       const HomePage(),
+      // ),
       GoRoute(
         name: NotificationDetailPage.pageName,
         path: NotificationDetailPage.pagePath,
