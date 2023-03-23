@@ -1,7 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
-import 'package:trip_tonic/features/model/chat_completion.dart';
+import 'package:trip_tonic/model/chat_completion.dart';
 
 part 'api_service.g.dart';
 

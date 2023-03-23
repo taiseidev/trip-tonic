@@ -2,7 +2,7 @@ import 'package:custom_sliding_segmented_control/custom_sliding_segmented_contro
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trip_tonic/features/presentation/notification/notification_detail_page.dart';
+import 'package:trip_tonic/presentation/notification/notification_detail_page.dart';
 
 enum NoticeType {
   notice('お知らせ'),

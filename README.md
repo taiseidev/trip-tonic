@@ -28,3 +28,10 @@ TripTonic - The name "TripTonic" is derived from the word "Tonic", which means "
 | ---- | ---- |
 |  会員登録機能  |  FirebaseAuthenticationを使用してユーザ管理を行う。  |
 |  TD  |  TD  |
+
+
+## アーキテクチャ
+
+### 参考
+https://codewithandrea.com/articles/flutter-project-structure/
+https://medium.com/flutter-jp/architecture-240d3c56b597

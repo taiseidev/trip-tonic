@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trip_tonic/extensions/context_extension.dart';
-import 'package:trip_tonic/features/presentation/main/main_page.dart';
+import 'package:trip_tonic/presentation/main/main_page.dart';
 
 /// ローカライズするため、タイトルのみtypeで切り替え
 class AppBarTitle extends StatelessWidget {
