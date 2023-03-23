@@ -2,8 +2,19 @@
 
 users:
   documentId: auto
-  name: String
-  iconUrl: String
-  createdAt: DateTime
-  updatedAt: DateTime
-# 有料会員かどうかのフラグはauthのCustomClaimsに設定している[IS_PREMIUM_MEMBER]でチェックする。
+  name: string
+  iconUrl: string
+  createdAt: date
+  updatedAt: date
+
+  collection:
+    documentId: auto
+  # 有料会員かどうかのフラグはCustomClaimsに設定している[IS_PREMIUM_MEMBER]でチェックする。
+
+  notification:
+    documentId: auto
+    title: string
+    content: string
+    isRead: boolean
+    createdAt: date
+    updatedAt: date
