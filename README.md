@@ -27,11 +27,17 @@ TripTonic - The name "TripTonic" is derived from the word "Tonic", which means "
 |  機能名  |  説明  |
 | ---- | ---- |
 |  会員登録機能  |  FirebaseAuthenticationを使用してユーザ管理を行う。  |
-|  TD  |  TD  |
-
+|  小説閲覧機能  |  マップ上に表示されるマーカをタップすることによってChatGPTで生成された短編小説を見ることができる。  |
+|  お気に入り機能  |  閲覧した小説をお気に入り登録することができる。  |
+|  履歴機能  |  過去に参照した短編小説の履歴を確認することができる。  |
+|  お知らせ機能  |  アプリ内の通知または運営からのお知らせ（ニュース）を確認することができる。  |
+|  共有機能  |  小説をSNS等で共有することができる。  |
 
 ## アーキテクチャ
+
+アーキテクチャ図を作成する予定
 
 ### 参考
 https://codewithandrea.com/articles/flutter-project-structure/
 https://medium.com/flutter-jp/architecture-240d3c56b597
+https://github.com/tomamoi/todo_app

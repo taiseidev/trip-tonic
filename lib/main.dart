@@ -7,7 +7,7 @@ import 'package:flutter_config/flutter_config.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/firebase_options_dev.dart' as d;
 import 'package:trip_tonic/firebase_options_prod.dart' as p;
-import 'package:trip_tonic/presentation/app.dart';
+import 'package:trip_tonic/src/presentation/app.dart';
 import 'package:trip_tonic/utils/constants.dart';
 import 'package:trip_tonic/utils/logger.dart';
 
