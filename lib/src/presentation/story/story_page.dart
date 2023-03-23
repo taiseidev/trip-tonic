@@ -9,8 +9,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/gen/assets.gen.dart';
 
 // ignore: must_be_immutable
-class HomePage extends HookConsumerWidget {
-  const HomePage({super.key});
+class StoryPage extends HookConsumerWidget {
+  const StoryPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -6,8 +6,8 @@ import 'package:trip_tonic/extensions/context_extension.dart';
 import 'package:trip_tonic/src/presentation/history/history_page.dart';
 import 'package:trip_tonic/src/presentation/main/app_bar_title.dart';
 import 'package:trip_tonic/src/presentation/notification/notification_page.dart';
-import 'package:trip_tonic/src/presentation/plan/plan_page.dart';
 import 'package:trip_tonic/src/presentation/profile/profile_page.dart';
+import 'package:trip_tonic/src/presentation/story/story_page.dart';
 
 /// タブ一覧
 enum TabType {
@@ -35,22 +35,6 @@ class MainPage extends HookConsumerWidget {
     final currentIndex = useState<int>(defaultIndex);
     final currentTabType = TabType.values[currentIndex.value];
 
-    // ref.handleAsyncValue(
-    //   loginStateProvider,
-    //   completeMessage: '完了しました',
-    //   complete: (context, _) {},
-    // );
-
-    // useEffect(
-    //   () {
-    //     Future(() {
-    //       ref.read(userServiceProvider).login();
-    //     });
-    //     return null;
-    //   },
-    //   [],
-    // );
-
     return Scaffold(
       extendBody: true,
       resizeToAvoidBottomInset: false,
@@ -77,7 +61,7 @@ class MainPage extends HookConsumerWidget {
             child: (() {
               switch (TabType.values[index]) {
                 case TabType.home:
-                  return const HomePage();
+                  return const StoryPage();
                 case TabType.history:
                   return const HistoryPage();
                 case TabType.notification:
@@ -91,12 +75,7 @@ class MainPage extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: context.theme.primary,
-        onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute<void>(builder: (context) => PlanPage()),
-          // );
-        },
+        onPressed: () {},
         child: const Icon(
           Icons.trip_origin_outlined,
           color: Colors.white,

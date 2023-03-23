@@ -14,18 +14,18 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
 
   # Firebase
-  firebase_core: ^2.7.1
-  firebase_auth: ^4.2.10
+  firebase_core: ^2.8.0
+  firebase_auth: ^4.3.0
 
   # State Management
-  hooks_riverpod: ^2.3.1
+  hooks_riverpod: ^2.3.2
   flutter_hooks: ^0.18.6
 
   # Navigator
-  go_router: ^6.2.0
+  go_router: ^6.4.1
 
   # Logger
-  logger: ^1.2.2
+  logger: ^1.3.0
 
   # Secure
   flutter_config: ^2.0.0
@@ -41,19 +41,19 @@ dependencies:
 
   # API Client
   retrofit: ^4.0.1
+  dio: ^5.0.3
 
   # Bottom Navigation
   animated_bottom_navigation_bar: ^1.2.0
 
   # Other
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
   gap: ^2.0.1
   custom_sliding_segmented_control: ^1.7.4
   draggable_home: ^1.0.4
   accordion: ^2.5.1
-  dio: ^5.0.2
   geocoding: ^2.1.0
   google_place: ^0.4.7
   geolocator: ^9.0.2
@@ -63,13 +63,13 @@ dev_dependencies:
     sdk: flutter
 
   # Lint
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.1
   pedantic_mono: ^1.21.1
 
   # Dev
   device_preview: ^1.1.0
-  build_runner: ^2.3.3
-  flutter_gen_runner:
+  build_runner: ^2.3.0 # 最新2.4.1（2023/03/24時点）だとversionエラーになるので2.3.0を使用
+  flutter_gen_runner: ^5.2.0
   freezed: ^2.3.2
   json_serializable: ^6.6.1
   retrofit_generator: ^6.0.0+1
