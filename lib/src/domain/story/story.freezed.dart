@@ -26,7 +26,9 @@ mixin _$Story {
   String get content => throw _privateConstructorUsedError;
   Map<String, double> get latlng => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt =>
+      throw _privateConstructorUsedError; // 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
+  bool get isRead => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,8 @@ abstract class $StoryCopyWith<$Res> {
       String content,
       Map<String, double> latlng,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      bool isRead});
 }
 
 /// @nodoc
@@ -68,6 +71,7 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
     Object? latlng = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? isRead = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -98,6 +102,10 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isRead: null == isRead
+          ? _value.isRead
+          : isRead // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -115,7 +123,8 @@ abstract class _$$_StoryCopyWith<$Res> implements $StoryCopyWith<$Res> {
       String content,
       Map<String, double> latlng,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      bool isRead});
 }
 
 /// @nodoc
@@ -134,6 +143,7 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
     Object? latlng = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? isRead = null,
   }) {
     return _then(_$_Story(
       id: null == id
@@ -164,6 +174,10 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isRead: null == isRead
+          ? _value.isRead
+          : isRead // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -178,7 +192,8 @@ class _$_Story extends _Story {
       required this.content,
       required final Map<String, double> latlng,
       required this.createdAt,
-      required this.updatedAt})
+      required this.updatedAt,
+      this.isRead = false})
       : _latlng = latlng,
         super._();
 
@@ -205,10 +220,14 @@ class _$_Story extends _Story {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+// 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
+  @override
+  @JsonKey()
+  final bool isRead;
 
   @override
   String toString() {
-    return 'Story(id: $id, userId: $userId, title: $title, content: $content, latlng: $latlng, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Story(id: $id, userId: $userId, title: $title, content: $content, latlng: $latlng, createdAt: $createdAt, updatedAt: $updatedAt, isRead: $isRead)';
   }
 
   @override
@@ -224,13 +243,22 @@ class _$_Story extends _Story {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.isRead, isRead) || other.isRead == isRead));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, title, content,
-      const DeepCollectionEquality().hash(_latlng), createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      userId,
+      title,
+      content,
+      const DeepCollectionEquality().hash(_latlng),
+      createdAt,
+      updatedAt,
+      isRead);
 
   @JsonKey(ignore: true)
   @override
@@ -254,7 +282,8 @@ abstract class _Story extends Story {
       required final String content,
       required final Map<String, double> latlng,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$_Story;
+      required final DateTime updatedAt,
+      final bool isRead}) = _$_Story;
   const _Story._() : super._();
 
   factory _Story.fromJson(Map<String, dynamic> json) = _$_Story.fromJson;
@@ -273,6 +302,8 @@ abstract class _Story extends Story {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override // 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
+  bool get isRead;
   @override
   @JsonKey(ignore: true)
   _$$_StoryCopyWith<_$_Story> get copyWith =>

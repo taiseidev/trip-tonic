@@ -16,6 +16,7 @@ _$_Story _$$_StoryFromJson(Map<String, dynamic> json) => _$_Story(
       ),
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
+      isRead: json['isRead'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_StoryToJson(_$_Story instance) => <String, dynamic>{
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$_StoryToJson(_$_Story instance) => <String, dynamic>{
       'latlng': instance.latlng,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
+      'isRead': instance.isRead,
     };

@@ -70,43 +70,19 @@ class StoryPage extends HookConsumerWidget {
                   onTap: () {},
                   markerId: MarkerId(i.toString()),
                   position: LatLng(
-                    getRandomLatLngWithin10Km(
-                      34.95392818614791,
-                      139.12417758678149,
-                    ).latitude,
-                    getRandomLatLngWithin10Km(
-                      34.95392818614791,
-                      139.12417758678149,
-                    ).longitude,
+                    getRandomLatLng().latitude,
+                    getRandomLatLng().longitude,
                   ),
                 ),
             },
           ),
-          // Align(
-          //   alignment: Alignment.topCenter,
-          //   child: Container(
-          //     width: 300,
-          //     height: 50,
-          //     padding: const EdgeInsets.symmetric(horizontal: 24),
-          //     decoration: BoxDecoration(
-          //       color: Colors.white,
-          //       borderRadius: BorderRadius.circular(30),
-          //     ),
-          //     child: TextFormField(
-          //       decoration: const InputDecoration(
-          //         border: InputBorder.none,
-          //         hintText: 'Enter text here',
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
   }
 }
 
-final zoomProvider = StateProvider<double>((_) => 15);
+final zoomProvider = StateProvider<double>((_) => 1);
 
 final controllerProvider = Provider<Completer<GoogleMapController>>(
   (_) => Completer(),
@@ -119,28 +95,15 @@ class LatLngTest {
   final double longitude;
 }
 
-// 指定された緯度経度から半径10km圏内のランダムな緯度経度を生成する関数
-LatLngTest getRandomLatLngWithin10Km(
-  double centerLatitude,
-  double centerLongitude,
-) {
+// ランダムな緯度経度を生成する関数
+LatLngTest getRandomLatLng() {
   final random = Random();
-  const radiusInKm = 5.0;
-  const radiusInDegrees = radiusInKm / 111.32; // 約1度あたり111.32km
-
-  // 角度の範囲: 0 ~ 360
-  final randomAngle = random.nextDouble() * 360;
-
-  // 半径の範囲: 0 ~ radiusInDegrees
-  final randomRadius = radiusInDegrees * sqrt(random.nextDouble());
 
   // 経度を計算
-  final randomLongitude =
-      centerLongitude + randomRadius * cos(randomAngle * pi / 180);
+  final randomLongitude = -180 + random.nextDouble() * 360;
 
   // 緯度を計算
-  final randomLatitude =
-      centerLatitude + randomRadius * sin(randomAngle * pi / 180);
+  final randomLatitude = -90 + random.nextDouble() * 180;
 
   return LatLngTest(randomLatitude, randomLongitude);
 }

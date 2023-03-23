@@ -25,6 +25,7 @@ version:
     userId: string
     title: string
     content: string
+    backgroundImage: string
     location: Map
     createdAt: date
     updatedAt: date

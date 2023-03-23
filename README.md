@@ -33,7 +33,22 @@ TripTonic - The name "TripTonic" is derived from the word "Tonic", which means "
 |  お知らせ機能  |  アプリ内の通知または運営からのお知らせ（ニュース）を確認することができる。  |
 |  共有機能  |  小説をSNS等で共有することができる。  |
 |  タイムライン機能  |  生成された小説が一覧で表示される（公開・非公開を設定可能に）  |
+|  コメント・レビュー機能  |  生成された小説に対してコメントをコメントすることができる。  |
+|  ランキング機能  |  人気のある（いいね数が多い）小説を詳細する。  |
+|  タイムライン機能  |  生成された小説が一覧で表示される（公開・非公開を設定可能に）  |
 
+### 会員登録機能
+
+TODO: 会員登録の方法を検討する。
+
+### 小説閲覧機能
+1. アプリ立ち上げ時にログイン済みの場合はマップ画面に遷移する。
+
+TODO: マーカの生成場所、生成数、生成タイミングについて検討する。
+案1: 生成のタイミングは4時間ごとにバックエンドで生成
+
+
+いいねと履歴についてはローカルDBを用意してすぐに閲覧できるようにする。
 
 ### お気に入り機能
 v1: 作成された小説をお気に入り登録することができる。
@@ -48,3 +63,14 @@ v2: タイムライン（v1では実装しない予定）上に表示される�
 https://codewithandrea.com/articles/flutter-project-structure/
 https://medium.com/flutter-jp/architecture-240d3c56b597
 https://github.com/tomamoi/todo_app
+
+
+## API
+・小説を自動で生成
+https://chat.openai.com/chat?model=gpt-4
+
+・画像を自動で生成
+https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F
+
+・ジオコーディングと陸地の座標を判別
+https://operations.osmfoundation.org/policies/nominatim/

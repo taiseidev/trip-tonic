@@ -13,6 +13,9 @@ class Story with _$Story {
     required Map<String, double> latlng,
     required DateTime createdAt,
     required DateTime updatedAt,
+
+    // 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
+    @Default(false) bool isRead,
   }) = _Story;
   const Story._();
 
