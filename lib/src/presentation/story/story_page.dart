@@ -16,21 +16,23 @@ class StoryPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     useEffect(
       () {
-        Future(() async {
-          final controller = await ref.watch(controllerProvider).future;
-          final mapStyle = await rootBundle.loadString(Assets.mapStyle);
-          await Future.wait([
-            controller.setMapStyle(mapStyle),
-            controller.moveCamera(
-              CameraUpdate.newCameraPosition(
-                CameraPosition(
-                  target: const LatLng(37.42796133580664, -122.085749655962),
-                  zoom: ref.read(zoomProvider),
+        Future(
+          () async {
+            final controller = await ref.watch(controllerProvider).future;
+            final mapStyle = await rootBundle.loadString(Assets.mapStyle);
+            await Future.wait([
+              controller.setMapStyle(mapStyle),
+              controller.moveCamera(
+                CameraUpdate.newCameraPosition(
+                  CameraPosition(
+                    target: const LatLng(37.42796133580664, -122.085749655962),
+                    zoom: ref.read(zoomProvider),
+                  ),
                 ),
               ),
-            ),
-          ]);
-        });
+            ]);
+          },
+        );
 
         return null;
       },

@@ -1,20 +1,36 @@
 # FirestoreのDB設計
 
-users:
-  documentId: auto
-  name: string
-  iconUrl: string
-  createdAt: date
-  updatedAt: date
-
-  collection:
+version:
+  users:
     documentId: auto
-  # 有料会員かどうかのフラグはCustomClaimsに設定している[IS_PREMIUM_MEMBER]でチェックする。
-
-  notification:
-    documentId: auto
-    title: string
-    content: string
-    isRead: boolean
+    name: string
+    iconUrl: string
     createdAt: date
     updatedAt: date
+
+    collection:
+      documentId: auto
+    # 有料会員かどうかのフラグはCustomClaimsに設定している[IS_PREMIUM_MEMBER]でチェックする。
+
+    notification:
+      documentId: auto
+      title: string
+      content: string
+      isRead: boolean
+      createdAt: date
+      updatedAt: date
+
+  stories:
+    id: auto
+    userId: string
+    title: string
+    content: string
+    location: Map
+    createdAt: date
+    updatedAt: date
+
+  favorites:
+    id: auto
+    userId: string
+    storyId: string
+    createdAt: date
