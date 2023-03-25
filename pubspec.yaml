@@ -59,6 +59,7 @@ dependencies:
   google_place: ^0.4.7
   geolocator: ^9.0.2
   riverpod_annotation: ^2.0.2
+  custom_map_markers: ^0.0.2+1
 
 dev_dependencies:
   flutter_test:
@@ -83,4 +84,5 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icon/markers/
     - assets/map_style.json

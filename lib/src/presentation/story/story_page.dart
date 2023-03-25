@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:custom_map_markers/custom_map_markers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -49,23 +50,38 @@ class StoryPage extends HookConsumerWidget {
           return Stack(
             alignment: Alignment.bottomRight,
             children: [
-              GoogleMap(
-                initialCameraPosition: const CameraPosition(
-                  target: LatLng(37.42796133580664, -122.085749655962),
-                  zoom: 1,
-                ),
-                onMapCreated: ref.watch(googleMapControllerProvider).complete,
-                markers: data.map(
+              CustomGoogleMapMarkerBuilder(
+                customMarkers: data.map(
                   (marker) {
-                    return Marker(
-                      markerId: MarkerId(marker.id),
-                      position: LatLng(
-                        marker.latitude,
-                        marker.longitude,
+                    return MarkerData(
+                      marker: Marker(
+                        markerId: MarkerId(marker.id),
+                        position: LatLng(
+                          marker.latitude,
+                          marker.longitude,
+                        ),
+                      ),
+                      child: Image.asset(
+                        Assets.icon.markers.kkrnIconPin1Png.path,
+                        width: 50,
                       ),
                     );
                   },
-                ).toSet(),
+                ).toList(),
+                builder: (BuildContext context, Set<Marker>? markers) {
+                  if (markers == null) {
+                    return const Center(child: Loading());
+                  }
+                  return GoogleMap(
+                    initialCameraPosition: const CameraPosition(
+                      target: LatLng(37.42796133580664, -122.085749655962),
+                      zoom: 14.4746,
+                    ),
+                    markers: markers,
+                    onMapCreated:
+                        ref.watch(googleMapControllerProvider).complete,
+                  );
+                },
               ),
             ],
           );

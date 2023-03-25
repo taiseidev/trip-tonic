@@ -9,6 +9,12 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconGen {
+  const $AssetsIconGen();
+
+  $AssetsIconMarkersGen get markers => const $AssetsIconMarkersGen();
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -19,9 +25,72 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [girl];
 }
 
+class $AssetsIconMarkersGen {
+  const $AssetsIconMarkersGen();
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_1.png
+  AssetGenImage get kkrnIconPin1Png =>
+      const AssetGenImage('assets/icon/markers/kkrn_icon_pin_1.png');
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_1.svg
+  String get kkrnIconPin1Svg => 'assets/icon/markers/kkrn_icon_pin_1.svg';
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_2.png
+  AssetGenImage get kkrnIconPin2Png =>
+      const AssetGenImage('assets/icon/markers/kkrn_icon_pin_2.png');
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_2.svg
+  String get kkrnIconPin2Svg => 'assets/icon/markers/kkrn_icon_pin_2.svg';
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_3.png
+  AssetGenImage get kkrnIconPin3Png =>
+      const AssetGenImage('assets/icon/markers/kkrn_icon_pin_3.png');
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_3.svg
+  String get kkrnIconPin3Svg => 'assets/icon/markers/kkrn_icon_pin_3.svg';
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_4.png
+  AssetGenImage get kkrnIconPin4Png =>
+      const AssetGenImage('assets/icon/markers/kkrn_icon_pin_4.png');
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_4.svg
+  String get kkrnIconPin4Svg => 'assets/icon/markers/kkrn_icon_pin_4.svg';
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_5.png
+  AssetGenImage get kkrnIconPin5Png =>
+      const AssetGenImage('assets/icon/markers/kkrn_icon_pin_5.png');
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_5.svg
+  String get kkrnIconPin5Svg => 'assets/icon/markers/kkrn_icon_pin_5.svg';
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_6.png
+  AssetGenImage get kkrnIconPin6Png =>
+      const AssetGenImage('assets/icon/markers/kkrn_icon_pin_6.png');
+
+  /// File path: assets/icon/markers/kkrn_icon_pin_6.svg
+  String get kkrnIconPin6Svg => 'assets/icon/markers/kkrn_icon_pin_6.svg';
+
+  /// List of all assets
+  List<dynamic> get values => [
+        kkrnIconPin1Png,
+        kkrnIconPin1Svg,
+        kkrnIconPin2Png,
+        kkrnIconPin2Svg,
+        kkrnIconPin3Png,
+        kkrnIconPin3Svg,
+        kkrnIconPin4Png,
+        kkrnIconPin4Svg,
+        kkrnIconPin5Png,
+        kkrnIconPin5Svg,
+        kkrnIconPin6Png,
+        kkrnIconPin6Svg
+      ];
+}
+
 class Assets {
   Assets._();
 
+  static const $AssetsIconGen icon = $AssetsIconGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const String mapStyle = 'assets/map_style.json';
 

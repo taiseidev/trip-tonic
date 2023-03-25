@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trip_tonic/src/domain/entities/story/marker_object.dart';
-import 'package:trip_tonic/src/infrastructure/models/timestamp_converter.dart';
+import 'package:trip_tonic/src/infrastructure/utils/timestamp_converter.dart';
 
 part 'marker_object_dto.freezed.dart';
 part 'marker_object_dto.g.dart';
