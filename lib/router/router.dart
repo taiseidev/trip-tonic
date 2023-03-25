@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/presentation/main/main_page.dart';
 import 'package:trip_tonic/src/presentation/notification/notification_detail_page.dart';
+import 'package:trip_tonic/src/presentation/story/story_detail_page.dart';
 import 'package:trip_tonic/utils/global_key.dart';
 
 final routerProvider = Provider(
@@ -17,12 +18,16 @@ final routerProvider = Provider(
         builder: (BuildContext context, GoRouterState state) =>
             const MainPage(),
       ),
-      // GoRoute(
-      //   name: HomePage.pageName,
-      //   path: HomePage.pagePath,
-      //   builder: (BuildContext context, GoRouterState state) =>
-      //       const HomePage(),
-      // ),
+      GoRoute(
+        name: StoryDetailPage.pageName,
+        path: StoryDetailPage.pagePath,
+        builder: (BuildContext context, GoRouterState state) {
+          final location = state.extra as TextExtra;
+          return StoryDetailPage(
+            location: location.text,
+          );
+        },
+      ),
       GoRoute(
         name: NotificationDetailPage.pageName,
         path: NotificationDetailPage.pagePath,
@@ -32,3 +37,11 @@ final routerProvider = Provider(
     ],
   ),
 );
+
+class TextExtra {
+  const TextExtra({
+    required this.text,
+  });
+
+  final String text;
+}

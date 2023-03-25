@@ -3,11 +3,14 @@ import 'dart:async';
 import 'package:custom_map_markers/custom_map_markers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/gen/assets.gen.dart';
+import 'package:trip_tonic/router/router.dart';
 import 'package:trip_tonic/src/domain/usecase/story/get_markers_stream.dart';
 import 'package:trip_tonic/src/presentation/hooks/user_effect_once.dart';
+import 'package:trip_tonic/src/presentation/story/story_detail_page.dart';
 import 'package:trip_tonic/utils/loading.dart';
 
 class StoryPage extends HookConsumerWidget {
@@ -59,6 +62,10 @@ class StoryPage extends HookConsumerWidget {
                         position: LatLng(
                           marker.latitude,
                           marker.longitude,
+                        ),
+                        onTap: () => context.push(
+                          StoryDetailPage.pagePath,
+                          extra: TextExtra(text: marker.country),
                         ),
                       ),
                       child: Image.asset(
