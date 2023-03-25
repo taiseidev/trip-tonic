@@ -59,6 +59,16 @@ v2: タイムライン（v1では実装しない予定）上に表示される�
 
 アーキテクチャ図を作成する予定
 
+### infrastructure
+1. Separation of Concerns (SoC): アプリケーションの各層は、それぞれの責任を持つべきです。infrastructure層はデータアクセスや外部サービスとの通信を担当し、Firebaseを含む具体的な実装を行います。他の層は、Firebaseに依存せずに機能すべきです。
+
+2. 交換可能性: infrastructure層にFirebaseの依存を閉じ込めることで、将来的にデータストレージやAPIが変更された場合に、他の層に影響を与えずにinfrastructure層の実装を変更できます。これにより、アプリケーションの柔軟性が向上します。
+
+3. テストの容易性: Firebaseの依存をinfrastructure層に限定することで、domain層やapp層のテストが容易になります。具体的なデータアクセス実装に依存しないため、モックやスタブを使用して、ビジネスロジックやUIの正確性を確認できます。
+
+4. 再利用性: Firebaseの依存をinfrastructure層に閉じ込めることで、domain層やapp層のコードが他のプロジェクトやコンテキストで再利用しやすくなります。具体的なデータストレージやAPIの実装から独立しているため、他のシステムに適応させることが容易になります。
+
+
 ### 参考
 https://codewithandrea.com/articles/flutter-project-structure/
 https://medium.com/flutter-jp/architecture-240d3c56b597

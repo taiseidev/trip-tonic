@@ -1,25 +1,20 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/domain/entities/story/marker_object.dart';
 import 'package:trip_tonic/src/domain/repositories/marker_repository.dart';
-import 'package:trip_tonic/utils/constants.dart';
+import 'package:trip_tonic/src/infrastructure/data_source/remote/marker_data_source.dart';
 
+// domain層にFirestoreの依存を持たせないため、DTOを介してMarkerObjectを作成
 class MarkerRepositoryImpl implements MarkerRepository {
-  MarkerRepositoryImpl(this._firestore);
-  final FirebaseFirestore _firestore;
+  MarkerRepositoryImpl(this.ref);
+  final ProviderRef<MarkerRepository> ref;
 
   @override
-  Stream<List<MarkerObject>> getMarkers() {
-    return _firestore.collection(markers).snapshots().map(
-          (snapshot) => snapshot.docs
-              .map(
-                MarkerObject.fromFirestore,
-              )
-              .toList(),
-        );
-  }
+  Stream<List<MarkerObject>> getMarkers() =>
+      ref.read(markerDataSourceProvider).getMarkers().asyncMap(
+            (event) => event.map((e) => e.toDomain(e)).toList(),
+          );
 }
 
 final markerRepositoryProvider = Provider<MarkerRepository>(
-  (_) => MarkerRepositoryImpl(FirebaseFirestore.instance),
+  MarkerRepositoryImpl.new,
 );

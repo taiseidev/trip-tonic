@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'marker_object.dart';
+part of 'marker_object_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MarkerObject _$$_MarkerObjectFromJson(Map<String, dynamic> json) =>
-    _$_MarkerObject(
+_$_MarkerObjectDTO _$$_MarkerObjectDTOFromJson(Map<String, dynamic> json) =>
+    _$_MarkerObjectDTO(
       id: json['id'] as String,
       genre: json['genre'] as String,
       country: json['country'] as String,
@@ -17,7 +17,7 @@ _$_MarkerObject _$$_MarkerObjectFromJson(Map<String, dynamic> json) =>
           const TimestampConverter().fromJson(json['createdAt'] as Timestamp),
     );
 
-Map<String, dynamic> _$$_MarkerObjectToJson(_$_MarkerObject instance) =>
+Map<String, dynamic> _$$_MarkerObjectDTOToJson(_$_MarkerObjectDTO instance) =>
     <String, dynamic>{
       'id': instance.id,
       'genre': instance.genre,
