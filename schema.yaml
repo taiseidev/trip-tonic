@@ -26,7 +26,7 @@ version:
     title: string
     content: string
     backgroundImage: string
-    location: Map
+    latlng: map
     createdAt: date
     updatedAt: date
 
@@ -34,4 +34,11 @@ version:
     id: auto
     userId: string
     storyId: string
+    createdAt: date
+
+  makers:
+    id: auto
+    genre: string
+    location: string
+    latlng: map
     createdAt: date
