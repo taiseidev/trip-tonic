@@ -9,7 +9,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/gen/assets.gen.dart';
 import 'package:trip_tonic/router/router.dart';
 import 'package:trip_tonic/src/domain/usecase/story/get_markers_stream.dart';
-import 'package:trip_tonic/src/presentation/hooks/user_effect_once.dart';
 import 'package:trip_tonic/src/presentation/story/story_detail_page.dart';
 import 'package:trip_tonic/utils/loading.dart';
 
@@ -18,34 +17,27 @@ class StoryPage extends HookConsumerWidget {
 
   final Completer<GoogleMapController> _controller = Completer();
 
+  Future<void> init() async {
+    final controller = await _controller.future;
+    final mapStyle = await rootBundle.loadString(Assets.mapStyle);
+    await Future.wait(
+      [
+        controller.setMapStyle(mapStyle),
+        controller.moveCamera(
+          CameraUpdate.newCameraPosition(
+            const CameraPosition(
+              target: LatLng(37.42796133580664, -122.085749655962),
+              zoom: 1,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final markers = ref.watch(getMarkersStreamProvider);
-
-    useEffectOnce(
-      () {
-        Future(
-          () async {
-            final controller = await _controller.future;
-            final mapStyle = await rootBundle.loadString(Assets.mapStyle);
-            await Future.wait(
-              [
-                controller.setMapStyle(mapStyle),
-                controller.moveCamera(
-                  CameraUpdate.newCameraPosition(
-                    const CameraPosition(
-                      target: LatLng(37.42796133580664, -122.085749655962),
-                      zoom: 1,
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
-        );
-        return null;
-      },
-    );
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -80,6 +72,10 @@ class StoryPage extends HookConsumerWidget {
                   if (markers == null) {
                     return const Center(child: Loading());
                   }
+                  // マップの初期設定
+                  // builder内に非同期処理を呼ぶのは良くない気がするのでリファクタ？
+                  // 追記：詳細画面からpopした際にもマップが際描画されてしまうため、どっちにしろリファクタする。
+                  init();
                   return GoogleMap(
                     initialCameraPosition: const CameraPosition(
                       target: LatLng(37.42796133580664, -122.085749655962),
