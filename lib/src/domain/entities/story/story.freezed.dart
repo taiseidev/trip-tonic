@@ -24,10 +24,10 @@ mixin _$Story {
   String get userId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  Map<String, double> get latlng => throw _privateConstructorUsedError;
+  double get latitude => throw _privateConstructorUsedError;
+  double get longitude => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  DateTime get updatedAt =>
-      throw _privateConstructorUsedError; // 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
+  DateTime get updatedAt => throw _privateConstructorUsedError;
   bool get isRead => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +45,8 @@ abstract class $StoryCopyWith<$Res> {
       String userId,
       String title,
       String content,
-      Map<String, double> latlng,
+      double latitude,
+      double longitude,
       DateTime createdAt,
       DateTime updatedAt,
       bool isRead});
@@ -68,7 +69,8 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
     Object? userId = null,
     Object? title = null,
     Object? content = null,
-    Object? latlng = null,
+    Object? latitude = null,
+    Object? longitude = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? isRead = null,
@@ -90,10 +92,14 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      latlng: null == latlng
-          ? _value.latlng
-          : latlng // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -121,7 +127,8 @@ abstract class _$$_StoryCopyWith<$Res> implements $StoryCopyWith<$Res> {
       String userId,
       String title,
       String content,
-      Map<String, double> latlng,
+      double latitude,
+      double longitude,
       DateTime createdAt,
       DateTime updatedAt,
       bool isRead});
@@ -140,7 +147,8 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
     Object? userId = null,
     Object? title = null,
     Object? content = null,
-    Object? latlng = null,
+    Object? latitude = null,
+    Object? longitude = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? isRead = null,
@@ -162,10 +170,14 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      latlng: null == latlng
-          ? _value._latlng
-          : latlng // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -190,12 +202,12 @@ class _$_Story extends _Story {
       required this.userId,
       required this.title,
       required this.content,
-      required final Map<String, double> latlng,
+      required this.latitude,
+      required this.longitude,
       required this.createdAt,
       required this.updatedAt,
       this.isRead = false})
-      : _latlng = latlng,
-        super._();
+      : super._();
 
   factory _$_Story.fromJson(Map<String, dynamic> json) =>
       _$$_StoryFromJson(json);
@@ -208,26 +220,21 @@ class _$_Story extends _Story {
   final String title;
   @override
   final String content;
-  final Map<String, double> _latlng;
   @override
-  Map<String, double> get latlng {
-    if (_latlng is EqualUnmodifiableMapView) return _latlng;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_latlng);
-  }
-
+  final double latitude;
+  @override
+  final double longitude;
   @override
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
-// 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
   @override
   @JsonKey()
   final bool isRead;
 
   @override
   String toString() {
-    return 'Story(id: $id, userId: $userId, title: $title, content: $content, latlng: $latlng, createdAt: $createdAt, updatedAt: $updatedAt, isRead: $isRead)';
+    return 'Story(id: $id, userId: $userId, title: $title, content: $content, latitude: $latitude, longitude: $longitude, createdAt: $createdAt, updatedAt: $updatedAt, isRead: $isRead)';
   }
 
   @override
@@ -239,7 +246,10 @@ class _$_Story extends _Story {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
-            const DeepCollectionEquality().equals(other._latlng, _latlng) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -249,16 +259,8 @@ class _$_Story extends _Story {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      userId,
-      title,
-      content,
-      const DeepCollectionEquality().hash(_latlng),
-      createdAt,
-      updatedAt,
-      isRead);
+  int get hashCode => Object.hash(runtimeType, id, userId, title, content,
+      latitude, longitude, createdAt, updatedAt, isRead);
 
   @JsonKey(ignore: true)
   @override
@@ -280,7 +282,8 @@ abstract class _Story extends Story {
       required final String userId,
       required final String title,
       required final String content,
-      required final Map<String, double> latlng,
+      required final double latitude,
+      required final double longitude,
       required final DateTime createdAt,
       required final DateTime updatedAt,
       final bool isRead}) = _$_Story;
@@ -297,12 +300,14 @@ abstract class _Story extends Story {
   @override
   String get content;
   @override
-  Map<String, double> get latlng;
+  double get latitude;
+  @override
+  double get longitude;
   @override
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
-  @override // 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
+  @override
   bool get isRead;
   @override
   @JsonKey(ignore: true)

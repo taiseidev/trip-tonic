@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:http/http.dart' as http;
+import 'package:trip_tonic/src/domain/usecase/story/create_story.dart';
 
 class StoryDetailPage extends HookConsumerWidget {
   const StoryDetailPage({
@@ -15,12 +15,13 @@ class StoryDetailPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final test = ref.watch(testProvider(location));
+    final test =
+        ref.watch(createStoryProvider(location: location, character: 'test'));
     return Scaffold(
       body: Center(
         child: test.when(
           data: (data) {
-            return Text(data);
+            return Text(data.choices![0].message!.content.toString());
           },
           error: (error, stacktrace) {
             return null;
@@ -33,17 +34,3 @@ class StoryDetailPage extends HookConsumerWidget {
     );
   }
 }
-
-final testProvider =
-    FutureProvider.family<String, String>((ref, location) async {
-  final response = await http.post(
-    Uri.parse(
-      'https://asia-northeast1-trip-tonic.cloudfunctions.net/requestChatGPT',
-    ),
-    body: <String, String>{
-      'location': location,
-      'character': '山本',
-    },
-  );
-  return response.body;
-});

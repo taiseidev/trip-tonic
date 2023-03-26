@@ -61,7 +61,7 @@ class MainPage extends HookConsumerWidget {
             child: (() {
               switch (TabType.values[index]) {
                 case TabType.home:
-                  return const StoryPage();
+                  return StoryPage();
                 case TabType.history:
                   return const HistoryPage();
                 case TabType.notification:

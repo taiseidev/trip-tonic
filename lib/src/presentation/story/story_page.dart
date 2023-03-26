@@ -14,7 +14,9 @@ import 'package:trip_tonic/src/presentation/story/story_detail_page.dart';
 import 'package:trip_tonic/utils/loading.dart';
 
 class StoryPage extends HookConsumerWidget {
-  const StoryPage({super.key});
+  StoryPage({super.key});
+
+  final Completer<GoogleMapController> _controller = Completer();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,8 +26,7 @@ class StoryPage extends HookConsumerWidget {
       () {
         Future(
           () async {
-            final controller =
-                await ref.watch(googleMapControllerProvider).future;
+            final controller = await _controller.future;
             final mapStyle = await rootBundle.loadString(Assets.mapStyle);
             await Future.wait(
               [
@@ -85,8 +86,11 @@ class StoryPage extends HookConsumerWidget {
                       zoom: 14.4746,
                     ),
                     markers: markers,
-                    onMapCreated:
-                        ref.watch(googleMapControllerProvider).complete,
+                    onMapCreated: (GoogleMapController controller) {
+                      if (!_controller.isCompleted) {
+                        _controller.complete(controller);
+                      }
+                    },
                   );
                 },
               ),
@@ -103,7 +107,3 @@ class StoryPage extends HookConsumerWidget {
     );
   }
 }
-
-final googleMapControllerProvider = Provider<Completer<GoogleMapController>>(
-  (ref) => Completer<GoogleMapController>(),
-);

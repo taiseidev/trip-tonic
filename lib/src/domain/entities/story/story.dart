@@ -10,12 +10,11 @@ class Story with _$Story {
     required String userId,
     required String title,
     required String content,
-    required Map<String, double> latlng,
+    required double latitude,
+    required double longitude,
     required DateTime createdAt,
     required DateTime updatedAt,
-
-    // 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
-    @Default(false) bool isRead,
+    @Default(false) bool isRead, // 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
   }) = _Story;
   const Story._();
 
