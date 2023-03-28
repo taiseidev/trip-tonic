@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/utils/global_key.dart';
-import 'package:trip_tonic/utils/loading.dart';
-import 'package:trip_tonic/utils/scaffold_messenger_key.dart';
+import 'package:trip_tonic/core/utils/global_key.dart';
+import 'package:trip_tonic/core/utils/loading.dart';
+import 'package:trip_tonic/core/utils/scaffold_messenger_key.dart';
 
 extension WidgetRefEx on WidgetRef {
   /// AsyncValueを良い感じにハンドリングする

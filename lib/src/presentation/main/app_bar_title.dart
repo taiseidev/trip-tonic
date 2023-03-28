@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trip_tonic/extensions/context_extension.dart';
+import 'package:trip_tonic/core/extensions/context_extension.dart';
 import 'package:trip_tonic/src/presentation/main/main_page.dart';
 
 /// ローカライズするため、タイトルのみtypeで切り替え

@@ -2,7 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/extensions/context_extension.dart';
+import 'package:trip_tonic/core/extensions/context_extension.dart';
 import 'package:trip_tonic/src/presentation/history/history_page.dart';
 import 'package:trip_tonic/src/presentation/main/app_bar_title.dart';
 import 'package:trip_tonic/src/presentation/notification/notification_page.dart';

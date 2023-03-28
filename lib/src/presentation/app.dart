@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/color_schemes.g.dart';
-import 'package:trip_tonic/router/router.dart';
-import 'package:trip_tonic/utils/loading.dart';
-import 'package:trip_tonic/utils/scaffold_messenger_key.dart';
+import 'package:trip_tonic/core/utils/loading.dart';
+import 'package:trip_tonic/core/utils/scaffold_messenger_key.dart';
+import 'package:trip_tonic/src/presentation/router/router.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

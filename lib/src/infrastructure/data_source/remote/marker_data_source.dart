@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:trip_tonic/core/utils/constants.dart';
 import 'package:trip_tonic/src/infrastructure/models/marker_object_dto.dart';
-import 'package:trip_tonic/utils/constants.dart';
 
 final markerDataSourceProvider = Provider<MarkerDataSource>(
   (ref) => MarkerDataSource(FirebaseFirestore.instance),

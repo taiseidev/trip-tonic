@@ -6,11 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/gen/assets.gen.dart';
-import 'package:trip_tonic/router/router.dart';
-import 'package:trip_tonic/src/domain/usecase/story/get_markers_stream.dart';
+import 'package:trip_tonic/src/presentation/router/router.dart';
 import 'package:trip_tonic/src/presentation/story/story_detail_page.dart';
-import 'package:trip_tonic/utils/loading.dart';
+import 'package:trip_tonic/src/usecase/story/get_markers_stream.dart';
 
 class StoryPage extends HookConsumerWidget {
   StoryPage({super.key});

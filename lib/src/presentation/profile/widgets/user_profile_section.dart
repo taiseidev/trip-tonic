@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:trip_tonic/extensions/context_extension.dart';
+import 'package:trip_tonic/core/extensions/context_extension.dart';
 
 // ユーザ情報を表示、編集ボタンを管理するWidget
 class UserProfileSection extends StatelessWidget {

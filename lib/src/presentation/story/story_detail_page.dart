@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/src/domain/usecase/story/create_story.dart';
+import 'package:trip_tonic/src/usecase/story/create_story.dart';
 
 class StoryDetailPage extends HookConsumerWidget {
   const StoryDetailPage({
