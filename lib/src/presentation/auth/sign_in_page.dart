@@ -5,6 +5,7 @@ import 'package:trip_tonic/core/extensions/ref_extension.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/src/presentation/main/main_page.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_anonymously.dart.dart';
+import 'package:trip_tonic/src/usecase/auth/sign_in_google.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
@@ -31,7 +32,7 @@ class SignInPage extends ConsumerWidget {
                 child: const Text('登録せずに始める'),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => ref.read(signInGoogleProvider)(),
                 child: const Text('Googleで登録'),
               ),
               ElevatedButton(

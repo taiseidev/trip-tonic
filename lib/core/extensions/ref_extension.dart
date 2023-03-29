@@ -26,27 +26,33 @@ extension WidgetRefEx on WidgetRef {
 
               // 完了メッセージがあればスナックバーを表示する
               if (completeMessage != null) {
-                final messengerState =
-                    read(scaffoldMessengerKeyProvider).currentState;
-                messengerState?.showSnackBar(
-                  SnackBar(
-                    content: Text(completeMessage),
-                    behavior: SnackBarBehavior.floating,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                );
+                read(scaffoldMessengerKeyProvider).currentState?.showSnackBar(
+                      SnackBar(
+                        content: Text(completeMessage),
+                        behavior: SnackBarBehavior.floating,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    );
               }
               complete?.call(read(navigatorKeyProvider).currentContext!, data);
             },
             error: (e, s) async {
               loadingNotifier.hide();
 
+              // ログインダイアログを閉じた場合はそのままreturn
+              // TODD: 別で切り出す
+              if (e.toString() == 'Exception: sign_in_canceled') {
+                return;
+              }
+
               // エラーが発生したらエラーダイアログを表示する
               await showDialog<void>(
                 context: read(navigatorKeyProvider).currentContext!,
-                builder: (context) => const Text('エラーが発生しました。'),
+                builder: (context) => AlertDialog(
+                  content: Text(e.toString()),
+                ),
               );
             },
             loading: loadingNotifier.show,

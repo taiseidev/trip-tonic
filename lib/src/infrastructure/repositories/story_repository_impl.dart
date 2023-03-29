@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/domain/repositories/story_repository.dart';
-import 'package:trip_tonic/src/infrastructure/data_source/remote/story_data_source.dart';
+import 'package:trip_tonic/src/infrastructure/data_source/remote/api/story_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/models/chat_completion.dart';
 
 class StoryRepositoryImpl extends StoryRepository {
