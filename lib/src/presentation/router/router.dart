@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/global_key.dart';
-import 'package:trip_tonic/src/presentation/auth/sign_up/sign_up_page.dart';
+import 'package:trip_tonic/src/presentation/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/main/main_page.dart';
 import 'package:trip_tonic/src/presentation/notification/notification_detail_page.dart';
 import 'package:trip_tonic/src/presentation/story/story_detail_page.dart';
@@ -20,10 +20,10 @@ final routerProvider = Provider(
         builder: (BuildContext context, GoRouterState state) => const TopPage(),
       ),
       GoRoute(
-        name: SignUpPage.pageName,
-        path: SignUpPage.pagePath,
+        name: SignInPage.pageName,
+        path: SignInPage.pagePath,
         builder: (BuildContext context, GoRouterState state) =>
-            const SignUpPage(),
+            const SignInPage(),
       ),
       GoRoute(
         name: MainPage.pageName,

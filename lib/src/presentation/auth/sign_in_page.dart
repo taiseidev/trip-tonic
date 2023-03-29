@@ -4,10 +4,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/ref_extension.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/src/presentation/main/main_page.dart';
-import 'package:trip_tonic/src/usecase/auth/create_user.dart';
+import 'package:trip_tonic/src/usecase/auth/sign_in_anonymously.dart.dart';
 
-class SignUpPage extends ConsumerWidget {
-  const SignUpPage({super.key});
+class SignInPage extends ConsumerWidget {
+  const SignInPage({super.key});
 
   static const pageName = 'signUp';
   static const pagePath = '/signUp';
@@ -26,11 +26,18 @@ class SignUpPage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('テスト'),
               ElevatedButton(
-                onPressed: () => ref.read(createUserProvider)(),
+                onPressed: () => ref.read(signInAnonymouslyProvider)(),
                 child: const Text('登録せずに始める'),
-              )
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('Googleで登録'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('Appleで登録'),
+              ),
             ],
           ),
         ),

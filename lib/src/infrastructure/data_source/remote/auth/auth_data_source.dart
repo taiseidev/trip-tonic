@@ -9,7 +9,7 @@ class AuthDataSource {
   AuthDataSource(this._auth);
   final FirebaseAuth _auth;
 
-  Future<void> createUser() async {
+  Future<void> singInAnonymously() async {
     await _auth.signInAnonymously();
   }
 }

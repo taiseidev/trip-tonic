@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trip_tonic/src/presentation/auth/sign_up/sign_up_page.dart';
+import 'package:trip_tonic/src/presentation/auth/sign_in_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TopPage extends StatelessWidget {
@@ -77,7 +77,7 @@ Future<void> _showModalBottomSheet(BuildContext context) async {
           ElevatedButton(
             onPressed: () => context
               ..pop()
-              ..push(SignUpPage.pagePath),
+              ..push(SignInPage.pagePath),
             child: const Text('同意する'),
           )
         ],

@@ -34,6 +34,9 @@ dependencies:
   # Map
   google_maps_flutter: ^2.2.5
 
+  # Auth
+  google_sign_in: ^6.0.2
+
   # Localization
   flutter_localizations:
     sdk: flutter

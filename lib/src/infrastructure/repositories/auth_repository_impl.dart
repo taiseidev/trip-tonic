@@ -5,11 +5,10 @@ import 'package:trip_tonic/src/infrastructure/data_source/remote/auth/auth_data_
 class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl(this.ref);
   final ProviderRef<AuthRepositoryImpl> ref;
+
   @override
-  Future<void> createUser() {
-    final authDataSource = ref.read(authDataSourceProvider);
-    return authDataSource.createUser();
-  }
+  Future<void> singInAnonymously() async =>
+      ref.read(authDataSourceProvider).singInAnonymously();
 }
 
 final authRepositoryImplProvider = Provider<AuthRepositoryImpl>(
