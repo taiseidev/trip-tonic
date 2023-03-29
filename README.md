@@ -10,9 +10,7 @@
 ・ChatGPTのAPIを実際に使用してみたいという好奇心<br>
 
 ### 狙い
-・あわよくば収益化<br>
 ・ポートフォリオとして活用<br><br>
-
 
 ### 考えること
 ・世界観
@@ -35,6 +33,7 @@
 |  共有機能  |  小説をSNS等で共有することができる。  |
 |  ランキング機能  |  人気のある（いいね数が多い）小説を表示する  |
 |  プレミアムプラン  |  全ての機能が使える  |
+|  みんなで小説を作成  |  小説を連携して作成する機能（実装が大変そうなのでいつか実装する。）  |
 
 ### 会員登録機能
 
@@ -127,6 +126,9 @@ https://bgmer.net/
 アプリからのお知らせ：コメント、いいね、ランキング入賞
 運営からのお知らせ：アップデート、イベント
 
+### 通知機能
+お知らせ作成をトリガーに通知を送る
+
 ### 共有機能
 SNS（Twitter、Facebook、Instagram等のソーシャルネットワークサービス）に共有することができる。
 
@@ -139,7 +141,6 @@ SNS（Twitter、Facebook、Instagram等のソーシャルネットワークサ�
 ### プレミアムプラン
 月額300円のサブスクにする。
 全ての機能を無制限に解放する。
-
 
 ## アーキテクチャ
 
@@ -154,15 +155,12 @@ SNS（Twitter、Facebook、Instagram等のソーシャルネットワークサ�
 
 4. 再利用性: Firebaseの依存をinfrastructure層に閉じ込めることで、domain層やapp層のコードが他のプロジェクトやコンテキストで再利用しやすくなります。具体的なデータストレージやAPIの実装から独立しているため、他のシステムに適応させることが容易になります。
 
-
 ### 参考
 https://codewithandrea.com/articles/flutter-project-structure/
 https://medium.com/flutter-jp/architecture-240d3c56b597
 https://github.com/tomamoi/todo_app
 
-
 ## API
-
 ・画像を自動で生成
 https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F
 
