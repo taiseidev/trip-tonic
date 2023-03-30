@@ -10,11 +10,14 @@ class FirestoreDataSource {
   FirestoreDataSource(this._db);
   final FirebaseFirestore _db;
 
+  // ログイン時にユーザデータを保存
   Future<void> storeUserData({
     required String userName,
     required String mail,
   }) async {
-    await _db.collection(users).doc().set(<String, dynamic>{
+    final docRef = _db.collection(users).doc();
+    await docRef.set(<String, String>{
+      userId: docRef.id,
       name: userName,
       email: mail,
     });

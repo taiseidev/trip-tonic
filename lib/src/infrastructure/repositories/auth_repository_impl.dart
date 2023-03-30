@@ -12,8 +12,13 @@ class AuthRepositoryImpl extends AuthRepository {
   final ProviderRef<AuthRepositoryImpl> ref;
 
   @override
-  Future<void> singInAnonymously() async =>
-      ref.read(authDataSourceProvider).singInAnonymously();
+  Future<void> singInAnonymously() async {
+    await ref.read(authDataSourceProvider).singInAnonymously();
+    await ref.read(firestoreDataSourceProvider).storeUserData(
+          userName: '匿名認証',
+          mail: '匿名認証',
+        );
+  }
 
   @override
   Future<void> singInGoogle() async {

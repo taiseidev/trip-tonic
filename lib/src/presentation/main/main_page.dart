@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -40,6 +41,13 @@ class MainPage extends HookConsumerWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         surfaceTintColor: Colors.white,
+        // 仮でサインアウト処理を追加
+        leading: IconButton(
+          onPressed: () async {
+            await FirebaseAuth.instance.signOut();
+          },
+          icon: const Icon(Icons.exit_to_app),
+        ),
         title: AppBarTitle(type: currentTabType),
         actions: [
           // プロフィールページのみ設定ボタンを表示

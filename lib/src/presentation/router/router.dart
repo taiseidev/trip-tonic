@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -48,6 +49,13 @@ final routerProvider = Provider(
             const NotificationDetailPage(),
       ),
     ],
+    redirect: (context, state) {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        return '/top';
+      }
+      return null;
+    },
   ),
 );
 

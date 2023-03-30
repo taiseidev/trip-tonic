@@ -13,7 +13,7 @@ class SingInAnonymously {
     ref.read(loginStateProvider.notifier)
       ..state = const AsyncValue.loading()
       ..state = await AsyncValue.guard(() async {
-        // ダイアログを表示させるため1秒間delay
+        // ローディングを表示させるため1秒間delay
         await Future<void>.delayed(const Duration(seconds: 1));
         await ref.read(authRepositoryImplProvider).singInAnonymously();
       });
