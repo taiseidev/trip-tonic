@@ -4,7 +4,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:trip_tonic/core/extensions/context_extension.dart';
 
 /// ローディングの状態を管理するProvider
-final loginStateProvider = StateProvider<AsyncValue<void>>(
+final loadingStateProvider = StateProvider<AsyncValue<void>>(
   (_) => const AsyncValue.data(null),
 );
 

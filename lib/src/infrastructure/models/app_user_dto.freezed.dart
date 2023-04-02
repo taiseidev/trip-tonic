@@ -20,7 +20,9 @@ mixin _$AppUserDTO {
   String get name => throw _privateConstructorUsedError;
   String? get iconUrl => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -39,8 +41,8 @@ abstract class $AppUserDTOCopyWith<$Res> {
       String name,
       String? iconUrl,
       String? email,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -105,8 +107,8 @@ abstract class _$$_AppUserDTOCopyWith<$Res>
       String name,
       String? iconUrl,
       String? email,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -164,8 +166,8 @@ class _$_AppUserDTO extends _AppUserDTO {
       required this.name,
       this.iconUrl,
       this.email,
-      required this.createdAt,
-      required this.updatedAt})
+      @TimestampConverter() required this.createdAt,
+      @TimestampConverter() required this.updatedAt})
       : super._();
 
   @override
@@ -177,8 +179,10 @@ class _$_AppUserDTO extends _AppUserDTO {
   @override
   final String? email;
   @override
+  @TimestampConverter()
   final DateTime createdAt;
   @override
+  @TimestampConverter()
   final DateTime updatedAt;
 
   @override
@@ -218,8 +222,8 @@ abstract class _AppUserDTO extends AppUserDTO {
       required final String name,
       final String? iconUrl,
       final String? email,
-      required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$_AppUserDTO;
+      @TimestampConverter() required final DateTime createdAt,
+      @TimestampConverter() required final DateTime updatedAt}) = _$_AppUserDTO;
   const _AppUserDTO._() : super._();
 
   @override
@@ -231,8 +235,10 @@ abstract class _AppUserDTO extends AppUserDTO {
   @override
   String? get email;
   @override
+  @TimestampConverter()
   DateTime get createdAt;
   @override
+  @TimestampConverter()
   DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)

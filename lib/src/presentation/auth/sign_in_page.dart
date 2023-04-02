@@ -16,7 +16,7 @@ class SignInPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.handleAsyncValue<void>(
-      loginStateProvider,
+      loadingStateProvider,
       completeMessage: 'ユーザ登録が完了しました！',
       complete: (context, _) async => context.go(MainPage.pagePath),
     );

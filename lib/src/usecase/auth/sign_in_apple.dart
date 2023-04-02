@@ -9,7 +9,7 @@ class SingInApple {
   final ProviderRef<SingInApple> ref;
 
   Future<void> call() async {
-    ref.read(loginStateProvider.notifier)
+    ref.read(loadingStateProvider.notifier)
       ..state = const AsyncValue.loading()
       ..state = await AsyncValue.guard(
         () async => ref.read(authRepositoryImplProvider).singInApple(),

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,7 +5,7 @@ import 'package:trip_tonic/core/utils/global_key.dart';
 import 'package:trip_tonic/src/presentation/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/main/main_page.dart';
 import 'package:trip_tonic/src/presentation/notification/notification_detail_page.dart';
-import 'package:trip_tonic/src/presentation/story/story_detail_page.dart';
+import 'package:trip_tonic/src/presentation/story/story_create_page.dart';
 import 'package:trip_tonic/src/presentation/top/top_page.dart';
 
 final routerProvider = Provider(
@@ -33,14 +32,10 @@ final routerProvider = Provider(
             const MainPage(),
       ),
       GoRoute(
-        name: StoryDetailPage.pageName,
-        path: StoryDetailPage.pagePath,
-        builder: (BuildContext context, GoRouterState state) {
-          final location = state.extra as TextExtra;
-          return StoryDetailPage(
-            location: location.text,
-          );
-        },
+        name: StoryCreatePage.pageName,
+        path: StoryCreatePage.pagePath,
+        builder: (BuildContext context, GoRouterState state) =>
+            StoryCreatePage(),
       ),
       GoRoute(
         name: NotificationDetailPage.pageName,
@@ -50,10 +45,10 @@ final routerProvider = Provider(
       ),
     ],
     redirect: (context, state) {
-      final user = FirebaseAuth.instance.currentUser;
-      if (user == null) {
-        return '/top';
-      }
+      // final user = FirebaseAuth.instance.currentUser;
+      // if (user == null) {
+      //   return '/top';
+      // }
       return null;
     },
   ),

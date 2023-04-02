@@ -10,7 +10,7 @@ class SingInAnonymously {
   final ProviderRef<SingInAnonymously> ref;
 
   Future<void> call() async {
-    ref.read(loginStateProvider.notifier)
+    ref.read(loadingStateProvider.notifier)
       ..state = const AsyncValue.loading()
       ..state = await AsyncValue.guard(() async {
         // ローディングを表示させるため1秒間delay
