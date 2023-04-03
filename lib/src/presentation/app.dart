@@ -9,13 +9,35 @@ import 'package:trip_tonic/src/presentation/router/router.dart';
 class App extends ConsumerWidget {
   const App({super.key});
 
+  static const borderStyle = BorderSide(width: 2);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       title: 'TRIP TONIC',
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      theme: ThemeData(
+        inputDecorationTheme: const InputDecorationTheme(
+          border: UnderlineInputBorder(
+            borderSide: borderStyle,
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: borderStyle,
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: borderStyle,
+          ),
+          errorBorder: UnderlineInputBorder(
+            borderSide: borderStyle,
+          ),
+          focusedErrorBorder: UnderlineInputBorder(
+            borderSide: borderStyle,
+          ),
+        ),
+        useMaterial3: true,
+        colorScheme: lightColorScheme,
+      ),
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: darkColorScheme,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:trip_tonic/core/extensions/context_extension.dart';
 
 /// ローディングの状態を管理するProvider
 final loadingStateProvider = StateProvider<AsyncValue<void>>(
@@ -33,7 +32,7 @@ class Loading extends StatelessWidget {
       color: Colors.black26,
       child: Center(
         child: LoadingAnimationWidget.fourRotatingDots(
-          color: context.theme.primary,
+          color: Colors.black,
           size: 70,
         ),
       ),

@@ -9,7 +9,7 @@ import 'package:trip_tonic/src/presentation/history/history_page.dart';
 import 'package:trip_tonic/src/presentation/main/app_bar_title.dart';
 import 'package:trip_tonic/src/presentation/notification/notification_page.dart';
 import 'package:trip_tonic/src/presentation/profile/profile_page.dart';
-import 'package:trip_tonic/src/presentation/story/story_create_page.dart';
+import 'package:trip_tonic/src/presentation/story/story_create/story_create_page.dart';
 import 'package:trip_tonic/src/presentation/story/story_page.dart';
 
 /// タブ一覧

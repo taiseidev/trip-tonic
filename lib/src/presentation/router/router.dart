@@ -5,14 +5,14 @@ import 'package:trip_tonic/core/utils/global_key.dart';
 import 'package:trip_tonic/src/presentation/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/main/main_page.dart';
 import 'package:trip_tonic/src/presentation/notification/notification_detail_page.dart';
-import 'package:trip_tonic/src/presentation/story/story_create_page.dart';
+import 'package:trip_tonic/src/presentation/story/story_create/story_create_page.dart';
 import 'package:trip_tonic/src/presentation/top/top_page.dart';
 
 final routerProvider = Provider(
   name: 'routerProvider',
   (ref) => GoRouter(
     navigatorKey: ref.watch(navigatorKeyProvider),
-    initialLocation: TopPage.pagePath,
+    initialLocation: MainPage.pagePath,
     routes: <RouteBase>[
       GoRoute(
         name: TopPage.pageName,
