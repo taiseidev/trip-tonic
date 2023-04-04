@@ -13,6 +13,7 @@ class CustomTooltip extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDisplay = useState<bool>(true);
     final animationController = useAnimationController(
       duration: const Duration(seconds: 1),
     )..repeat();
@@ -28,26 +29,34 @@ class CustomTooltip extends HookWidget {
         alignment: Alignment.bottomRight,
         children: [
           child,
-          AnimatedBuilder(
-            builder: (BuildContext context, Widget? child) {
-              return Transform.translate(
-                offset: Offset(0, animation.value),
-                child: child,
-              );
+          GestureDetector(
+            onTap: () {
+              isDisplay.value = false;
             },
-            animation: animation,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 70),
-              child: CustomPaint(
-                painter: BubblePainter(),
+            child: Visibility(
+              visible: isDisplay.value,
+              child: AnimatedBuilder(
+                builder: (BuildContext context, Widget? child) {
+                  return Transform.translate(
+                    offset: Offset(0, animation.value),
+                    child: child,
+                  );
+                },
+                animation: animation,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
-                  child: Text(
-                    message,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                  padding: const EdgeInsets.only(bottom: 70),
+                  child: CustomPaint(
+                    painter: BubblePainter(),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+                      child: Text(
+                        message,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ),

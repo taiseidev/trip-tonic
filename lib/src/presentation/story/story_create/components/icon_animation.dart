@@ -20,16 +20,12 @@ class IconAnimation extends HookConsumerWidget {
       },
     );
 
-    // TODO: レスポンシブ対応
-    return Positioned(
-      left: -MediaQuery.of(context).size.width / 2,
-      bottom: -MediaQuery.of(context).size.width / 2,
-      child: RotationTransition(
-        turns: animationController,
+    return RotationTransition(
+      turns: animationController,
+      child: Center(
         child: Image.asset(
+          color: Colors.black12,
           Assets.images.un.path,
-          width: 400,
-          height: 400,
         ),
       ),
     );

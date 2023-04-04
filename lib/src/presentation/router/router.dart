@@ -6,6 +6,7 @@ import 'package:trip_tonic/src/presentation/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/main/main_page.dart';
 import 'package:trip_tonic/src/presentation/notification/notification_detail_page.dart';
 import 'package:trip_tonic/src/presentation/story/story_create/story_create_page.dart';
+import 'package:trip_tonic/src/presentation/story/waiting_game/waiting_game_page.dart';
 import 'package:trip_tonic/src/presentation/top/top_page.dart';
 
 final routerProvider = Provider(
@@ -36,6 +37,12 @@ final routerProvider = Provider(
         path: StoryCreatePage.pagePath,
         builder: (BuildContext context, GoRouterState state) =>
             StoryCreatePage(),
+      ),
+      GoRoute(
+        name: WaitingGamePage.pageName,
+        path: WaitingGamePage.pagePath,
+        builder: (BuildContext context, GoRouterState state) =>
+            const WaitingGamePage(),
       ),
       GoRoute(
         name: NotificationDetailPage.pageName,
