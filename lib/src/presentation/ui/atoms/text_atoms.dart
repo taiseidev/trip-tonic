@@ -20,7 +20,7 @@ class TextAtoms extends StatelessWidget {
       text,
       style: TextStyle(
         color: color ?? Colors.black,
-        fontSize: fontSize ?? 14,
+        fontSize: fontSize ?? 16,
         fontWeight: fontWeight ?? FontWeight.w700,
       ),
     );

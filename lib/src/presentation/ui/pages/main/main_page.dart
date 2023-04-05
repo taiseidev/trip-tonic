@@ -1,16 +1,12 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/history/history_page.dart';
-
-import 'package:trip_tonic/src/presentation/ui/pages/main/app_bar_title.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/notification/notification_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/profile/profile_page.dart';
+import 'package:trip_tonic/src/presentation/ui/molecules/floating_action_button_molecules.dart';
+import 'package:trip_tonic/src/presentation/ui/organisms/primary_app_bar_organisms.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/story/story_page.dart';
+import 'package:trip_tonic/src/presentation/ui/templates/main/main_page_template.dart';
 
 /// タブ一覧
 enum TabType {
@@ -35,63 +31,26 @@ class MainPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // アクティブなページのインデックスを保持
     final currentIndex = useState<int>(defaultIndex);
+    // アクティブなページのタイプを保持
     final currentTabType = TabType.values[currentIndex.value];
 
     return Scaffold(
       extendBody: true,
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        surfaceTintColor: Colors.white,
-        // 仮でサインアウト処理を追加
-        leading: IconButton(
-          onPressed: () async {
-            await FirebaseAuth.instance.signOut();
-          },
-          icon: const Icon(Icons.exit_to_app),
-        ),
-        title: AppBarTitle(type: currentTabType),
-        actions: [
-          // プロフィールページのみ設定ボタンを表示
-          if (currentTabType == TabType.profile)
-            Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.settings),
-              ),
-            )
-        ],
+      appBar: PrimaryAppBarOrganisms(
+        currentTabType: currentTabType,
+        onPressedLeading: () {},
+        leadingIcon: Icons.exit_to_app,
+        onPressedActions: () {},
+        actionsIcon: Icons.settings,
       ),
-      body: Stack(
-        children: List.generate(
-          TabType.values.length,
-          (index) => Offstage(
-            offstage: index != currentIndex.value,
-            child: (() {
-              switch (TabType.values[index]) {
-                case TabType.home:
-                  return StoryPage();
-                case TabType.history:
-                  return const HistoryPage();
-                case TabType.notification:
-                  return const NotificationPage();
-                case TabType.profile:
-                  return const ProfilePage();
-              }
-            })(),
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        key: const Key('main_fab'),
-        backgroundColor: Colors.black,
+      body: MainPageTemplate(currentIndex: currentIndex.value),
+      floatingActionButton: FloatingActionButtonMolecules(
         onPressed: () => context.push(StoryCreatePage.pagePath),
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        //params
+        backgroundColor: Colors.black,
+        iconColor: Colors.white,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
