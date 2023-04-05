@@ -33,6 +33,8 @@ class PrimaryDialogOrganisms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.transparent,
       title: TextAtoms(text: titleText),
       content: RichTextAtoms(
         introText: introText,

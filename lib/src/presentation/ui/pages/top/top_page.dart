@@ -17,7 +17,7 @@ class TopPage extends StatelessWidget {
     await showDialog<void>(
       context: context,
       builder: (context) => PrimaryDialogOrganisms(
-        titleText: 'Trip Tonic利用規約',
+        titleText: 'Novel Journey利用規約',
         okText: '同意する',
         onOkPressed: () => context
           ..pop()
