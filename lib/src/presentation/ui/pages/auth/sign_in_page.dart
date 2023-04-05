@@ -13,8 +13,8 @@ import 'package:trip_tonic/src/usecase/auth/sign_in_google.dart';
 class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
 
-  static const pageName = 'signUp';
-  static const pagePath = '/signUp';
+  static const pageName = 'signIn';
+  static const pagePath = '/signIn';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
