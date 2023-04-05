@@ -3,8 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/ref_extension.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
+import 'package:trip_tonic/gen/assets.gen.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
+import 'package:trip_tonic/src/presentation/ui/templates/auth/sign_in_page_template.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_anonymously.dart.dart';
+import 'package:trip_tonic/src/usecase/auth/sign_in_apple.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_google.dart';
 
 class SignInPage extends ConsumerWidget {
@@ -22,26 +25,14 @@ class SignInPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () => ref.read(signInAnonymouslyProvider)(),
-                child: const Text('登録せずに始める'),
-              ),
-              ElevatedButton(
-                onPressed: () => ref.read(signInGoogleProvider)(),
-                child: const Text('Googleで登録'),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('Appleで登録'),
-              ),
-            ],
-          ),
-        ),
+      body: SignInPageTemplate(
+        anonymouslyText: '登録せずに始める',
+        googleText: 'Googleで登録',
+        appleText: 'Appleで登録',
+        imagePath: Assets.images.building.path,
+        onPressedAnonymously: () => ref.read(signInAnonymouslyProvider)(),
+        onPressedGoogle: () => ref.read(signInGoogleProvider)(),
+        onPressedApple: () => ref.read(signInAppleProvider)(),
       ),
     );
   }
