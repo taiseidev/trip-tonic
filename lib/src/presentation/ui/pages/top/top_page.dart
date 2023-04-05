@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:trip_tonic/gen/assets.gen.dart';
 import 'package:trip_tonic/src/presentation/ui/organisms/primary_dialog_organisms.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/ui/templates/top/top_page_template.dart';
@@ -43,12 +44,12 @@ class TopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: TopPageTemplate(
-          logoText: 'ここにロゴを表示する',
-          startText: '始める',
-          onPressed: () async => _showModalBottomSheet(context),
-        ),
+      body: TopPageTemplate(
+        appTitle: 'Novel Journey',
+        logoText: 'ここにロゴを表示する',
+        startText: '始める',
+        onPressed: () async => _showModalBottomSheet(context),
+        imagePath: Assets.images.building.path,
       ),
     );
   }

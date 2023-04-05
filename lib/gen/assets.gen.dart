@@ -18,14 +18,15 @@ class $AssetsIconGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/girl.png
-  AssetGenImage get girl => const AssetGenImage('assets/images/girl.png');
+  /// File path: assets/images/building.jpeg
+  AssetGenImage get building =>
+      const AssetGenImage('assets/images/building.jpeg');
 
   /// File path: assets/images/un.png
   AssetGenImage get un => const AssetGenImage('assets/images/un.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [girl, un];
+  List<AssetGenImage> get values => [building, un];
 }
 
 class $AssetsIconMarkersGen {

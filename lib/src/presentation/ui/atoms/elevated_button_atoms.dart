@@ -17,7 +17,14 @@ class ElevatedButtonAtoms extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: TextAtoms(text: text),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.black,
+        shape: const StadiumBorder(),
+      ),
+      child: TextAtoms(
+        text: text,
+        color: Colors.white,
+      ),
     );
   }
 }
