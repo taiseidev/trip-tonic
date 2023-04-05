@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trip_tonic/src/presentation/ui/organisms/primary_dialog_organisms.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/auth/sign_in_page.dart';
-import 'package:trip_tonic/src/presentation/ui/templates/top_page/top_page_template.dart';
+import 'package:trip_tonic/src/presentation/ui/templates/top/top_page_template.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TopPage extends StatelessWidget {
