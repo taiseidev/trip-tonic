@@ -146,6 +146,10 @@ SNS（Twitter、Facebook、Instagram等のソーシャルネットワークサ�
 
 アーキテクチャ図を作成する予定
 
+### presentation
+UIはAtomic Designを採用
+https://zenn.dev/nagakuta/articles/25c8aaf7744830bdab3d#pages
+
 ### infrastructure
 1. Separation of Concerns (SoC): アプリケーションの各層は、それぞれの責任を持つべきです。infrastructure層はデータアクセスや外部サービスとの通信を担当し、Firebaseを含む具体的な実装を行います。他の層は、Firebaseに依存せずに機能すべきです。
 

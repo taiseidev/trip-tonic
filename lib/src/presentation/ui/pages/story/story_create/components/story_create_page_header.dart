@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/src/presentation/story/waiting_game/waiting_game_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/waiting_game_page.dart';
 
 class StoryCreatePageHeader extends HookConsumerWidget
     with PreferredSizeWidget {

@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/core/extensions/context_extension.dart';
-import 'package:trip_tonic/src/presentation/history/history_page.dart';
-import 'package:trip_tonic/src/presentation/main/app_bar_title.dart';
-import 'package:trip_tonic/src/presentation/notification/notification_page.dart';
-import 'package:trip_tonic/src/presentation/profile/profile_page.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/story_create_page.dart';
-import 'package:trip_tonic/src/presentation/story/story_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/history/history_page.dart';
+
+import 'package:trip_tonic/src/presentation/ui/pages/main/app_bar_title.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/notification/notification_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/profile/profile_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_page.dart';
 
 /// タブ一覧
 enum TabType {
@@ -84,20 +84,22 @@ class MainPage extends HookConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: context.theme.primary,
+        key: const Key('main_fab'),
+        backgroundColor: Colors.black,
         onPressed: () => context.push(StoryCreatePage.pagePath),
         child: const Icon(
-          Icons.trip_origin_outlined,
+          Icons.add,
           color: Colors.white,
         ),
         //params
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        splashColor: context.theme.primary,
+        splashColor: Colors.black,
         icons: TabType.values.map((tab) => tab.icon).toList(),
         activeIndex: currentIndex.value,
-        activeColor: context.theme.primary,
+        activeColor: Colors.black,
+        inactiveColor: Colors.black26,
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.softEdge,
         leftCornerRadius: radius,

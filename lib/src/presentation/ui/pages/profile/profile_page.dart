@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:trip_tonic/src/presentation/profile/widgets/user_profile_section.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/profile/widgets/user_profile_section.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

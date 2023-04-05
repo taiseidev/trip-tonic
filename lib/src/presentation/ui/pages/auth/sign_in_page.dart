@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/ref_extension.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
-import 'package:trip_tonic/src/presentation/main/main_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_anonymously.dart.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_google.dart';
 

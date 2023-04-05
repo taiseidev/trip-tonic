@@ -4,11 +4,12 @@ import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/ref_extension.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/components/character_list_widget.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/components/custom_floating_action_button.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/components/custom_tooltip.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/components/icon_animation.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/components/story_create_page_header.dart';
+
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/character_list_widget.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/custom_floating_action_button.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/custom_tooltip.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/icon_animation.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/story_create_page_header.dart';
 
 final sampleListProvider = StateProvider<List<String>>((ref) => []);
 

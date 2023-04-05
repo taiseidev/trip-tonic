@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/global_key.dart';
-import 'package:trip_tonic/src/presentation/auth/sign_in_page.dart';
-import 'package:trip_tonic/src/presentation/main/main_page.dart';
-import 'package:trip_tonic/src/presentation/notification/notification_detail_page.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/story_create_page.dart';
-import 'package:trip_tonic/src/presentation/story/waiting_game/waiting_game_page.dart';
-import 'package:trip_tonic/src/presentation/top/top_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/auth/sign_in_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/notification/notification_detail_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_read/story_read_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/waiting_game_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/top/top_page.dart';
 
 final routerProvider = Provider(
   name: 'routerProvider',
   (ref) => GoRouter(
     navigatorKey: ref.watch(navigatorKeyProvider),
-    initialLocation: MainPage.pagePath,
+    initialLocation: TopPage.pagePath,
     routes: <RouteBase>[
       GoRoute(
         name: TopPage.pageName,
@@ -39,6 +40,16 @@ final routerProvider = Provider(
             StoryCreatePage(),
       ),
       GoRoute(
+        name: StoryReadPage.pageName,
+        path: StoryReadPage.pagePath,
+        builder: (BuildContext context, GoRouterState state) {
+          final story = state.extra as Map<String, String>;
+          return StoryReadPage(
+            story: story['story'] ?? 'テス',
+          );
+        },
+      ),
+      GoRoute(
         name: WaitingGamePage.pageName,
         path: WaitingGamePage.pagePath,
         builder: (BuildContext context, GoRouterState state) =>
@@ -60,11 +71,3 @@ final routerProvider = Provider(
     },
   ),
 );
-
-class TextExtra {
-  const TextExtra({
-    required this.text,
-  });
-
-  final String text;
-}

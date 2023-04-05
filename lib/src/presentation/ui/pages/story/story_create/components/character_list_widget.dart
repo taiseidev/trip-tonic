@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/story_create_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_page.dart';
 
 class CharacterListWidget extends HookConsumerWidget {
   const CharacterListWidget({super.key});

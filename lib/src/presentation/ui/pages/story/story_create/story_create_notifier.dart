@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:trip_tonic/src/presentation/story/story_create/story_create_state.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_state.dart';
 
 part 'story_create_notifier.g.dart';
 
