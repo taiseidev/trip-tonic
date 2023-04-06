@@ -161,6 +161,11 @@ https://zenn.dev/nagakuta/articles/25c8aaf7744830bdab3d#pages
 
 4. 再利用性: Firebaseの依存をinfrastructure層に閉じ込めることで、domain層やapp層のコードが他のプロジェクトやコンテキストで再利用しやすくなります。具体的なデータストレージやAPIの実装から独立しているため、他のシステムに適応させることが容易になります。
 
+### ドメイン
+
+小説 - Story
+
+
 ### 参考
 https://codewithandrea.com/articles/flutter-project-structure/
 https://medium.com/flutter-jp/architecture-240d3c56b597

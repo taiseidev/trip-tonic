@@ -6,7 +6,7 @@ part of 'create_story.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createStoryHash() => r'ec77da57cf83754d682844097ed8d8799d638539';
+String _$createStoryHash() => r'9a0a3ba082b70d939c863a9e659f0aee1e31ac6f';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -20,15 +20,13 @@ Story _$StoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Story {
-  String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
-  double get latitude => throw _privateConstructorUsedError;
-  double get longitude => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
+// 小説の一意のID
+  String get id => throw _privateConstructorUsedError; // 作成したユーザのID
+  String get userId => throw _privateConstructorUsedError; // 小説のタイトル
+  String get title => throw _privateConstructorUsedError; // 小説の内容
+  String get content => throw _privateConstructorUsedError; // 作成日
+  DateTime get createdAt => throw _privateConstructorUsedError; // 更新日
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  bool get isRead => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,11 +43,8 @@ abstract class $StoryCopyWith<$Res> {
       String userId,
       String title,
       String content,
-      double latitude,
-      double longitude,
       DateTime createdAt,
-      DateTime updatedAt,
-      bool isRead});
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -69,11 +64,8 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
     Object? userId = null,
     Object? title = null,
     Object? content = null,
-    Object? latitude = null,
-    Object? longitude = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? isRead = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -92,14 +84,6 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      latitude: null == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitude: null == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -108,10 +92,6 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isRead: null == isRead
-          ? _value.isRead
-          : isRead // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -127,11 +107,8 @@ abstract class _$$_StoryCopyWith<$Res> implements $StoryCopyWith<$Res> {
       String userId,
       String title,
       String content,
-      double latitude,
-      double longitude,
       DateTime createdAt,
-      DateTime updatedAt,
-      bool isRead});
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -147,11 +124,8 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
     Object? userId = null,
     Object? title = null,
     Object? content = null,
-    Object? latitude = null,
-    Object? longitude = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? isRead = null,
   }) {
     return _then(_$_Story(
       id: null == id
@@ -170,14 +144,6 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      latitude: null == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitude: null == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -186,10 +152,6 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isRead: null == isRead
-          ? _value.isRead
-          : isRead // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -202,39 +164,35 @@ class _$_Story extends _Story {
       required this.userId,
       required this.title,
       required this.content,
-      required this.latitude,
-      required this.longitude,
       required this.createdAt,
-      required this.updatedAt,
-      this.isRead = false})
+      required this.updatedAt})
       : super._();
 
   factory _$_Story.fromJson(Map<String, dynamic> json) =>
       _$$_StoryFromJson(json);
 
+// 小説の一意のID
   @override
   final String id;
+// 作成したユーザのID
   @override
   final String userId;
+// 小説のタイトル
   @override
   final String title;
+// 小説の内容
   @override
   final String content;
-  @override
-  final double latitude;
-  @override
-  final double longitude;
+// 作成日
   @override
   final DateTime createdAt;
+// 更新日
   @override
   final DateTime updatedAt;
-  @override
-  @JsonKey()
-  final bool isRead;
 
   @override
   String toString() {
-    return 'Story(id: $id, userId: $userId, title: $title, content: $content, latitude: $latitude, longitude: $longitude, createdAt: $createdAt, updatedAt: $updatedAt, isRead: $isRead)';
+    return 'Story(id: $id, userId: $userId, title: $title, content: $content, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -246,21 +204,16 @@ class _$_Story extends _Story {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.isRead, isRead) || other.isRead == isRead));
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, title, content,
-      latitude, longitude, createdAt, updatedAt, isRead);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, title, content, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -282,33 +235,24 @@ abstract class _Story extends Story {
       required final String userId,
       required final String title,
       required final String content,
-      required final double latitude,
-      required final double longitude,
       required final DateTime createdAt,
-      required final DateTime updatedAt,
-      final bool isRead}) = _$_Story;
+      required final DateTime updatedAt}) = _$_Story;
   const _Story._() : super._();
 
   factory _Story.fromJson(Map<String, dynamic> json) = _$_Story.fromJson;
 
-  @override
+  @override // 小説の一意のID
   String get id;
-  @override
+  @override // 作成したユーザのID
   String get userId;
-  @override
+  @override // 小説のタイトル
   String get title;
-  @override
+  @override // 小説の内容
   String get content;
-  @override
-  double get latitude;
-  @override
-  double get longitude;
-  @override
+  @override // 作成日
   DateTime get createdAt;
-  @override
+  @override // 更新日
   DateTime get updatedAt;
-  @override
-  bool get isRead;
   @override
   @JsonKey(ignore: true)
   _$$_StoryCopyWith<_$_Story> get copyWith =>

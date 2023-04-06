@@ -9,9 +9,12 @@ import 'package:trip_tonic/core/utils/constants.dart';
 import 'package:trip_tonic/core/utils/logger.dart';
 import 'package:trip_tonic/firebase_options_dev.dart' as d;
 import 'package:trip_tonic/firebase_options_prod.dart' as p;
+import 'package:trip_tonic/src/infrastructure/repositories/story/story_repository_mock.dart';
+import 'package:trip_tonic/src/infrastructure/repositories/story/story_repository_provider.dart';
 import 'package:trip_tonic/src/presentation/app.dart';
 
 const flavor = String.fromEnvironment('FLAVOR');
+const isMock = bool.fromEnvironment('IS_MOCK');
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +30,7 @@ Future<void> main() async {
 
   runApp(
     ProviderScope(
+      overrides: overridesProvider(),
       observers: [ProviderLogger()],
       child: DevicePreview(
         enabled: flavor == dev,
@@ -42,3 +46,12 @@ Future<void> _initFirebase() async => Firebase.initializeApp(
           ? p.DefaultFirebaseOptions.currentPlatform
           : d.DefaultFirebaseOptions.currentPlatform,
     );
+
+// モックデータを使用するかどうか
+List<Override> overridesProvider() {
+  return isMock
+      ? [
+          storyRepositoryImplProvider.overrideWith(StoryRepositoryMock.new),
+        ]
+      : [];
+}

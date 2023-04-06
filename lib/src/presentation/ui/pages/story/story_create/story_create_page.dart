@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trip_tonic/core/extensions/ref_extension.dart';
-import 'package:trip_tonic/core/utils/loading.dart';
+import 'package:trip_tonic/src/presentation/ui/atoms/text_form_field_atoms.dart';
+import 'package:trip_tonic/src/presentation/ui/molecules/story/character_input_form_molecules.dart';
 
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/character_list_widget.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/custom_floating_action_button.dart';
@@ -24,10 +24,6 @@ class StoryCreatePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final genreController = useTextEditingController();
-
-    ref.handleAsyncValue<void>(
-      loadingStateProvider,
-    );
 
     return Scaffold(
       appBar: const StoryCreatePageHeader(),
@@ -101,26 +97,11 @@ class StoryCreatePage extends HookConsumerWidget {
                       ),
                       // キーワード入力
                       // バックエンド側でプロンプトインジェクション対策を行う。
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          border: UnderlineInputBorder(
-                            borderSide: BorderSide(width: 5),
-                          ),
-                        ),
+                      TextFormFieldAtoms(
+                        controller: TextEditingController(),
                       ),
                       const Gap(32),
-                      // 複数入力できるようにする
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          '登場人物：',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                      // 登場人物入力
-                      TextFormField(
+                      CharacterInputFormMolecules(
                         onFieldSubmitted: (value) {
                           ref.read(sampleListProvider.notifier).update(
                                 (state) => state = [

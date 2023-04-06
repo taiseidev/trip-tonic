@@ -6,15 +6,23 @@ part 'story.g.dart';
 @freezed
 class Story with _$Story {
   const factory Story({
+    // 小説の一意のID
     required String id,
+
+    // 作成したユーザのID
     required String userId,
+
+    // 小説のタイトル
     required String title,
+
+    // 小説の内容
     required String content,
-    required double latitude,
-    required double longitude,
+
+    // 作成日
     required DateTime createdAt,
+
+    // 更新日
     required DateTime updatedAt,
-    @Default(false) bool isRead, // 閲覧済みの場合は再度APIを叩かないようにローカルに保存した該当の小説を返却
   }) = _Story;
   const Story._();
 
