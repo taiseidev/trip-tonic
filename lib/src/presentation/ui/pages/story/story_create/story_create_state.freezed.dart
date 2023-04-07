@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StoryCreateState {
-  CharacterList? get characters => throw _privateConstructorUsedError;
+  List<Character>? get characters => throw _privateConstructorUsedError;
   List<Genre> get genres => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,9 +30,7 @@ abstract class $StoryCreateStateCopyWith<$Res> {
           StoryCreateState value, $Res Function(StoryCreateState) then) =
       _$StoryCreateStateCopyWithImpl<$Res, StoryCreateState>;
   @useResult
-  $Res call({CharacterList? characters, List<Genre> genres});
-
-  $CharacterListCopyWith<$Res>? get characters;
+  $Res call({List<Character>? characters, List<Genre> genres});
 }
 
 /// @nodoc
@@ -55,24 +53,12 @@ class _$StoryCreateStateCopyWithImpl<$Res, $Val extends StoryCreateState>
       characters: freezed == characters
           ? _value.characters
           : characters // ignore: cast_nullable_to_non_nullable
-              as CharacterList?,
+              as List<Character>?,
       genres: null == genres
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
               as List<Genre>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CharacterListCopyWith<$Res>? get characters {
-    if (_value.characters == null) {
-      return null;
-    }
-
-    return $CharacterListCopyWith<$Res>(_value.characters!, (value) {
-      return _then(_value.copyWith(characters: value) as $Val);
-    });
   }
 }
 
@@ -84,10 +70,7 @@ abstract class _$$_StoryCreateStateCopyWith<$Res>
       __$$_StoryCreateStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CharacterList? characters, List<Genre> genres});
-
-  @override
-  $CharacterListCopyWith<$Res>? get characters;
+  $Res call({List<Character>? characters, List<Genre> genres});
 }
 
 /// @nodoc
@@ -106,9 +89,9 @@ class __$$_StoryCreateStateCopyWithImpl<$Res>
   }) {
     return _then(_$_StoryCreateState(
       characters: freezed == characters
-          ? _value.characters
+          ? _value._characters
           : characters // ignore: cast_nullable_to_non_nullable
-              as CharacterList?,
+              as List<Character>?,
       genres: null == genres
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
@@ -119,13 +102,23 @@ class __$$_StoryCreateStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StoryCreateState implements _StoryCreateState {
+class _$_StoryCreateState extends _StoryCreateState {
   const _$_StoryCreateState(
-      {this.characters, required final List<Genre> genres})
-      : _genres = genres;
+      {final List<Character>? characters, required final List<Genre> genres})
+      : _characters = characters,
+        _genres = genres,
+        super._();
 
+  final List<Character>? _characters;
   @override
-  final CharacterList? characters;
+  List<Character>? get characters {
+    final value = _characters;
+    if (value == null) return null;
+    if (_characters is EqualUnmodifiableListView) return _characters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final List<Genre> _genres;
   @override
   List<Genre> get genres {
@@ -144,14 +137,16 @@ class _$_StoryCreateState implements _StoryCreateState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StoryCreateState &&
-            (identical(other.characters, characters) ||
-                other.characters == characters) &&
+            const DeepCollectionEquality()
+                .equals(other._characters, _characters) &&
             const DeepCollectionEquality().equals(other._genres, _genres));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, characters, const DeepCollectionEquality().hash(_genres));
+      runtimeType,
+      const DeepCollectionEquality().hash(_characters),
+      const DeepCollectionEquality().hash(_genres));
 
   @JsonKey(ignore: true)
   @override
@@ -160,13 +155,14 @@ class _$_StoryCreateState implements _StoryCreateState {
       __$$_StoryCreateStateCopyWithImpl<_$_StoryCreateState>(this, _$identity);
 }
 
-abstract class _StoryCreateState implements StoryCreateState {
+abstract class _StoryCreateState extends StoryCreateState {
   const factory _StoryCreateState(
-      {final CharacterList? characters,
+      {final List<Character>? characters,
       required final List<Genre> genres}) = _$_StoryCreateState;
+  const _StoryCreateState._() : super._();
 
   @override
-  CharacterList? get characters;
+  List<Character>? get characters;
   @override
   List<Genre> get genres;
   @override

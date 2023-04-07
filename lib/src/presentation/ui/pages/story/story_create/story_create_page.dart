@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
-import 'package:trip_tonic/src/presentation/ui/atoms/text_form_field_atoms.dart';
 
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/custom_floating_action_button.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/custom_tooltip.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/icon_animation.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/story_create_page_header.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_view_model.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/waiting_game_page.dart';
 
 final sampleListProvider = StateProvider<List<String>>((ref) => []);
 
@@ -24,15 +24,89 @@ class StoryCreatePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final storyCreateState = ref.watch(storyCreateViewModelProvider);
-    final characters = storyCreateState.asData?.value.characters?.characters;
+    final characters = storyCreateState.asData?.value.characters;
 
     final selectedGenre = useState<String>('純文学');
 
     final keyWordController = useTextEditingController();
     final characterController = useTextEditingController();
 
+    Future<void> showConfirmDialog() async {
+      await showDialog<void>(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
+          title: const Text('次の内容で作成しますか？'),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('ジャンル：${selectedGenre.value}'),
+              Text('キーワード：${keyWordController.text}'),
+              Row(
+                children: [
+                  const Text('登場人物一覧：'),
+                  Wrap(
+                    children:
+                        characters?.map((e) => Text('${e.name}, ')).toList() ??
+                            [],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => context.pop(),
+              child: const Text('キャンセル'),
+            ),
+            TextButton(
+              onPressed: () {
+                context
+                  ..pop()
+                  ..push(WaitingGamePage.pagePath);
+              },
+              child: const Text('作成'),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
-      appBar: const StoryCreatePageHeader(),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(Icons.arrow_back),
+        ),
+        title: const Text(
+          '小説作成',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: ElevatedButton(
+              // 各引数を渡す。
+              onPressed: showConfirmDialog,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+              ),
+              child: const Text(
+                '作成',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: storyCreateState.when(
         data: (data) {
           return SafeArea(
@@ -101,8 +175,13 @@ class StoryCreatePage extends HookConsumerWidget {
                           ),
                           // キーワード入力
                           // バックエンド側でプロンプトインジェクション対策を行う。
-                          TextFormFieldAtoms(
-                            controller: TextEditingController(),
+                          TextFormField(
+                            controller: keyWordController,
+                            decoration: const InputDecoration(
+                              border: UnderlineInputBorder(
+                                borderSide: BorderSide(width: 5),
+                              ),
+                            ),
                           ),
                           const Gap(32),
                           Column(
@@ -122,11 +201,11 @@ class StoryCreatePage extends HookConsumerWidget {
                                 controller: characterController,
                                 onFieldSubmitted: (value) {
                                   characterController.clear();
-                                  // 追加するメソッド
-                                  // characters.value = [
-                                  //   ...characters.value,
-                                  //   value,
-                                  // ];
+                                  ref
+                                      .read(
+                                        storyCreateViewModelProvider.notifier,
+                                      )
+                                      .addCharacter(name: value);
                                 },
                               ),
                             ],
@@ -144,6 +223,7 @@ class StoryCreatePage extends HookConsumerWidget {
                                   ),
                                 ),
                               ),
+
                               if (characters != null)
                                 Align(
                                   alignment: Alignment.centerLeft,
@@ -156,7 +236,7 @@ class StoryCreatePage extends HookConsumerWidget {
                                             children: [
                                               Chip(
                                                 label: Text(
-                                                  character.text,
+                                                  character.name,
                                                   style: const TextStyle(
                                                     fontWeight: FontWeight.w700,
                                                   ),
@@ -164,14 +244,14 @@ class StoryCreatePage extends HookConsumerWidget {
                                               ),
                                               GestureDetector(
                                                 // 削除するメソッド
-                                                // onTap: () {
-                                                //   characters. = [
-                                                //     ...characters.value.where(
-                                                //       (element) =>
-                                                //           element != character,
-                                                //     )
-                                                //   ];
-                                                // },
+                                                onTap: () => ref
+                                                    .read(
+                                                      storyCreateViewModelProvider
+                                                          .notifier,
+                                                    )
+                                                    .removeCharacter(
+                                                      id: character.id,
+                                                    ),
                                                 child: Container(
                                                   padding:
                                                       const EdgeInsets.all(2),

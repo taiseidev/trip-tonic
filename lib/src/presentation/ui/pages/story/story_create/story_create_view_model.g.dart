@@ -7,7 +7,7 @@ part of 'story_create_view_model.dart';
 // **************************************************************************
 
 String _$storyCreateViewModelHash() =>
-    r'7ce64839c396b4bf27f066bc27519d29d2923c0a';
+    r'a76723428195aa5b1a42335fede1f3210fa0ce3f';
 
 /// See also [StoryCreateViewModel].
 @ProviderFor(StoryCreateViewModel)

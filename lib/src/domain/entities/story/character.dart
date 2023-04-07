@@ -6,6 +6,6 @@ part 'character.freezed.dart';
 class Character with _$Character {
   const factory Character({
     required String id,
-    required String text,
+    required String name,
   }) = _Character;
 }

@@ -17,12 +17,21 @@ class StoryCreateViewModel extends AutoDisposeAsyncNotifier<StoryCreateState> {
 
   void addCharacter({
     required String name,
-  }) {
-    state.asData?.value.characters?.add(
-      id: getUuid(),
-      text: name,
-    );
-  }
+  }) =>
+      state = AsyncData(
+        state.value!.copyWith(
+          characters: state.value!.addCharacter(
+            id: getUuid(),
+            name: name,
+          ),
+        ),
+      );
+
+  void removeCharacter({required String id}) => state = AsyncData(
+        state.value!.copyWith(
+          characters: state.value!.removeCharacter(id: id),
+        ),
+      );
 
   Future<void> createStory() async {}
 }

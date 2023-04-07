@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Character {
   String get id => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CharacterCopyWith<Character> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $CharacterCopyWith<$Res> {
   factory $CharacterCopyWith(Character value, $Res Function(Character) then) =
       _$CharacterCopyWithImpl<$Res, Character>;
   @useResult
-  $Res call({String id, String text});
+  $Res call({String id, String name});
 }
 
 /// @nodoc
@@ -46,16 +46,16 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   @override
   $Res call({
     Object? id = null,
-    Object? text = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -68,7 +68,7 @@ abstract class _$$_CharacterCopyWith<$Res> implements $CharacterCopyWith<$Res> {
       __$$_CharacterCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String text});
+  $Res call({String id, String name});
 }
 
 /// @nodoc
@@ -83,16 +83,16 @@ class __$$_CharacterCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? text = null,
+    Object? name = null,
   }) {
     return _then(_$_Character(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -101,16 +101,16 @@ class __$$_CharacterCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Character implements _Character {
-  const _$_Character({required this.id, required this.text});
+  const _$_Character({required this.id, required this.name});
 
   @override
   final String id;
   @override
-  final String text;
+  final String name;
 
   @override
   String toString() {
-    return 'Character(id: $id, text: $text)';
+    return 'Character(id: $id, name: $name)';
   }
 
   @override
@@ -119,11 +119,11 @@ class _$_Character implements _Character {
         (other.runtimeType == runtimeType &&
             other is _$_Character &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.text, text) || other.text == text));
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, text);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
@@ -134,12 +134,12 @@ class _$_Character implements _Character {
 
 abstract class _Character implements Character {
   const factory _Character(
-      {required final String id, required final String text}) = _$_Character;
+      {required final String id, required final String name}) = _$_Character;
 
   @override
   String get id;
   @override
-  String get text;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_CharacterCopyWith<_$_Character> get copyWith =>
