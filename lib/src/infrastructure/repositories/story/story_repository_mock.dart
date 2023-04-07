@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:trip_tonic/src/infrastructure/repositories/story/story_repository_impl.dart';
+import 'package:trip_tonic/src/infrastructure/repositories/story/story_repository.dart';
 
 class StoryRepositoryMock extends StoryRepository {
   StoryRepositoryMock(

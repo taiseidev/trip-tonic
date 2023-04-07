@@ -7,6 +7,6 @@ part 'fetch_genres.g.dart';
 // ジャンル一覧を取得する
 @riverpod
 Future<List<Genre>> fetchGenres(FetchGenresRef ref) async {
-  final genres = await ref.read(storyRepositoryImplProvider).fetchGenres();
+  final genres = await ref.read(storyRepositoryProvider).fetchGenres();
   return genres;
 }

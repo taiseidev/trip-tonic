@@ -13,7 +13,7 @@ Future<String> createStory(
 }) async {
   late final String story;
   try {
-    story = await ref.read(storyRepositoryImplProvider).createStory(
+    story = await ref.read(storyRepositoryProvider).createStory(
           genre: genre,
           keyWord: keyWord,
           character: character,

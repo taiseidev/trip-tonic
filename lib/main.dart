@@ -52,7 +52,7 @@ Future<void> _initFirebase() async => Firebase.initializeApp(
 List<Override> overridesProvider() {
   return isMock
       ? [
-          storyRepositoryImplProvider.overrideWith(StoryRepositoryMock.new),
+          storyRepositoryProvider.overrideWith(StoryRepositoryMock.new),
         ]
       : [];
 }

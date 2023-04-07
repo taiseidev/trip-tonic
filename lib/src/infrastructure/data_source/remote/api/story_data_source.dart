@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:trip_tonic/src/infrastructure/data_source/remote/api/app_dio/app_dio_provider.dart';
 
 part 'story_data_source.g.dart';
 
@@ -17,5 +18,5 @@ abstract class StoryDataSource {
 }
 
 final storyDataSourceProvider = Provider<StoryDataSource>(
-  (ref) => StoryDataSource(Dio()),
+  (ref) => StoryDataSource(ref.read(appDioProvider)),
 );
