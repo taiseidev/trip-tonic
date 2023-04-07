@@ -11,6 +11,20 @@ class CharacterList with _$CharacterList {
 
   const CharacterList._();
 
+  void add({
+    required String id,
+    required String text,
+  }) =>
+      copyWith(
+        characters: [
+          ...characters,
+          Character(
+            id: id,
+            text: text,
+          ),
+        ],
+      );
+
   void remove(String character) => copyWith(
         characters:
             characters.where((element) => element.text != character).toList(),

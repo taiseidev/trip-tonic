@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$StoryCreateState {
   CharacterList? get characters => throw _privateConstructorUsedError;
+  List<Genre> get genres => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StoryCreateStateCopyWith<StoryCreateState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $StoryCreateStateCopyWith<$Res> {
           StoryCreateState value, $Res Function(StoryCreateState) then) =
       _$StoryCreateStateCopyWithImpl<$Res, StoryCreateState>;
   @useResult
-  $Res call({CharacterList? characters});
+  $Res call({CharacterList? characters, List<Genre> genres});
 
   $CharacterListCopyWith<$Res>? get characters;
 }
@@ -48,12 +49,17 @@ class _$StoryCreateStateCopyWithImpl<$Res, $Val extends StoryCreateState>
   @override
   $Res call({
     Object? characters = freezed,
+    Object? genres = null,
   }) {
     return _then(_value.copyWith(
       characters: freezed == characters
           ? _value.characters
           : characters // ignore: cast_nullable_to_non_nullable
               as CharacterList?,
+      genres: null == genres
+          ? _value.genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
     ) as $Val);
   }
 
@@ -78,7 +84,7 @@ abstract class _$$_StoryCreateStateCopyWith<$Res>
       __$$_StoryCreateStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CharacterList? characters});
+  $Res call({CharacterList? characters, List<Genre> genres});
 
   @override
   $CharacterListCopyWith<$Res>? get characters;
@@ -96,12 +102,17 @@ class __$$_StoryCreateStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? characters = freezed,
+    Object? genres = null,
   }) {
     return _then(_$_StoryCreateState(
       characters: freezed == characters
           ? _value.characters
           : characters // ignore: cast_nullable_to_non_nullable
               as CharacterList?,
+      genres: null == genres
+          ? _value._genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>,
     ));
   }
 }
@@ -109,14 +120,23 @@ class __$$_StoryCreateStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StoryCreateState implements _StoryCreateState {
-  const _$_StoryCreateState({this.characters});
+  const _$_StoryCreateState(
+      {this.characters, required final List<Genre> genres})
+      : _genres = genres;
 
   @override
   final CharacterList? characters;
+  final List<Genre> _genres;
+  @override
+  List<Genre> get genres {
+    if (_genres is EqualUnmodifiableListView) return _genres;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genres);
+  }
 
   @override
   String toString() {
-    return 'StoryCreateState(characters: $characters)';
+    return 'StoryCreateState(characters: $characters, genres: $genres)';
   }
 
   @override
@@ -125,11 +145,13 @@ class _$_StoryCreateState implements _StoryCreateState {
         (other.runtimeType == runtimeType &&
             other is _$_StoryCreateState &&
             (identical(other.characters, characters) ||
-                other.characters == characters));
+                other.characters == characters) &&
+            const DeepCollectionEquality().equals(other._genres, _genres));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, characters);
+  int get hashCode => Object.hash(
+      runtimeType, characters, const DeepCollectionEquality().hash(_genres));
 
   @JsonKey(ignore: true)
   @override
@@ -139,11 +161,14 @@ class _$_StoryCreateState implements _StoryCreateState {
 }
 
 abstract class _StoryCreateState implements StoryCreateState {
-  const factory _StoryCreateState({final CharacterList? characters}) =
-      _$_StoryCreateState;
+  const factory _StoryCreateState(
+      {final CharacterList? characters,
+      required final List<Genre> genres}) = _$_StoryCreateState;
 
   @override
   CharacterList? get characters;
+  @override
+  List<Genre> get genres;
   @override
   @JsonKey(ignore: true)
   _$$_StoryCreateStateCopyWith<_$_StoryCreateState> get copyWith =>

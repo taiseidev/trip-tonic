@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/domain/repositories/auth_repository.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firebase_auth/firebase_auth_data_source.dart';
-import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/firestore_data_source.dart';
+import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/auth/auth_data_source.dart';
 
 final authRepositoryImplProvider = Provider<AuthRepositoryImpl>(
   AuthRepositoryImpl.new,

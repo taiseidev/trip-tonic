@@ -7,12 +7,13 @@ import 'package:flutter_config/flutter_config.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/constants.dart';
 import 'package:trip_tonic/core/utils/logger.dart';
-import 'package:trip_tonic/firebase_options_dev.dart' as d;
-import 'package:trip_tonic/firebase_options_prod.dart' as p;
+import 'package:trip_tonic/firebase_options_dev.dart' as development;
+import 'package:trip_tonic/firebase_options_prod.dart' as production;
 import 'package:trip_tonic/src/infrastructure/repositories/story/story_repository_mock.dart';
 import 'package:trip_tonic/src/infrastructure/repositories/story/story_repository_provider.dart';
 import 'package:trip_tonic/src/presentation/app.dart';
 
+// --dart-define option
 const flavor = String.fromEnvironment('FLAVOR');
 const isMock = bool.fromEnvironment('IS_MOCK');
 
@@ -43,8 +44,8 @@ Future<void> main() async {
 // Firebase の初期化
 Future<void> _initFirebase() async => Firebase.initializeApp(
       options: flavor == prod
-          ? p.DefaultFirebaseOptions.currentPlatform
-          : d.DefaultFirebaseOptions.currentPlatform,
+          ? production.DefaultFirebaseOptions.currentPlatform
+          : development.DefaultFirebaseOptions.currentPlatform,
     );
 
 // モックデータを使用するかどうか

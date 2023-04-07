@@ -2,6 +2,7 @@
 
 // Collection
 String get users => 'users';
+String get genres => 'genres';
 
 // Field
 String get userId => 'userId';

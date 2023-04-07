@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/infrastructure/utils/constants.dart';
+import 'package:trip_tonic/src/infrastructure/utils/providers.dart';
 
 final firestoreDataSourceProvider = Provider<FirestoreDataSource>(
-  (_) => FirestoreDataSource(FirebaseFirestore.instance),
+  (ref) => FirestoreDataSource(ref.read(firestoreProvider)),
 );
 
 class FirestoreDataSource {
