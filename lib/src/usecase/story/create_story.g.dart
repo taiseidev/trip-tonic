@@ -6,7 +6,7 @@ part of 'create_story.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createStoryHash() => r'9a0a3ba082b70d939c863a9e659f0aee1e31ac6f';
+String _$createStoryHash() => r'2ce3897f8f41a2e7fa49ad2c66fbd7f9fb1860ca';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -44,7 +44,7 @@ class CreateStoryFamily extends Family<AsyncValue<String>> {
   CreateStoryProvider call({
     required String genre,
     required String keyWord,
-    required String character,
+    required List<String> character,
   }) {
     return CreateStoryProvider(
       genre: genre,
@@ -106,7 +106,7 @@ class CreateStoryProvider extends AutoDisposeFutureProvider<String> {
 
   final String genre;
   final String keyWord;
-  final String character;
+  final List<String> character;
 
   @override
   bool operator ==(Object other) {

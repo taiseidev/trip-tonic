@@ -10,9 +10,9 @@ class AppDio with DioMixin implements Dio {
       baseUrl:
           isMock ? 'http://localhost:3002' : 'https://trip-tonic.herokuapp.com',
       contentType: 'application/json',
-      connectTimeout: const Duration(milliseconds: 30 * 1000),
-      sendTimeout: const Duration(milliseconds: 30 * 1000),
-      receiveTimeout: const Duration(milliseconds: 30 * 1000),
+      connectTimeout: const Duration(milliseconds: 300 * 1000),
+      sendTimeout: const Duration(milliseconds: 300 * 1000),
+      receiveTimeout: const Duration(milliseconds: 300 * 1000),
     );
 
     this.options = options;

@@ -4,14 +4,13 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
+import 'package:trip_tonic/src/presentation/router/args.dart';
 
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/custom_floating_action_button.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/custom_tooltip.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/icon_animation.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_view_model.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/waiting_game_page.dart';
-
-final sampleListProvider = StateProvider<List<String>>((ref) => []);
 
 class StoryCreatePage extends HookConsumerWidget {
   StoryCreatePage({super.key});
@@ -58,14 +57,21 @@ class StoryCreatePage extends HookConsumerWidget {
           ),
           actions: [
             TextButton(
-              onPressed: () => context.pop(),
+              onPressed: () => Navigator.pop(context),
               child: const Text('キャンセル'),
             ),
             TextButton(
               onPressed: () {
                 context
                   ..pop()
-                  ..push(WaitingGamePage.pagePath);
+                  ..push(
+                    WaitingGamePage.pagePath,
+                    extra: CreateStoryArgs(
+                      genre: selectedGenre.value,
+                      keyWord: keyWordController.text,
+                      characters: characters?.map((e) => e.name).toList() ?? [],
+                    ),
+                  );
               },
               child: const Text('作成'),
             ),

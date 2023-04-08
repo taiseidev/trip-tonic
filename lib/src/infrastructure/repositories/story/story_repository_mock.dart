@@ -13,7 +13,7 @@ class StoryRepositoryMock extends StoryRepository {
   Future<String> createStory({
     required String genre,
     required String keyWord,
-    required String character,
+    required List<String> characters,
   }) async {
     await Future<void>.delayed(const Duration(seconds: 3));
     return '''

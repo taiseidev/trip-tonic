@@ -1,3 +1,4 @@
+import 'dart:convert';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/domain/entities/story/genre.dart';
@@ -22,12 +23,13 @@ class StoryRepository {
   Future<String> createStory({
     required String genre,
     required String keyWord,
-    required String character,
+    required List<String> characters,
   }) async {
+    final charactersJson = jsonEncode(characters);
     return ref.read(storyDataSourceProvider).createStory(
           genre,
           keyWord,
-          character,
+          charactersJson,
         );
   }
 }

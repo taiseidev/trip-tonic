@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/global_key.dart';
+import 'package:trip_tonic/src/presentation/router/args.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/notification/notification_detail_page.dart';
@@ -43,17 +44,20 @@ final routerProvider = Provider(
         name: StoryReadPage.pageName,
         path: StoryReadPage.pagePath,
         builder: (BuildContext context, GoRouterState state) {
-          final story = state.extra as Map<String, String>;
+          final story = state.extra! as Map<String, String>;
           return StoryReadPage(
-            story: story['story'] ?? 'テス',
+            story: story['story'] ?? '',
           );
         },
       ),
       GoRoute(
         name: WaitingGamePage.pageName,
         path: WaitingGamePage.pagePath,
-        builder: (BuildContext context, GoRouterState state) =>
-            const WaitingGamePage(),
+        builder: (BuildContext context, GoRouterState state) {
+          return WaitingGamePage(
+            args: state.extra! as CreateStoryArgs,
+          );
+        },
       ),
       GoRoute(
         name: NotificationDetailPage.pageName,

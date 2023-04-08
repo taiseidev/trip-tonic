@@ -9,17 +9,17 @@ Future<String> createStory(
   CreateStoryRef ref, {
   required String genre,
   required String keyWord,
-  required String character,
+  required List<String> characters,
 }) async {
   late final String story;
   try {
     story = await ref.read(storyRepositoryProvider).createStory(
           genre: genre,
           keyWord: keyWord,
-          character: character,
+          characters: characters,
         );
-  } on DioError {
-    throw Exception('エラーが発生しました');
+  } on DioError catch (err) {
+    throw Exception(err);
   }
   return story;
 }

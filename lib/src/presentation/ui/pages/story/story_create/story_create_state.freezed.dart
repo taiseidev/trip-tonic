@@ -16,7 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StoryCreateState {
-  List<Character>? get characters => throw _privateConstructorUsedError;
+// ユーザが入力した登場人物の一覧を保持
+  List<Character>? get characters =>
+      throw _privateConstructorUsedError; // dbから取得したジャンルの一覧を保持
   List<Genre> get genres => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -109,7 +111,9 @@ class _$_StoryCreateState extends _StoryCreateState {
         _genres = genres,
         super._();
 
+// ユーザが入力した登場人物の一覧を保持
   final List<Character>? _characters;
+// ユーザが入力した登場人物の一覧を保持
   @override
   List<Character>? get characters {
     final value = _characters;
@@ -119,7 +123,9 @@ class _$_StoryCreateState extends _StoryCreateState {
     return EqualUnmodifiableListView(value);
   }
 
+// dbから取得したジャンルの一覧を保持
   final List<Genre> _genres;
+// dbから取得したジャンルの一覧を保持
   @override
   List<Genre> get genres {
     if (_genres is EqualUnmodifiableListView) return _genres;
@@ -161,9 +167,9 @@ abstract class _StoryCreateState extends StoryCreateState {
       required final List<Genre> genres}) = _$_StoryCreateState;
   const _StoryCreateState._() : super._();
 
-  @override
+  @override // ユーザが入力した登場人物の一覧を保持
   List<Character>? get characters;
-  @override
+  @override // dbから取得したジャンルの一覧を保持
   List<Genre> get genres;
   @override
   @JsonKey(ignore: true)
