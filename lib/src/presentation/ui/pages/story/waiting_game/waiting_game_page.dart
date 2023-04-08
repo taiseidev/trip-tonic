@@ -30,7 +30,7 @@ class WaitingGamePage extends HookConsumerWidget {
       createStoryProvider(
         genre: args.genre,
         keyWord: args.keyWord,
-        character: args.characters,
+        characters: args.characters,
       ),
     );
 

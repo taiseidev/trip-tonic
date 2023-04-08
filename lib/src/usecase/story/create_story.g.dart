@@ -6,7 +6,7 @@ part of 'create_story.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createStoryHash() => r'2ce3897f8f41a2e7fa49ad2c66fbd7f9fb1860ca';
+String _$createStoryHash() => r'df020d29537382685d10c3f2ef509f3a23199e4d';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -44,12 +44,12 @@ class CreateStoryFamily extends Family<AsyncValue<String>> {
   CreateStoryProvider call({
     required String genre,
     required String keyWord,
-    required List<String> character,
+    required List<String> characters,
   }) {
     return CreateStoryProvider(
       genre: genre,
       keyWord: keyWord,
-      character: character,
+      characters: characters,
     );
   }
 
@@ -60,7 +60,7 @@ class CreateStoryFamily extends Family<AsyncValue<String>> {
     return call(
       genre: provider.genre,
       keyWord: provider.keyWord,
-      character: provider.character,
+      characters: provider.characters,
     );
   }
 
@@ -85,13 +85,13 @@ class CreateStoryProvider extends AutoDisposeFutureProvider<String> {
   CreateStoryProvider({
     required this.genre,
     required this.keyWord,
-    required this.character,
+    required this.characters,
   }) : super.internal(
           (ref) => createStory(
             ref,
             genre: genre,
             keyWord: keyWord,
-            character: character,
+            characters: characters,
           ),
           from: createStoryProvider,
           name: r'createStoryProvider',
@@ -106,14 +106,14 @@ class CreateStoryProvider extends AutoDisposeFutureProvider<String> {
 
   final String genre;
   final String keyWord;
-  final List<String> character;
+  final List<String> characters;
 
   @override
   bool operator ==(Object other) {
     return other is CreateStoryProvider &&
         other.genre == genre &&
         other.keyWord == keyWord &&
-        other.character == character;
+        other.characters == characters;
   }
 
   @override
@@ -121,7 +121,7 @@ class CreateStoryProvider extends AutoDisposeFutureProvider<String> {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, genre.hashCode);
     hash = _SystemHash.combine(hash, keyWord.hashCode);
-    hash = _SystemHash.combine(hash, character.hashCode);
+    hash = _SystemHash.combine(hash, characters.hashCode);
 
     return _SystemHash.finish(hash);
   }
