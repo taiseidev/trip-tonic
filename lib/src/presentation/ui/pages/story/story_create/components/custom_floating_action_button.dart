@@ -13,9 +13,10 @@ class CustomFloatingActionButton extends StatelessWidget {
           builder: (_) {
             return AlertDialog(
               backgroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
               title: const Text('ヘルプ'),
               content: const Text(
-                'こうかいしませんね？',
+                'ここに使い方等を追加する',
               ),
               actions: <Widget>[
                 GestureDetector(

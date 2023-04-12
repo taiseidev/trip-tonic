@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/domain/entities/story/genre.dart';
-import 'package:trip_tonic/src/infrastructure/data_source/remote/api/story_data_source.dart';
+import 'package:trip_tonic/src/domain/entities/story/story.dart';
+import 'package:trip_tonic/src/infrastructure/data_source/api/story_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/story/firestore_story_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/models/story/genre_dto.dart';
+import 'package:trip_tonic/src/infrastructure/repositories/user/user_repository.dart';
 
 class StoryRepository {
   StoryRepository(this.ref);
@@ -20,16 +22,32 @@ class StoryRepository {
   }
 
   // ChatGPTのAPIを叩いて小説を生成する
-  Future<String> createStory({
+  Future<Story> createStory({
     required String genre,
     required String keyWord,
     required List<String> characters,
   }) async {
+    // 登場人物の一覧をJSONに変換する
     final charactersJson = jsonEncode(characters);
-    return ref.read(storyDataSourceProvider).createStory(
+    final result = await ref.read(storyDataSourceProvider).createStory(
           genre,
           keyWord,
           charactersJson,
         );
+
+    final userId = ref.read(userRepositoryProvider).getUserId();
+
+    if (userId == null) {
+      throw Exception('userId is null');
+    }
+
+    // TODO: utilsかなんかに移す予定
+    final now = DateTime.now();
+
+    return Story.fromResponse(
+      userId: userId,
+      result: result,
+      createTime: now,
+    );
   }
 }

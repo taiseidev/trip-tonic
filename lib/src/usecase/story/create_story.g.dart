@@ -6,7 +6,7 @@ part of 'create_story.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createStoryHash() => r'df020d29537382685d10c3f2ef509f3a23199e4d';
+String _$createStoryHash() => r'05479d08ff7e832f14b250a9e740fb248b17dd51';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,14 +29,14 @@ class _SystemHash {
   }
 }
 
-typedef CreateStoryRef = AutoDisposeFutureProviderRef<String>;
+typedef CreateStoryRef = AutoDisposeFutureProviderRef<Story>;
 
 /// See also [createStory].
 @ProviderFor(createStory)
 const createStoryProvider = CreateStoryFamily();
 
 /// See also [createStory].
-class CreateStoryFamily extends Family<AsyncValue<String>> {
+class CreateStoryFamily extends Family<AsyncValue<Story>> {
   /// See also [createStory].
   const CreateStoryFamily();
 
@@ -80,7 +80,7 @@ class CreateStoryFamily extends Family<AsyncValue<String>> {
 }
 
 /// See also [createStory].
-class CreateStoryProvider extends AutoDisposeFutureProvider<String> {
+class CreateStoryProvider extends AutoDisposeFutureProvider<Story> {
   /// See also [createStory].
   CreateStoryProvider({
     required this.genre,

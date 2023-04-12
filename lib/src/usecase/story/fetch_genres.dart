@@ -5,6 +5,7 @@ import 'package:trip_tonic/src/infrastructure/repositories/story/story_repositor
 part 'fetch_genres.g.dart';
 
 // ジャンル一覧を取得する
+// TODO: 登場人物を作成するたびにfetchされるので、キャッシュする
 @riverpod
 Future<List<Genre>> fetchGenres(FetchGenresRef ref) async {
   final genres = await ref.read(storyRepositoryProvider).fetchGenres();

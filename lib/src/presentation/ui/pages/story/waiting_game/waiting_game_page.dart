@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:trip_tonic/src/domain/entities/story/story.dart';
 import 'package:trip_tonic/src/presentation/router/args.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_read/story_read_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/components/completed_widget.dart';
@@ -24,7 +25,14 @@ class WaitingGamePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isFabDisplay = useState(false);
-    final createdStory = useState<String>('');
+    final createdStory = useState<Story>(
+      Story(
+        userId: 'userId',
+        title: 'titleLarge',
+        content: 'content',
+        createdAt: DateTime.now(),
+      ),
+    );
 
     final story = ref.watch(
       createStoryProvider(
@@ -64,9 +72,7 @@ class WaitingGamePage extends HookConsumerWidget {
               backgroundColor: Colors.black,
               onPressed: () => context.push(
                 StoryReadPage.pagePath,
-                extra: {
-                  'story': createdStory.value,
-                },
+                extra: createdStory.value,
               ),
               child: const Icon(
                 Icons.arrow_forward_outlined,

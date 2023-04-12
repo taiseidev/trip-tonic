@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/global_key.dart';
+import 'package:trip_tonic/src/domain/entities/story/story.dart';
 import 'package:trip_tonic/src/presentation/router/args.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
@@ -31,8 +32,7 @@ final routerProvider = Provider(
       GoRoute(
         name: MainPage.pageName,
         path: MainPage.pagePath,
-        builder: (BuildContext context, GoRouterState state) =>
-            const MainPage(),
+        builder: (BuildContext context, _) => const MainPage(),
       ),
       GoRoute(
         name: StoryCreatePage.pageName,
@@ -44,9 +44,9 @@ final routerProvider = Provider(
         name: StoryReadPage.pageName,
         path: StoryReadPage.pagePath,
         builder: (BuildContext context, GoRouterState state) {
-          final story = state.extra! as Map<String, String>;
+          final story = state.extra as Story;
           return StoryReadPage(
-            story: story['story'] ?? '',
+            story: story,
           );
         },
       ),
@@ -54,9 +54,8 @@ final routerProvider = Provider(
         name: WaitingGamePage.pageName,
         path: WaitingGamePage.pagePath,
         builder: (BuildContext context, GoRouterState state) {
-          return WaitingGamePage(
-            args: state.extra! as CreateStoryArgs,
-          );
+          final args = state.extra! as CreateStoryArgs;
+          return WaitingGamePage(args: args);
         },
       ),
       GoRoute(

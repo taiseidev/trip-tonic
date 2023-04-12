@@ -41,7 +41,7 @@ class _StoryDataSource implements StoryDataSource {
     )
         .compose(
           _dio.options,
-          'requestChatGPT',
+          'createStory',
           queryParameters: queryParameters,
           data: _data,
         )

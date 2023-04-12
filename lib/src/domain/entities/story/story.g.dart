@@ -7,12 +7,14 @@ part of 'story.dart';
 // **************************************************************************
 
 _$_Story _$$_StoryFromJson(Map<String, dynamic> json) => _$_Story(
-      id: json['id'] as String,
+      id: json['id'] as String?,
       userId: json['userId'] as String,
       title: json['title'] as String,
       content: json['content'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
     );
 
 Map<String, dynamic> _$$_StoryToJson(_$_Story instance) => <String, dynamic>{
@@ -21,5 +23,5 @@ Map<String, dynamic> _$$_StoryToJson(_$_Story instance) => <String, dynamic>{
       'title': instance.title,
       'content': instance.content,
       'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
     };

@@ -21,12 +21,13 @@ Story _$StoryFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Story {
 // 小説の一意のID
-  String get id => throw _privateConstructorUsedError; // 作成したユーザのID
+// 小説作成時点はまだ存在しないので、nullを許容する
+  String? get id => throw _privateConstructorUsedError; // 作成したユーザのID
   String get userId => throw _privateConstructorUsedError; // 小説のタイトル
   String get title => throw _privateConstructorUsedError; // 小説の内容
   String get content => throw _privateConstructorUsedError; // 作成日
   DateTime get createdAt => throw _privateConstructorUsedError; // 更新日
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,12 +40,12 @@ abstract class $StoryCopyWith<$Res> {
       _$StoryCopyWithImpl<$Res, Story>;
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String userId,
       String title,
       String content,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -60,18 +61,18 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = null,
     Object? title = null,
     Object? content = null,
     Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -88,10 +89,10 @@ class _$StoryCopyWithImpl<$Res, $Val extends Story>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: null == updatedAt
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -103,12 +104,12 @@ abstract class _$$_StoryCopyWith<$Res> implements $StoryCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String userId,
       String title,
       String content,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -120,18 +121,18 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = null,
     Object? title = null,
     Object? content = null,
     Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$_Story(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -148,10 +149,10 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: null == updatedAt
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -160,20 +161,21 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
 @JsonSerializable()
 class _$_Story extends _Story {
   const _$_Story(
-      {required this.id,
+      {this.id,
       required this.userId,
       required this.title,
       required this.content,
       required this.createdAt,
-      required this.updatedAt})
+      this.updatedAt})
       : super._();
 
   factory _$_Story.fromJson(Map<String, dynamic> json) =>
       _$$_StoryFromJson(json);
 
 // 小説の一意のID
+// 小説作成時点はまだ存在しないので、nullを許容する
   @override
-  final String id;
+  final String? id;
 // 作成したユーザのID
   @override
   final String userId;
@@ -188,7 +190,7 @@ class _$_Story extends _Story {
   final DateTime createdAt;
 // 更新日
   @override
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
 
   @override
   String toString() {
@@ -231,18 +233,19 @@ class _$_Story extends _Story {
 
 abstract class _Story extends Story {
   const factory _Story(
-      {required final String id,
+      {final String? id,
       required final String userId,
       required final String title,
       required final String content,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$_Story;
+      final DateTime? updatedAt}) = _$_Story;
   const _Story._() : super._();
 
   factory _Story.fromJson(Map<String, dynamic> json) = _$_Story.fromJson;
 
   @override // 小説の一意のID
-  String get id;
+// 小説作成時点はまだ存在しないので、nullを許容する
+  String? get id;
   @override // 作成したユーザのID
   String get userId;
   @override // 小説のタイトル
@@ -252,7 +255,7 @@ abstract class _Story extends Story {
   @override // 作成日
   DateTime get createdAt;
   @override // 更新日
-  DateTime get updatedAt;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_StoryCopyWith<_$_Story> get copyWith =>
