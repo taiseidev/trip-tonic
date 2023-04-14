@@ -153,7 +153,7 @@ UIはAtomic Designを採用
 https://zenn.dev/nagakuta/articles/25c8aaf7744830bdab3d#pages
 
 ### infrastructure
-1. Separation of Concerns (SoC): アプリケーションの各層は、それぞれの責任を持つべきです。infrastructure層はデータアクセスや外部サービスとの通信を担当し、Firebaseを含む具体的な実装を行います。他の層は、Firebaseに依存せずに機能すべきです。
+1. Separation of Concerns (SoC): アプリケーションの各層は、それぞれの責任を持つべきです。infrastructure層はデータアクセスや外部サービスとの通信を担当し、Firebaseを含む具体的な実装を行なっています。他の層は、Firebaseに依存を完全に排除しています。
 
 2. 交換可能性: infrastructure層にFirebaseの依存を閉じ込めることで、将来的にデータストレージやAPIが変更された場合に、他の層に影響を与えずにinfrastructure層の実装を変更できます。これにより、アプリケーションの柔軟性が向上します。
 
@@ -161,9 +161,38 @@ https://zenn.dev/nagakuta/articles/25c8aaf7744830bdab3d#pages
 
 4. 再利用性: Firebaseの依存をinfrastructure層に閉じ込めることで、domain層やapp層のコードが他のプロジェクトやコンテキストで再利用しやすくなります。具体的なデータストレージやAPIの実装から独立しているため、他のシステムに適応させることが容易になります。
 
-### ドメイン
+5. 暗黙的インターフェース
+本アプリでは、repositoryのインターフェース（抽象クラス）を定義していません。理由としてはDartのクラス宣言には暗黙的インターフェースという概念があり、実体クラスをインターフェースとして他のクラスを作成することができるからです。
 
-小説 - Story
+```dart
+class Animal {
+  void eat() {
+    print('Animal is eating.');
+  }
+}
+
+class Dog implements Animal {
+  @override
+  void eat() {
+    print('Dog is eating.');
+  }
+}
+```
+
+### ドメインモデリング
+
+1. ユースケース図を作成（PlantUMLを使用）
+/product/trip_tonic/usecase.pu
+
+2. ユースケース記述を作成
+
+3. ドメインモデル図
+
+
+- 参考
+https://it-koala.com/usecasediagrams-1832
+https://qiita.com/zb185423/items/7fea8c2fbb6f542cd5b6
+https://little-hands.hatenablog.com/entry/2022/06/01/ddd-modeling
 
 
 ### 参考
@@ -171,12 +200,9 @@ https://codewithandrea.com/articles/flutter-project-structure/
 https://medium.com/flutter-jp/architecture-240d3c56b597
 https://github.com/tomamoi/todo_app
 
+- DDD
+https://kabochapo.hateblo.jp/entry/2019/11/01/195130
+
 ## 画面遷移図
 https://www.figma.com/file/OH1DAs93rjKUaBVprRkfNs/novel-journey?node-id=101-132&t=ODNXmorNrNkAWzM7-0
 
-## API
-・画像を自動で生成
-https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F
-
-・ジオコーディングと陸地の座標を判別
-https://operations.osmfoundation.org/policies/nominatim/
