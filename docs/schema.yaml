@@ -1,0 +1,75 @@
+# FirestoreのDB設計
+
+version:
+  users:
+    documentId: auto
+    name: string
+    iconUrl: string
+    isPremiumMember: bool
+    pushNotificationEnabled: bool
+    pushAnnouncementEnabled: bool
+    createdAt: date
+    updatedAt: date
+
+    notifications:
+      documentId: auto
+      title: string
+      content: string
+      isRead: boolean
+      createdAt: date
+
+    readAnnouncements:
+      documentId: auto
+      announcementId: string
+      createdAt: date
+
+    followings:
+      documentID: auto
+      followedUserId: string
+      followedUserName: refreference
+      followedUserIcon: refreference
+      createdAt: date
+
+    followers:
+      documentID: auto
+      followerUserId: string
+      followerUserName: refreference
+      followerUserIcon: refreference
+      createdAt: date
+
+  novels:
+    documentId: auto
+    userId: string
+    genreId: string
+    title: string
+    content: string
+    isPrivate: boolean
+    backgroundImage: string
+    createdAt: date
+    updatedAt: date
+
+    comments:
+      documentID: auto
+      userId: string
+      contents: string
+      createdAt: date
+      updatedAt: date
+
+  favorites:
+    documentId: auto
+    userId: string
+    novelId: string
+    createdAt: date
+
+  genres:
+    documentID: auto
+    genre: string
+    createdAt: date
+    updatedAt: date
+
+  announcements:
+    documentID: auto
+    title: string
+    content: string
+    createdAt: date
+    updatedAt: date
