@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:trip_tonic/src/domain/entities/genre/genre.dart';
 import 'package:trip_tonic/src/domain/entities/story/character.dart';
+import 'package:trip_tonic/src/domain/entities/story/genre.dart';
 
 part 'story_create_state.freezed.dart';
 

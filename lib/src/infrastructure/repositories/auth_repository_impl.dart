@@ -1,5 +1,4 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:trip_tonic/src/domain/repositories/auth_repository.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firebase_auth/firebase_auth_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/auth/auth_data_source.dart';
 
@@ -7,11 +6,10 @@ final authRepositoryImplProvider = Provider<AuthRepositoryImpl>(
   AuthRepositoryImpl.new,
 );
 
-class AuthRepositoryImpl extends AuthRepository {
+class AuthRepositoryImpl {
   AuthRepositoryImpl(this.ref);
   final ProviderRef<AuthRepositoryImpl> ref;
 
-  @override
   Future<void> singInAnonymously() async {
     await ref.read(authDataSourceProvider).singInAnonymously();
     await ref.read(firestoreDataSourceProvider).storeUserData(
@@ -20,7 +18,6 @@ class AuthRepositoryImpl extends AuthRepository {
         );
   }
 
-  @override
   Future<void> singInGoogle() async {
     final credential = await ref.read(authDataSourceProvider).signInGoogle();
 
@@ -35,7 +32,6 @@ class AuthRepositoryImpl extends AuthRepository {
         );
   }
 
-  @override
   Future<void> singInApple() async {
     final credential = await ref.read(authDataSourceProvider).signInApple();
 
