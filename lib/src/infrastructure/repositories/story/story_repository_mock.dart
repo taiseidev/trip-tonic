@@ -18,11 +18,10 @@ class StoryRepositoryMock extends StoryRepository {
   }) async {
     await Future<void>.delayed(const Duration(seconds: 3));
     return Story(
-      userId: '',
-      title: '',
-      content: '',
+      userId: 'testId',
+      title: 'title',
+      content: 'content',
       createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
     );
   }
 }

@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Story _$StoryFromJson(Map<String, dynamic> json) {
-  return _Story.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Story {
 // 小説の一意のID
@@ -29,7 +25,6 @@ mixin _$Story {
   DateTime get createdAt => throw _privateConstructorUsedError; // 更新日
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $StoryCopyWith<Story> get copyWith => throw _privateConstructorUsedError;
 }
@@ -158,7 +153,7 @@ class __$$_StoryCopyWithImpl<$Res> extends _$StoryCopyWithImpl<$Res, _$_Story>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_Story extends _Story {
   const _$_Story(
       {this.id,
@@ -168,9 +163,6 @@ class _$_Story extends _Story {
       required this.createdAt,
       this.updatedAt})
       : super._();
-
-  factory _$_Story.fromJson(Map<String, dynamic> json) =>
-      _$$_StoryFromJson(json);
 
 // 小説の一意のID
 // 小説作成時点はまだ存在しないので、nullを許容する
@@ -212,7 +204,6 @@ class _$_Story extends _Story {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, userId, title, content, createdAt, updatedAt);
@@ -222,13 +213,6 @@ class _$_Story extends _Story {
   @pragma('vm:prefer-inline')
   _$$_StoryCopyWith<_$_Story> get copyWith =>
       __$$_StoryCopyWithImpl<_$_Story>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_StoryToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Story extends Story {
@@ -240,8 +224,6 @@ abstract class _Story extends Story {
       required final DateTime createdAt,
       final DateTime? updatedAt}) = _$_Story;
   const _Story._() : super._();
-
-  factory _Story.fromJson(Map<String, dynamic> json) = _$_Story.fromJson;
 
   @override // 小説の一意のID
 // 小説作成時点はまだ存在しないので、nullを許容する

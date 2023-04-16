@@ -68,6 +68,7 @@ dependencies:
   url_launcher: ^6.1.10
   tuple: ^2.0.1
   uuid: ^3.0.7
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

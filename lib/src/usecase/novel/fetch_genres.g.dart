@@ -6,7 +6,7 @@ part of 'fetch_genres.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchGenresHash() => r'c131cec5aeba7a7c703b02e5b922a772e1a9f37f';
+String _$fetchGenresHash() => r'a0e0f0fa206370a1e238e1344b6ba49153b796d7';
 
 /// See also [fetchGenres].
 @ProviderFor(fetchGenres)

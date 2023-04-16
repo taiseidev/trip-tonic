@@ -73,7 +73,7 @@
 |  documentId  |  String  |  ドキュメントID  |
 |  followerUserId  |  String  |  フォロワーのユーザID  |
 |  followerUserName  |  String  |  フォロワーのユーザ名  |
-|  followerUserIcon  |  bool  |  フォロワーのユーザアイコン  |
+|  followerUserIcon  |  String  |  フォロワーのユーザアイコン  |
 |  createdAt  |  DateTime  |  作成日  |
 
 <br>
@@ -84,9 +84,9 @@
 |  documentId  |  String  |  ドキュメントID  |
 |  userId  |  String  |  ユーザID  |
 |  genreId  |  String  |  ジャンルのID  |
-|  title  |  bool  |  小説のタイトル  |
-|  content  |  DateTime  |  小説の内容  |
-|  isPrivate  |  String  |  タイムラインに公開するかどうか  |
+|  title  |  String  |  小説のタイトル  |
+|  content  |  String  |  小説の内容  |
+|  isPrivate  |  bool  |  タイムラインに公開するかどうか  |
 |  backgroundImage  |  String  |  小説を表示する背景画像  |
 |  createdAt  |  DateTime  |  作成日  |
 |  updatedAt  |  DateTime  |  更新日  |
