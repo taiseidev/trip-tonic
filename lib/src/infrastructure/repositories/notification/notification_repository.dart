@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:trip_tonic/src/domain/entities/notification/notification.dart';
+import 'package:trip_tonic/src/domain/entities/notification/notification_list.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/notification/notification_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/models/notification/notification_dto.dart';
 
@@ -14,7 +14,7 @@ class NotificationRepository {
 
   final NotificationRepositoryRef ref;
 
-  Future<List<Notification>> fetchNotificationList() async {
+  Future<NotificationList> fetchNotificationList() async {
     // Firestoreからお知らせ一覧を取得する
     final snapshot =
         await ref.read(notificationDataSourceProvider).fetchNotificationList();
@@ -25,6 +25,8 @@ class NotificationRepository {
           (doc) => NotificationDto.fromFirestore(doc).toDomain(),
         )
         .toList();
-    return notifications;
+
+    // NotificationListに変換して返却
+    return NotificationList(notifications: notifications);
   }
 }

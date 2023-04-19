@@ -13,6 +13,7 @@ class Constants {
   String get users => 'users';
   String get genres => 'genres';
   String get notifications => 'notifications';
+  String get announcements => 'announcements';
 
 // Field
   String get userId => 'userId';

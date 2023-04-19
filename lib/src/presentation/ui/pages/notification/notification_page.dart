@@ -69,7 +69,7 @@ class NotificationPage extends HookConsumerWidget {
               child: notifications.when(
                 data: (notificationList) {
                   // お知らせがない場合は表示
-                  if (notificationList.isEmpty) {
+                  if (notificationList.notifications.isEmpty) {
                     return const Text(
                       'お知らせはありません',
                       style: TextStyle(fontWeight: FontWeight.w700),
@@ -82,9 +82,10 @@ class NotificationPage extends HookConsumerWidget {
                         ref.invalidate(fetchNotificationListProvider);
                       },
                       child: ListView.separated(
-                        itemCount: notificationList.length,
+                        itemCount: notificationList.notifications.length,
                         itemBuilder: (context, index) {
-                          final notification = notificationList[index];
+                          final notification =
+                              notificationList.notifications[index];
                           return SizedBox(
                             height: 100,
                             child: ListTile(
