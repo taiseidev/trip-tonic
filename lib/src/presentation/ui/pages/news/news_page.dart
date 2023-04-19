@@ -5,14 +5,14 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/datetime_extension.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/notification/notification_detail_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/news/news_detail_page.dart';
 import 'package:trip_tonic/src/usecase/notification/fetch_notification_list.dart';
 
-enum NoticeType {
+enum NewsType {
   notice('お知らせ'),
   news('ニュース');
 
-  const NoticeType(this.type);
+  const NewsType(this.type);
   final String type;
 }
 
@@ -21,7 +21,7 @@ class NotificationPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentTab = useState(NoticeType.notice.name);
+    final currentTab = useState(NewsType.notice.name);
     final notifications = ref.watch(fetchNotificationListProvider);
 
     return Scaffold(
@@ -36,15 +36,15 @@ class NotificationPage extends HookConsumerWidget {
                   initialValue: currentTab.value,
                   isStretch: true,
                   children: {
-                    NoticeType.notice.name: Text(
-                      NoticeType.notice.type,
+                    NewsType.notice.name: Text(
+                      NewsType.notice.type,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    NoticeType.news.name: Text(
-                      NoticeType.news.type,
+                    NewsType.news.name: Text(
+                      NewsType.news.type,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
@@ -65,7 +65,7 @@ class NotificationPage extends HookConsumerWidget {
               ),
             ),
             Visibility(
-              visible: currentTab.value == NoticeType.notice.name,
+              visible: currentTab.value == NewsType.notice.name,
               child: notifications.when(
                 data: (notificationList) {
                   // お知らせがない場合は表示
@@ -90,7 +90,7 @@ class NotificationPage extends HookConsumerWidget {
                             height: 100,
                             child: ListTile(
                               onTap: () =>
-                                  context.push(NotificationDetailPage.pagePath),
+                                  context.push(NewsDetailPage.pagePath),
                               leading: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

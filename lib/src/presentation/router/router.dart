@@ -6,7 +6,7 @@ import 'package:trip_tonic/src/domain/entities/story/story.dart';
 import 'package:trip_tonic/src/presentation/router/args.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/notification/notification_detail_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/news/news_detail_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_read/story_read_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/waiting_game_page.dart';
@@ -59,10 +59,10 @@ final routerProvider = Provider(
         },
       ),
       GoRoute(
-        name: NotificationDetailPage.pageName,
-        path: NotificationDetailPage.pagePath,
+        name: NewsDetailPage.pageName,
+        path: NewsDetailPage.pagePath,
         builder: (BuildContext context, GoRouterState state) =>
-            const NotificationDetailPage(),
+            const NewsDetailPage(),
       ),
     ],
     redirect: (context, state) {

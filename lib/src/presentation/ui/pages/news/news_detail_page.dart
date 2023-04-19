@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class NotificationDetailPage extends StatelessWidget {
-  const NotificationDetailPage({super.key});
+class NewsDetailPage extends StatelessWidget {
+  const NewsDetailPage({super.key});
 
   static const pageName = 'notification_detail';
   static const pagePath = '/notification_detail';
