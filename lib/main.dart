@@ -13,8 +13,9 @@ import 'package:trip_tonic/src/infrastructure/repositories/story/story_repositor
 import 'package:trip_tonic/src/infrastructure/repositories/story/story_repository_provider.dart';
 import 'package:trip_tonic/src/presentation/app.dart';
 
-// --dart-define option
+// --dart-define options
 const flavor = String.fromEnvironment('FLAVOR');
+const version = String.fromEnvironment('VERSION');
 const isMock = bool.fromEnvironment('IS_MOCK');
 
 Future<void> main() async {

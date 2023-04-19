@@ -5,5 +5,5 @@ import 'package:trip_tonic/src/infrastructure/repositories/genre/genre_repositor
 part 'fetch_genres.g.dart';
 
 @riverpod
-Future<List<Genre>>? fetchGenres(FetchGenresRef ref) async =>
+Future<List<Genre>> fetchGenres(FetchGenresRef ref) async =>
     ref.read(genreRepositoryProvider).fetchGenres();

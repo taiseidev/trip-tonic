@@ -16,7 +16,7 @@ final routerProvider = Provider(
   name: 'routerProvider',
   (ref) => GoRouter(
     navigatorKey: ref.watch(navigatorKeyProvider),
-    initialLocation: TopPage.pagePath,
+    initialLocation: MainPage.pagePath,
     routes: <RouteBase>[
       GoRoute(
         name: TopPage.pageName,

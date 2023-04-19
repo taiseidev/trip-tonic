@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/core/utils/uuid.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_state.dart';
-import 'package:trip_tonic/src/usecase/novel/fetch_genres.dart';
+import 'package:trip_tonic/src/usecase/genre/fetch_genres.dart';
 
 part 'story_create_view_model.g.dart';
 

@@ -1,24 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'genre_data_source.dart';
+part of 'notification_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$genreDataSourceHash() => r'd0552663c678845907e9647fa9c30f85f15a848d';
+String _$notificationRepositoryHash() =>
+    r'8ec5626c6580fe1802334cf28b540a147af9fd09';
 
-/// See also [genreDataSource].
-@ProviderFor(genreDataSource)
-final genreDataSourceProvider = AutoDisposeProvider<GenreDataSource>.internal(
-  genreDataSource,
-  name: r'genreDataSourceProvider',
+/// See also [notificationRepository].
+@ProviderFor(notificationRepository)
+final notificationRepositoryProvider =
+    AutoDisposeProvider<NotificationRepository>.internal(
+  notificationRepository,
+  name: r'notificationRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$genreDataSourceHash,
+      : _$notificationRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef GenreDataSourceRef = AutoDisposeProviderRef<GenreDataSource>;
+typedef NotificationRepositoryRef
+    = AutoDisposeProviderRef<NotificationRepository>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

@@ -14,17 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Genre _$GenreFromJson(Map<String, dynamic> json) {
-  return _Genre.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Genre {
 // ジャンルの一意のID
   String get id => throw _privateConstructorUsedError; // ジャンル名
   String get genre => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GenreCopyWith<Genre> get copyWith => throw _privateConstructorUsedError;
 }
@@ -101,12 +96,9 @@ class __$$_GenreCopyWithImpl<$Res> extends _$GenreCopyWithImpl<$Res, _$_Genre>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_Genre extends _Genre {
   const _$_Genre({required this.id, required this.genre}) : super._();
-
-  factory _$_Genre.fromJson(Map<String, dynamic> json) =>
-      _$$_GenreFromJson(json);
 
 // ジャンルの一意のID
   @override
@@ -129,7 +121,6 @@ class _$_Genre extends _Genre {
             (identical(other.genre, genre) || other.genre == genre));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, genre);
 
@@ -138,21 +129,12 @@ class _$_Genre extends _Genre {
   @pragma('vm:prefer-inline')
   _$$_GenreCopyWith<_$_Genre> get copyWith =>
       __$$_GenreCopyWithImpl<_$_Genre>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_GenreToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Genre extends Genre {
   const factory _Genre(
       {required final String id, required final String genre}) = _$_Genre;
   const _Genre._() : super._();
-
-  factory _Genre.fromJson(Map<String, dynamic> json) = _$_Genre.fromJson;
 
   @override // ジャンルの一意のID
   String get id;

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:trip_tonic/src/infrastructure/utils/timestamp_converter.dart';
 
 part 'notification.freezed.dart';
 part 'notification.g.dart';
@@ -19,10 +21,7 @@ class Notification with _$Notification {
     required bool isRead,
 
     // 作成日
-    required DateTime createdAt,
-
-    // 更新日
-    DateTime? updatedAt,
+    @TimestampConverter() required DateTime createdAt,
   }) = _Notification;
 
   const Notification._();

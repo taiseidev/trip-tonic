@@ -4,23 +4,30 @@ import 'package:trip_tonic/src/infrastructure/utils/constants.dart';
 import 'package:trip_tonic/src/infrastructure/utils/providers.dart';
 
 final firestoreDataSourceProvider = Provider<FirestoreDataSource>(
-  (ref) => FirestoreDataSource(ref.read(firestoreProvider)),
+  (ref) => FirestoreDataSource(
+    db: ref.read(firestoreProvider),
+    constants: ref.read(constantsProvider),
+  ),
 );
 
 class FirestoreDataSource {
-  FirestoreDataSource(this._db);
-  final FirebaseFirestore _db;
+  FirestoreDataSource({
+    required this.db,
+    required this.constants,
+  });
+  final FirebaseFirestore db;
+  final Constants constants;
 
   // ログイン時にユーザデータを保存
   Future<void> storeUserData({
     required String userName,
     required String mail,
   }) async {
-    final docRef = _db.collection(users).doc();
+    final docRef = db.collection(constants.users).doc();
     await docRef.set(<String, String>{
-      userId: docRef.id,
-      name: userName,
-      email: mail,
+      constants.userId: docRef.id,
+      constants.name: userName,
+      constants.email: mail,
     });
   }
 }
