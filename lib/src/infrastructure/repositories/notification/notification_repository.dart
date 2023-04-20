@@ -15,6 +15,7 @@ class NotificationRepository {
   final NotificationRepositoryRef ref;
 
   Future<NotificationList> fetchNotificationList() async {
+    await Future<void>.delayed(const Duration(seconds: 3));
     // Firestoreからお知らせ一覧を取得する
     final snapshot =
         await ref.read(notificationDataSourceProvider).fetchNotificationList();

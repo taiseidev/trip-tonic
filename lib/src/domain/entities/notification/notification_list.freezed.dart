@@ -14,16 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-NotificationList _$NotificationListFromJson(Map<String, dynamic> json) {
-  return _NotificationList.fromJson(json);
-}
-
 /// @nodoc
 mixin _$NotificationList {
 // お知らせのリスト
   List<Notification> get notifications => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $NotificationListCopyWith<NotificationList> get copyWith =>
       throw _privateConstructorUsedError;
@@ -96,15 +91,12 @@ class __$$_NotificationListCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_NotificationList extends _NotificationList {
   const _$_NotificationList(
       {final List<Notification> notifications = const <Notification>[]})
       : _notifications = notifications,
         super._();
-
-  factory _$_NotificationList.fromJson(Map<String, dynamic> json) =>
-      _$$_NotificationListFromJson(json);
 
 // お知らせのリスト
   final List<Notification> _notifications;
@@ -131,7 +123,6 @@ class _$_NotificationList extends _NotificationList {
                 .equals(other._notifications, _notifications));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_notifications));
@@ -141,22 +132,12 @@ class _$_NotificationList extends _NotificationList {
   @pragma('vm:prefer-inline')
   _$$_NotificationListCopyWith<_$_NotificationList> get copyWith =>
       __$$_NotificationListCopyWithImpl<_$_NotificationList>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_NotificationListToJson(
-      this,
-    );
-  }
 }
 
 abstract class _NotificationList extends NotificationList {
   const factory _NotificationList({final List<Notification> notifications}) =
       _$_NotificationList;
   const _NotificationList._() : super._();
-
-  factory _NotificationList.fromJson(Map<String, dynamic> json) =
-      _$_NotificationList.fromJson;
 
   @override // お知らせのリスト
   List<Notification> get notifications;

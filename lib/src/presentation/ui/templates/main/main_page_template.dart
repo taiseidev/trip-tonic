@@ -28,7 +28,7 @@ class MainPageTemplate extends StatelessWidget {
               case TabType.history:
                 return const HistoryPage();
               case TabType.notification:
-                return const NotificationPage();
+                return const NewsPage();
               case TabType.profile:
                 return const ProfilePage();
             }

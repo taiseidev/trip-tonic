@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trip_tonic/src/domain/entities/notification/notification.dart';
 
 part 'notification_list.freezed.dart';
-part 'notification_list.g.dart';
 
 @freezed
 class NotificationList with _$NotificationList {
@@ -13,6 +12,7 @@ class NotificationList with _$NotificationList {
 
   const NotificationList._();
 
-  factory NotificationList.fromJson(Map<String, dynamic> json) =>
-      _$NotificationListFromJson(json);
+  // 未読数を返却
+  int get unreadCount =>
+      notifications.where((notification) => !notification.isRead).length;
 }

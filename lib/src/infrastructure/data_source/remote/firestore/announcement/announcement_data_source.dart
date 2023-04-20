@@ -29,11 +29,19 @@ class AnnouncementDataSource {
   final AnnouncementDataSourceRef ref;
   final Constants constants;
 
+  late final collectionPath =
+      '${constants.versions}/$version/${constants.announcements}';
+
   // （運営からの）お知らせ一覧を取得
   Future<QuerySnapshot<Map<String, dynamic>>> fetchAnnouncementList() async {
-    final collectionRef = db.collection(
-      '${constants.versions}/$version/${constants.announcements}',
-    );
+    final collectionRef =
+        db.collection(collectionPath).orderBy('createdAt', descending: true);
     return collectionRef.get();
+  }
+
+  // （運営からの）お知らせ一覧の数を取得
+  Future<AggregateQuerySnapshot> fetchAnnouncementListCount() async {
+    final collectionRef = db.collection(collectionPath);
+    return collectionRef.count().get();
   }
 }

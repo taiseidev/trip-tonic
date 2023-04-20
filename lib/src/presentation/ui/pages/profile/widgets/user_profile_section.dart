@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:trip_tonic/core/extensions/context_extension.dart';
@@ -8,6 +9,7 @@ class UserProfileSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -42,7 +44,7 @@ class UserProfileSection extends StatelessWidget {
                 ),
               ),
               Text(
-                'Edward Larry',
+                user!.displayName ?? 'テストさん',
                 maxLines: 1,
                 style: TextStyle(
                   color: context.theme.primary,
@@ -70,7 +72,7 @@ class UserProfileSection extends StatelessWidget {
             Icons.mode_edit_outlined,
             color: Colors.grey[500],
           ),
-        )
+        ),
       ],
     );
   }

@@ -14,16 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AnnouncementList _$AnnouncementListFromJson(Map<String, dynamic> json) {
-  return _AnnouncementList.fromJson(json);
-}
-
 /// @nodoc
 mixin _$AnnouncementList {
 // お知らせのリスト
   List<Announcement> get announcements => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AnnouncementListCopyWith<AnnouncementList> get copyWith =>
       throw _privateConstructorUsedError;
@@ -96,15 +91,12 @@ class __$$_AnnouncementListCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_AnnouncementList extends _AnnouncementList {
   const _$_AnnouncementList(
       {final List<Announcement> announcements = const <Announcement>[]})
       : _announcements = announcements,
         super._();
-
-  factory _$_AnnouncementList.fromJson(Map<String, dynamic> json) =>
-      _$$_AnnouncementListFromJson(json);
 
 // お知らせのリスト
   final List<Announcement> _announcements;
@@ -131,7 +123,6 @@ class _$_AnnouncementList extends _AnnouncementList {
                 .equals(other._announcements, _announcements));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_announcements));
@@ -141,22 +132,12 @@ class _$_AnnouncementList extends _AnnouncementList {
   @pragma('vm:prefer-inline')
   _$$_AnnouncementListCopyWith<_$_AnnouncementList> get copyWith =>
       __$$_AnnouncementListCopyWithImpl<_$_AnnouncementList>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_AnnouncementListToJson(
-      this,
-    );
-  }
 }
 
 abstract class _AnnouncementList extends AnnouncementList {
   const factory _AnnouncementList({final List<Announcement> announcements}) =
       _$_AnnouncementList;
   const _AnnouncementList._() : super._();
-
-  factory _AnnouncementList.fromJson(Map<String, dynamic> json) =
-      _$_AnnouncementList.fromJson;
 
   @override // お知らせのリスト
   List<Announcement> get announcements;

@@ -32,9 +32,12 @@ class NotificationDataSource {
   // お知らせ一覧を取得
   Future<QuerySnapshot<Map<String, dynamic>>> fetchNotificationList() async {
     final userId = auth.currentUser?.uid;
-    final collectionRef = db.collection(
-      '${constants.versions}/$version/${constants.users}/$userId/${constants.notifications}',
-    );
+    // お知らせ一覧を作成日の降順で取得
+    final collectionRef = db
+        .collection(
+          '${constants.versions}/$version/${constants.users}/$userId/${constants.notifications}',
+        )
+        .orderBy('createdAt', descending: true);
     return collectionRef.get();
   }
 }

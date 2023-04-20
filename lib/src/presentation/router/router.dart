@@ -11,12 +11,14 @@ import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_cr
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_read/story_read_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/waiting_game_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/top/top_page.dart';
+import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
 
-final routerProvider = Provider(
-  name: 'routerProvider',
-  (ref) => GoRouter(
+final routerProvider = Provider(name: 'routerProvider', (ref) {
+  final user = ref.watch(userProvider);
+
+  return GoRouter(
     navigatorKey: ref.watch(navigatorKeyProvider),
-    initialLocation: MainPage.pagePath,
+    initialLocation: TopPage.pagePath,
     routes: <RouteBase>[
       GoRoute(
         name: TopPage.pageName,
@@ -66,11 +68,14 @@ final routerProvider = Provider(
       ),
     ],
     redirect: (context, state) {
-      // final user = FirebaseAuth.instance.currentUser;
-      // if (user == null) {
-      //   return '/top';
-      // }
+      final loggingIn = state.subloc == '/top';
+      if (user.value == null && state.subloc == '/top') {
+        return loggingIn ? null : '/top';
+      }
+      if (loggingIn) {
+        return '/main';
+      }
       return null;
     },
-  ),
-);
+  );
+});
