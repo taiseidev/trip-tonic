@@ -11,6 +11,7 @@ _$_Announcement _$$_AnnouncementFromJson(Map<String, dynamic> json) =>
       announcementId: json['announcementId'] as String,
       title: json['title'] as String,
       content: json['content'] as String,
+      isRead: json['isRead'] as bool,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$_AnnouncementToJson(_$_Announcement instance) =>
       'announcementId': instance.announcementId,
       'title': instance.title,
       'content': instance.content,
+      'isRead': instance.isRead,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
     };

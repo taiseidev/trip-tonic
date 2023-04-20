@@ -11,4 +11,8 @@ class AnnouncementList with _$AnnouncementList {
   }) = _AnnouncementList;
 
   const AnnouncementList._();
+
+  // 未読数を返却
+  int get unreadCount =>
+      announcements.where((announcement) => !announcement.isRead).length;
 }

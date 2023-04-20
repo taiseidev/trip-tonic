@@ -15,6 +15,9 @@ class Announcement with _$Announcement {
     // お知らせの内容
     required String content,
 
+    // 既読済みかどうか
+    required bool isRead,
+
     // 作成日
     required DateTime createdAt,
 

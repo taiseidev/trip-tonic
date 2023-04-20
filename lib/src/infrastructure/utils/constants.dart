@@ -14,6 +14,7 @@ class Constants {
   String get genres => 'genres';
   String get notifications => 'notifications';
   String get announcements => 'announcements';
+  String get readAnnouncements => 'readAnnouncements';
 
 // Field
   String get userId => 'userId';

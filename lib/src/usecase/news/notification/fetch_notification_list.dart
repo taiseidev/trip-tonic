@@ -3,7 +3,8 @@ import 'package:trip_tonic/src/domain/entities/notification/notification_list.da
 import 'package:trip_tonic/src/infrastructure/repositories/notification/notification_repository.dart';
 
 // お知らせの一覧を取得
-final fetchNotificationListProvider = FutureProvider<NotificationList>(
+final fetchNotificationListProvider =
+    FutureProvider.autoDispose<NotificationList>(
   (ref) async =>
       ref.read(notificationRepositoryProvider).fetchNotificationList(),
 );

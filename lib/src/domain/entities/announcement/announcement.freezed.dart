@@ -23,7 +23,8 @@ mixin _$Announcement {
 // お知らせのID
   String get announcementId => throw _privateConstructorUsedError; // お知らせのタイトル
   String get title => throw _privateConstructorUsedError; // お知らせの内容
-  String get content => throw _privateConstructorUsedError; // 作成日
+  String get content => throw _privateConstructorUsedError; // 既読済みかどうか
+  bool get isRead => throw _privateConstructorUsedError; // 作成日
   DateTime get createdAt => throw _privateConstructorUsedError; // 更新日
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
@@ -43,6 +44,7 @@ abstract class $AnnouncementCopyWith<$Res> {
       {String announcementId,
       String title,
       String content,
+      bool isRead,
       DateTime createdAt,
       DateTime updatedAt});
 }
@@ -63,6 +65,7 @@ class _$AnnouncementCopyWithImpl<$Res, $Val extends Announcement>
     Object? announcementId = null,
     Object? title = null,
     Object? content = null,
+    Object? isRead = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -79,6 +82,10 @@ class _$AnnouncementCopyWithImpl<$Res, $Val extends Announcement>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      isRead: null == isRead
+          ? _value.isRead
+          : isRead // ignore: cast_nullable_to_non_nullable
+              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -103,6 +110,7 @@ abstract class _$$_AnnouncementCopyWith<$Res>
       {String announcementId,
       String title,
       String content,
+      bool isRead,
       DateTime createdAt,
       DateTime updatedAt});
 }
@@ -121,6 +129,7 @@ class __$$_AnnouncementCopyWithImpl<$Res>
     Object? announcementId = null,
     Object? title = null,
     Object? content = null,
+    Object? isRead = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -137,6 +146,10 @@ class __$$_AnnouncementCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      isRead: null == isRead
+          ? _value.isRead
+          : isRead // ignore: cast_nullable_to_non_nullable
+              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -156,6 +169,7 @@ class _$_Announcement extends _Announcement {
       {required this.announcementId,
       required this.title,
       required this.content,
+      required this.isRead,
       required this.createdAt,
       required this.updatedAt})
       : super._();
@@ -172,6 +186,9 @@ class _$_Announcement extends _Announcement {
 // お知らせの内容
   @override
   final String content;
+// 既読済みかどうか
+  @override
+  final bool isRead;
 // 作成日
   @override
   final DateTime createdAt;
@@ -181,7 +198,7 @@ class _$_Announcement extends _Announcement {
 
   @override
   String toString() {
-    return 'Announcement(announcementId: $announcementId, title: $title, content: $content, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Announcement(announcementId: $announcementId, title: $title, content: $content, isRead: $isRead, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -193,6 +210,7 @@ class _$_Announcement extends _Announcement {
                 other.announcementId == announcementId) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.isRead, isRead) || other.isRead == isRead) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -201,8 +219,8 @@ class _$_Announcement extends _Announcement {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, announcementId, title, content, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, announcementId, title, content,
+      isRead, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -223,6 +241,7 @@ abstract class _Announcement extends Announcement {
       {required final String announcementId,
       required final String title,
       required final String content,
+      required final bool isRead,
       required final DateTime createdAt,
       required final DateTime updatedAt}) = _$_Announcement;
   const _Announcement._() : super._();
@@ -236,6 +255,8 @@ abstract class _Announcement extends Announcement {
   String get title;
   @override // お知らせの内容
   String get content;
+  @override // 既読済みかどうか
+  bool get isRead;
   @override // 作成日
   DateTime get createdAt;
   @override // 更新日

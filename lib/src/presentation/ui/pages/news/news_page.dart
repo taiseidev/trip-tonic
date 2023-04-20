@@ -35,12 +35,13 @@ class NewsPage extends HookConsumerWidget {
                 // お知らせ一覧
                 final notificationList = newsList.notificationList;
 
-                // お知らせかニュースか
+                // お知らせか運営からのお知らせか
                 final isNotification = currentTab.value == NewsType.notice.name;
 
                 // 未読数
-                final unreadCount =
-                    isNotification ? notificationList.unreadCount : '0';
+                final unreadCount = isNotification
+                    ? notificationList.unreadCount
+                    : announcementList.unreadCount;
 
                 // お知らせがない場合は表示
                 if (announcementList.announcements.isEmpty ||
@@ -121,6 +122,7 @@ class NewsPage extends HookConsumerWidget {
                           ),
                         ),
                       ),
+
                       Expanded(
                         child: RefreshIndicator(
                           onRefresh: () async =>
@@ -130,10 +132,28 @@ class NewsPage extends HookConsumerWidget {
                                 ? notificationList.notifications.length
                                 : announcementList.announcements.length,
                             itemBuilder: (context, index) {
+                              // 運営からのお知らせ
                               final announcement =
                                   announcementList.announcements[index];
+
+                              // お知らせ
                               final notification =
                                   notificationList.notifications[index];
+
+                              // タイトル
+                              final title = isNotification
+                                  ? notification.title
+                                  : announcement.title;
+
+                              // 作成日
+                              final createdAt = isNotification
+                                  ? notification.createdAt.dateToString()
+                                  : announcement.createdAt.dateToString();
+
+                              // 未読のマークを表示するかどうか
+                              final isDisplayUnreadMark = isNotification
+                                  ? !notification.isRead
+                                  : !announcement.isRead;
                               return SizedBox(
                                 height: 100,
                                 child: ListTile(
@@ -145,8 +165,7 @@ class NewsPage extends HookConsumerWidget {
                                     children: [
                                       // 未読の場合は表示
                                       Visibility(
-                                        visible: isNotification &&
-                                            !notification.isRead,
+                                        visible: isDisplayUnreadMark,
                                         child: Container(
                                           width: 5,
                                           height: 5,
@@ -161,9 +180,7 @@ class NewsPage extends HookConsumerWidget {
                                     ],
                                   ),
                                   title: Text(
-                                    isNotification
-                                        ? notification.title
-                                        : announcement.title,
+                                    title,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w700,
                                     ),
@@ -171,11 +188,7 @@ class NewsPage extends HookConsumerWidget {
                                   subtitle: Padding(
                                     padding: const EdgeInsets.only(top: 24),
                                     child: Text(
-                                      isNotification
-                                          ? notification.createdAt
-                                              .dateToString()
-                                          : announcement.createdAt
-                                              .dateToString(),
+                                      createdAt,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -186,6 +199,7 @@ class NewsPage extends HookConsumerWidget {
                             },
                             separatorBuilder:
                                 (BuildContext context, int index) => Divider(
+                              height: 1,
                               thickness: 2,
                               indent: 80,
                               color: Colors.grey[200],

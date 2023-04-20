@@ -38,5 +38,6 @@ class AnnouncementDto with _$AnnouncementDto {
         content: content,
         createdAt: createdAt,
         updatedAt: updatedAt,
+        isRead: false,
       );
 }
