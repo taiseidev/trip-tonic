@@ -13,6 +13,7 @@ class NewsNotifier extends AutoDisposeAsyncNotifier<News> {
   @override
   FutureOr<News> build() async => await ref.watch(fetchNewsListProvider.future);
 
+  // お知らせを既読にする
   Future<void> readNotification({required String notificationId}) async {
     state = await AsyncValue.guard(() async {
       unawaited(

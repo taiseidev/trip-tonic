@@ -41,10 +41,11 @@ class NewsPage extends HookConsumerWidget {
                 // お知らせか運営からのお知らせか
                 final isNotification = currentTab.value == NewsType.notice.name;
 
-                // 未読数
-                final unreadCount = isNotification
-                    ? notificationList.unreadCount
-                    : announcementList.unreadCount;
+                // お知らせの未読数
+                final notificationUnReadCount = notificationList.unreadCount;
+
+                // 運営からのお知らせの未読数
+                final announcementUnReadCount = announcementList.unreadCount;
 
                 // お知らせがない場合は表示
                 if (announcementList.announcements.isEmpty ||
@@ -96,26 +97,34 @@ class NewsPage extends HookConsumerWidget {
                                 onValueChanged: (value) =>
                                     currentTab.value = value,
                               ),
-                              AnimatedContainer(
-                                duration: const Duration(seconds: 1),
-                                child: Align(
-                                  alignment: isNotification
-                                      ? Alignment.topCenter
-                                      : Alignment.topRight,
-                                  child: Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: Colors.red,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: Text(
-                                      unreadCount.toString(),
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold,
+                              Visibility(
+                                visible: isNotification
+                                    ? notificationUnReadCount > 0
+                                    : announcementUnReadCount > 0,
+                                child: AnimatedContainer(
+                                  duration: const Duration(seconds: 1),
+                                  child: Align(
+                                    alignment: isNotification
+                                        ? Alignment.topCenter
+                                        : Alignment.topRight,
+                                    child: Container(
+                                      width: 20,
+                                      height: 20,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: Text(
+                                        isNotification
+                                            ? notificationUnReadCount.toString()
+                                            : announcementUnReadCount
+                                                .toString(),
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -181,6 +190,7 @@ class NewsPage extends HookConsumerWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       // 未読の場合は表示
+
                                       Visibility(
                                         visible: isDisplayUnreadMark,
                                         child: Container(
