@@ -8,8 +8,11 @@ final constantsProvider = Provider<Constants>(
 );
 
 class Constants {
+  // Region
+  String get region => 'asia-northeast1';
   // Collection
   String get versions => 'versions';
+  String get version => 'version';
   String get users => 'users';
   String get genres => 'genres';
   String get notifications => 'notifications';
@@ -18,6 +21,10 @@ class Constants {
 
 // Field
   String get userId => 'userId';
+  String get notificationId => 'notificationId';
   String get name => 'name';
   String get email => 'email';
+
+// Function
+  String get updateNotificationReadState => 'updateNotificationReadState';
 }

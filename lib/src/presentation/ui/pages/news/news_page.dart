@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -5,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/datetime_extension.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/news/news_detail_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/news/news_notifier.dart';
 import 'package:trip_tonic/src/usecase/news/fetch_news_list.dart';
 
 enum NewsType {
@@ -21,7 +24,7 @@ class NewsPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTab = useState(NewsType.notice.name);
-    final news = ref.watch(fetchNewsListProvider);
+    final news = ref.watch(newsNotifierProvider);
 
     return Scaffold(
       body: Center(
@@ -55,9 +58,9 @@ class NewsPage extends HookConsumerWidget {
                 return Expanded(
                   child: Column(
                     children: [
-                      // タブ切り替えボタン
+                      // タブ切り替え
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 24),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.6,
                           child: Stack(
@@ -157,8 +160,22 @@ class NewsPage extends HookConsumerWidget {
                               return SizedBox(
                                 height: 100,
                                 child: ListTile(
-                                  onTap: () =>
-                                      context.push(NewsDetailPage.pagePath),
+                                  onTap: () async {
+                                    if (isNotification &&
+                                        !notification.isRead) {
+                                      unawaited(
+                                        ref
+                                            .read(newsNotifierProvider.notifier)
+                                            .readNotification(
+                                              notificationId:
+                                                  notification.notificationId,
+                                            ),
+                                      );
+                                    } else if (!announcement.isRead) {
+                                      // 運営からのお知らせの既読メソッドを発火させる。
+                                    }
+                                    await context.push(NewsDetailPage.pagePath);
+                                  },
                                   leading: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,

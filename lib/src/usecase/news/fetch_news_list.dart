@@ -19,6 +19,7 @@ final fetchNewsListProvider = FutureProvider.autoDispose<News>(
     final readAnnouncementList =
         await ref.watch(fetchReadAnnouncementListProvider.future);
 
+    // AnnouncementListのisReadを更新
     final announcements = AnnouncementList(
       announcements: announcementList.announcements.map(
         (announcement) {

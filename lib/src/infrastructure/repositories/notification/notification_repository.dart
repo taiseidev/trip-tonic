@@ -30,4 +30,11 @@ class NotificationRepository {
     // NotificationListに変換して返却
     return NotificationList(notifications: notifications);
   }
+
+  Future<void> updateNotificationReadState({
+    required String notificationId,
+  }) async =>
+      ref.read(notificationDataSourceProvider).updateNotificationReadState(
+            notificationId: notificationId,
+          );
 }

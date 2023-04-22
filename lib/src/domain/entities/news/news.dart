@@ -15,4 +15,18 @@ class News with _$News {
   }) = _News;
 
   const News._();
+
+  // お知らせを既読にする
+  News readNotification({required String notificationId}) {
+    return copyWith(
+      notificationList: NotificationList(
+        notifications: [
+          for (var element in notificationList.notifications)
+            element.notificationId == notificationId
+                ? element.copyWith(isRead: true)
+                : element,
+        ],
+      ),
+    );
+  }
 }
