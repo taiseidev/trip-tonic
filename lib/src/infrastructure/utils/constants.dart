@@ -22,9 +22,11 @@ class Constants {
 // Field
   String get userId => 'userId';
   String get notificationId => 'notificationId';
+  String get announcementId => 'announcementId';
   String get name => 'name';
   String get email => 'email';
 
 // Function
   String get updateNotificationReadState => 'updateNotificationReadState';
+  String get updateAnnouncementReadState => 'updateAnnouncementReadState';
 }

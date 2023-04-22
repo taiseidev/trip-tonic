@@ -32,4 +32,10 @@ class ReadAnnouncementRepository {
     // AnnouncementListに変換して返却
     return ReadAnnouncementList(readAnnouncements: announcements);
   }
+
+  // 運営からのお知らせを既読にする
+  Future<void> updateAnnouncementReadState({required String announcementId}) =>
+      ref
+          .read(readAnnouncementsDataSourceProvider)
+          .updateAnnouncementReadState(announcementId: announcementId);
 }

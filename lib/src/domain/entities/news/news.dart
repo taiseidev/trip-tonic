@@ -29,4 +29,18 @@ class News with _$News {
       ),
     );
   }
+
+  // 運営からのお知らせを既読にする
+  News readAnnouncement({required String announcementId}) {
+    return copyWith(
+      announcementList: AnnouncementList(
+        announcements: [
+          for (var element in announcementList.announcements)
+            element.announcementId == announcementId
+                ? element.copyWith(isRead: true)
+                : element,
+        ],
+      ),
+    );
+  }
 }

@@ -181,7 +181,14 @@ class NewsPage extends HookConsumerWidget {
                                             ),
                                       );
                                     } else if (!announcement.isRead) {
-                                      // 運営からのお知らせの既読メソッドを発火させる。
+                                      unawaited(
+                                        ref
+                                            .read(newsNotifierProvider.notifier)
+                                            .readAnnouncement(
+                                              announcementId:
+                                                  announcement.announcementId,
+                                            ),
+                                      );
                                     }
                                     await context.push(NewsDetailPage.pagePath);
                                   },

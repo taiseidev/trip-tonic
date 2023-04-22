@@ -38,10 +38,4 @@ class AnnouncementDataSource {
         db.collection(collectionPath).orderBy('createdAt', descending: true);
     return collectionRef.get();
   }
-
-  // （運営からの）お知らせ一覧の数を取得
-  Future<AggregateQuerySnapshot> fetchAnnouncementListCount() async {
-    final collectionRef = db.collection(collectionPath);
-    return collectionRef.count().get();
-  }
 }
