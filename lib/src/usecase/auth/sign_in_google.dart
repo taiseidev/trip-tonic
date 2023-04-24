@@ -2,6 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/src/infrastructure/repositories/auth/auth_repository_impl.dart';
 
+/// Googleでサインインする
 final signInGoogleProvider = Provider<SingInGoogle>(SingInGoogle.new);
 
 class SingInGoogle {

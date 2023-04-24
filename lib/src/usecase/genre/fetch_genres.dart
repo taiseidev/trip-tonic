@@ -4,6 +4,7 @@ import 'package:trip_tonic/src/infrastructure/repositories/genre/genre_repositor
 
 part 'fetch_genres.g.dart';
 
+/// ジャンルの一覧を取得する
 @riverpod
 Future<List<Genre>> fetchGenres(FetchGenresRef ref) async =>
     ref.read(genreRepositoryProvider).fetchGenres();

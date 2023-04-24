@@ -3,6 +3,7 @@ import 'package:trip_tonic/src/infrastructure/repositories/app/app_repository.da
 
 part 'get_app_version.g.dart';
 
+/// アプリのバージョンを取得する
 @riverpod
 Future<String> getAppVersion(GetAppVersionRef ref) async =>
     ref.read(appRepositoryProvider).getAppVersion();

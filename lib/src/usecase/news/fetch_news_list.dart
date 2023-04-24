@@ -5,6 +5,7 @@ import 'package:trip_tonic/src/usecase/news/announcement/fetch_announcement_list
 import 'package:trip_tonic/src/usecase/news/notification/fetch_notification_list.dart';
 import 'package:trip_tonic/src/usecase/news/read_announcement/fetch_read_announcement.dart';
 
+// TODO: リファクタリング
 final fetchNewsListProvider = FutureProvider.autoDispose<News>(
   (ref) async {
     // 運営からのお知らせ一覧を取得
