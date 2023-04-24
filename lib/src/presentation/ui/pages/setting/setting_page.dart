@@ -1,12 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/setting/setting_notifier.dart';
+import 'package:trip_tonic/src/usecase/auth/sign_out.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends HookConsumerWidget {
   const SettingPage({super.key});
 
   static const pagePath = 'setting';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final setting = ref.watch(settingNotifierProvider).asData?.value;
+
+    if (setting == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    final isPushNotification =
+        useState(setting.newsSetting?.isPushNotification);
+    final isPushAnnouncement =
+        useState(setting.newsSetting?.isPushAnnouncement);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -49,7 +68,7 @@ class SettingPage extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                '＊ お知らせの通知を受け取るかの設定ができます。',
+                '＊ 通知を受け取るかの設定ができます。',
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 12,
@@ -69,8 +88,10 @@ class SettingPage extends StatelessWidget {
               ),
             ),
             trailing: Switch(
-              value: false,
-              onChanged: (value) {},
+              value: isPushNotification.value ?? false,
+              onChanged: (value) {
+                isPushNotification.value = value;
+              },
             ),
           ),
           ListTile(
@@ -85,8 +106,10 @@ class SettingPage extends StatelessWidget {
               ),
             ),
             trailing: Switch(
-              value: false,
-              onChanged: (value) {},
+              value: isPushAnnouncement.value ?? false,
+              onChanged: (value) {
+                isPushAnnouncement.value = value;
+              },
             ),
           ),
           const Padding(
@@ -123,73 +146,77 @@ class SettingPage extends StatelessWidget {
             ),
             onTap: () {},
           ),
-          const ListTile(
-            leading: Icon(
+          ListTile(
+            leading: const Icon(
               Icons.privacy_tip_outlined,
               color: Colors.black,
             ),
-            title: Text(
+            title: const Text(
               'プライバシーポリシー',
               style: TextStyle(
                 fontWeight: FontWeight.w700,
               ),
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 18,
             ),
+            onTap: () {},
           ),
-          const ListTile(
-            leading: Icon(
+          ListTile(
+            leading: const Icon(
               Icons.help_outline,
               color: Colors.black,
             ),
-            title: Text(
+            title: const Text(
               'FAQ',
               style: TextStyle(
                 fontWeight: FontWeight.w700,
               ),
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 18,
             ),
+            onTap: () {},
           ),
-          const ListTile(
-            leading: Icon(
+          ListTile(
+            leading: const Icon(
               Icons.mail_outline_outlined,
               color: Colors.black,
             ),
-            title: Text(
+            title: const Text(
               'お問い合わせ',
               style: TextStyle(
                 fontWeight: FontWeight.w700,
               ),
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 18,
             ),
+            onTap: () {},
           ),
-          const ListTile(
-            leading: Icon(
+          ListTile(
+            leading: const Icon(
               Icons.logout_outlined,
               color: Colors.black,
             ),
-            title: Text(
+            title: const Text(
               'ログアウト',
               style: TextStyle(
                 fontWeight: FontWeight.w700,
               ),
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.black,
               size: 18,
             ),
+            onTap: () => ref.read(signOutProvider)(),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 32),
@@ -205,11 +232,11 @@ class SettingPage extends StatelessWidget {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 32),
+          Padding(
+            padding: const EdgeInsets.only(top: 32),
             child: Text(
-              'バージョン 1.0.0',
-              style: TextStyle(
+              'バージョン ${setting.appVersion}',
+              style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),

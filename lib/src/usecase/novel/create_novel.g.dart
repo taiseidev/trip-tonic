@@ -6,7 +6,7 @@ part of 'create_novel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createNovelHash() => r'd9e09074f509d657cecfcb935d14b737ff2fa090';
+String _$createNovelHash() => r'5719f90ae9619586b7cd399a72d2746abfd0b005';
 
 /// Copied from Dart SDK
 class _SystemHash {

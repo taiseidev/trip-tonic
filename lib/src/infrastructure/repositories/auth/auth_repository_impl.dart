@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firebase_auth/firebase_auth_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/auth/auth_data_source.dart';
+import 'package:trip_tonic/src/infrastructure/utils/providers.dart';
 
 final authRepositoryImplProvider = Provider<AuthRepositoryImpl>(
   AuthRepositoryImpl.new,
@@ -44,5 +45,9 @@ class AuthRepositoryImpl {
           userName: credential.givenName ?? '登録なし',
           mail: credential.email ?? '登録なし',
         );
+  }
+
+  Future<void> signOut() async {
+    await ref.read(firebaseAuthProvider).signOut();
   }
 }
