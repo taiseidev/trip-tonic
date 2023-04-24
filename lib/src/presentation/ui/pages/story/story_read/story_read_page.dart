@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/domain/entities/story/story.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/main/scaffold_with_nav_bar.dart';
 
 class StoryReadPage extends HookConsumerWidget {
   const StoryReadPage({
@@ -73,7 +73,7 @@ class StoryReadPage extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
-        onPressed: () => context.go(MainPage.pagePath),
+        onPressed: () => context.go(ScaffoldWithNavBar.pagePath),
         child: const Icon(Icons.arrow_back_rounded),
       ),
       floatingActionButtonLocation:

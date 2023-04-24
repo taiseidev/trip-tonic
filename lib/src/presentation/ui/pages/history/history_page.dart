@@ -9,6 +9,9 @@ import 'package:trip_tonic/src/infrastructure/models/api_service.dart';
 class HistoryPage extends HookConsumerWidget {
   const HistoryPage({super.key});
 
+  static const pageName = 'history';
+  static const pagePath = '/history';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final text = useState<String>('');

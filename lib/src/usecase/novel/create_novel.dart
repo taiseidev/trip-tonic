@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:trip_tonic/core/exceptions/app_exceptions.dart';
+import 'package:trip_tonic/core/extensions/exception_extension.dart';
 import 'package:trip_tonic/src/domain/entities/story/story.dart';
 import 'package:trip_tonic/src/infrastructure/repositories/story/story_repository_provider.dart';
 
-part 'create_story.g.dart';
+part 'create_novel.g.dart';
 
 @riverpod
-Future<Story> createStory(
-  CreateStoryRef ref, {
+Future<Story> createNovel(
+  CreateNovelRef ref, {
   required String genre,
   required String keyWord,
   required List<String> characters,
@@ -20,8 +22,7 @@ Future<Story> createStory(
           characters: characters,
         );
   } on DioError catch (err) {
-    // TODO: エラーハンドリングを追加する
-    throw Exception(err);
+    throw AppException.error(err.errorMessage);
   }
   return story;
 }

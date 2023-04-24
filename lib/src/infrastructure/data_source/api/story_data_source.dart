@@ -5,7 +5,7 @@ import 'package:trip_tonic/src/infrastructure/data_source/api/app_dio/app_dio_pr
 
 part 'story_data_source.g.dart';
 
-@RestApi(baseUrl: 'https://asia-northeast1-trip-tonic.cloudfunctions.net/')
+@RestApi()
 abstract class StoryDataSource {
   factory StoryDataSource(Dio dio, {String? baseUrl}) = _StoryDataSource;
 

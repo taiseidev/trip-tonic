@@ -7,7 +7,7 @@ import 'package:trip_tonic/src/presentation/router/args.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_read/story_read_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/components/completed_widget.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/components/loading_widget.dart';
-import 'package:trip_tonic/src/usecase/story/create_story.dart';
+import 'package:trip_tonic/src/usecase/novel/create_novel.dart';
 
 // ChatGPTのAPIのレスポンスが遅いので、待っている間に簡単な
 // ゲームで遊べる画面を作成
@@ -35,7 +35,7 @@ class WaitingGamePage extends HookConsumerWidget {
     );
 
     final story = ref.watch(
-      createStoryProvider(
+      createNovelProvider(
         genre: args.genre,
         keyWord: args.keyWord,
         characters: args.characters,
@@ -56,7 +56,9 @@ class WaitingGamePage extends HookConsumerWidget {
                 return const CompletedWidget();
               },
               loading: LoadingWidget.new,
-              error: (error, stack) => Text(error.toString()),
+              error: (error, stack) {
+                return const Text('');
+              },
             ),
           ],
         ),

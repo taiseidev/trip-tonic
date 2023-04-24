@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/ref_extension.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/gen/assets.gen.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/main/scaffold_with_nav_bar.dart';
 import 'package:trip_tonic/src/presentation/ui/templates/auth/sign_in_page_template.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_anonymously.dart.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_apple.dart';
@@ -21,7 +21,7 @@ class SignInPage extends ConsumerWidget {
     ref.handleAsyncValue<void>(
       loadingStateProvider,
       completeMessage: 'ユーザ登録が完了しました！',
-      complete: (context, _) async => context.go(MainPage.pagePath),
+      complete: (context, _) async => context.go(ScaffoldWithNavBar.pagePath),
     );
 
     return Scaffold(

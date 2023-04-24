@@ -4,6 +4,9 @@ import 'package:trip_tonic/src/presentation/ui/pages/profile/widgets/user_profil
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
+  static const pageName = 'profile';
+  static const pagePath = '/profile';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

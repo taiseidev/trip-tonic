@@ -22,6 +22,9 @@ enum NewsType {
 class NewsPage extends HookConsumerWidget {
   const NewsPage({super.key});
 
+  static const pageName = 'news';
+  static const pagePath = '/news';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTab = useState(NewsType.notice.name);

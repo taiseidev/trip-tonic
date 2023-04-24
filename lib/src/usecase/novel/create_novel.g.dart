@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'create_story.dart';
+part of 'create_novel.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createStoryHash() => r'05479d08ff7e832f14b250a9e740fb248b17dd51';
+String _$createNovelHash() => r'd9e09074f509d657cecfcb935d14b737ff2fa090';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,24 +29,24 @@ class _SystemHash {
   }
 }
 
-typedef CreateStoryRef = AutoDisposeFutureProviderRef<Story>;
+typedef CreateNovelRef = AutoDisposeFutureProviderRef<Story>;
 
-/// See also [createStory].
-@ProviderFor(createStory)
-const createStoryProvider = CreateStoryFamily();
+/// See also [createNovel].
+@ProviderFor(createNovel)
+const createNovelProvider = CreateNovelFamily();
 
-/// See also [createStory].
-class CreateStoryFamily extends Family<AsyncValue<Story>> {
-  /// See also [createStory].
-  const CreateStoryFamily();
+/// See also [createNovel].
+class CreateNovelFamily extends Family<AsyncValue<Story>> {
+  /// See also [createNovel].
+  const CreateNovelFamily();
 
-  /// See also [createStory].
-  CreateStoryProvider call({
+  /// See also [createNovel].
+  CreateNovelProvider call({
     required String genre,
     required String keyWord,
     required List<String> characters,
   }) {
-    return CreateStoryProvider(
+    return CreateNovelProvider(
       genre: genre,
       keyWord: keyWord,
       characters: characters,
@@ -54,8 +54,8 @@ class CreateStoryFamily extends Family<AsyncValue<Story>> {
   }
 
   @override
-  CreateStoryProvider getProviderOverride(
-    covariant CreateStoryProvider provider,
+  CreateNovelProvider getProviderOverride(
+    covariant CreateNovelProvider provider,
   ) {
     return call(
       genre: provider.genre,
@@ -76,32 +76,32 @@ class CreateStoryFamily extends Family<AsyncValue<Story>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'createStoryProvider';
+  String? get name => r'createNovelProvider';
 }
 
-/// See also [createStory].
-class CreateStoryProvider extends AutoDisposeFutureProvider<Story> {
-  /// See also [createStory].
-  CreateStoryProvider({
+/// See also [createNovel].
+class CreateNovelProvider extends AutoDisposeFutureProvider<Story> {
+  /// See also [createNovel].
+  CreateNovelProvider({
     required this.genre,
     required this.keyWord,
     required this.characters,
   }) : super.internal(
-          (ref) => createStory(
+          (ref) => createNovel(
             ref,
             genre: genre,
             keyWord: keyWord,
             characters: characters,
           ),
-          from: createStoryProvider,
-          name: r'createStoryProvider',
+          from: createNovelProvider,
+          name: r'createNovelProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$createStoryHash,
-          dependencies: CreateStoryFamily._dependencies,
+                  : _$createNovelHash,
+          dependencies: CreateNovelFamily._dependencies,
           allTransitiveDependencies:
-              CreateStoryFamily._allTransitiveDependencies,
+              CreateNovelFamily._allTransitiveDependencies,
         );
 
   final String genre;
@@ -110,7 +110,7 @@ class CreateStoryProvider extends AutoDisposeFutureProvider<Story> {
 
   @override
   bool operator ==(Object other) {
-    return other is CreateStoryProvider &&
+    return other is CreateNovelProvider &&
         other.genre == genre &&
         other.keyWord == keyWord &&
         other.characters == characters;

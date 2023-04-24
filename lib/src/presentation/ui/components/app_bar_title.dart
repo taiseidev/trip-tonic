@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:trip_tonic/core/extensions/context_extension.dart';
 import 'package:trip_tonic/src/presentation/ui/atoms/text_atoms.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/main/main_page.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/main/scaffold_with_nav_bar.dart';
 
 /// ローカライズするため、タイトルのみtypeで切り替え
-class AppBarTitleMolecules extends StatelessWidget {
-  const AppBarTitleMolecules({required this.type, super.key});
+class AppBarTitle extends StatelessWidget {
+  const AppBarTitle({required this.type, super.key});
 
   final TabType type;
 

@@ -12,9 +12,7 @@ class _StoryDataSource implements StoryDataSource {
   _StoryDataSource(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'https://asia-northeast1-trip-tonic.cloudfunctions.net/';
-  }
+  });
 
   final Dio _dio;
 
