@@ -32,7 +32,7 @@ Future<void> main() async {
 
   runApp(
     ProviderScope(
-      overrides: overridesProvider(),
+      overrides: _overridesProvider(),
       observers: [ProviderLogger()],
       child: DevicePreview(
         enabled: flavor == dev,
@@ -49,8 +49,7 @@ Future<void> _initFirebase() async => Firebase.initializeApp(
           : development.DefaultFirebaseOptions.currentPlatform,
     );
 
-// モックデータを使用するかどうか
-List<Override> overridesProvider() {
+List<Override> _overridesProvider() {
   return isMock
       ? [
           storyRepositoryProvider.overrideWith(StoryRepositoryMock.new),

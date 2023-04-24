@@ -20,8 +20,6 @@ class AppUserDTO with _$AppUserDTO {
   Future<AppUser> toDomain() async {
     final hasPremium = await isPremium();
     return AppUser(
-      userId: userId,
-      name: name,
       isPremium: hasPremium,
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),

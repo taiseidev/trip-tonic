@@ -10,6 +10,7 @@ import 'package:trip_tonic/src/presentation/ui/pages/news/news_detail_page.dart'
 import 'package:trip_tonic/src/presentation/ui/pages/news/news_notifier.dart';
 import 'package:trip_tonic/src/usecase/news/fetch_news_list.dart';
 
+// TODO: お知らせのロジックを運営からのとお知らせで分ける
 enum NewsType {
   notice('お知らせ'),
   news('ニュース');

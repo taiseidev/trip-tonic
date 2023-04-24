@@ -7,7 +7,7 @@ part of 'read_announcements_data_source.dart';
 // **************************************************************************
 
 String _$readAnnouncementsDataSourceHash() =>
-    r'2d8d2423679541c3113c3e4c9e872394aa7750d3';
+    r'a6e217945a632409bb68e360d55c4621ee8a7dca';
 
 /// See also [readAnnouncementsDataSource].
 @ProviderFor(readAnnouncementsDataSource)

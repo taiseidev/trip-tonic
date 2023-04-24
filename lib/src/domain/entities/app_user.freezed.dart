@@ -16,8 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppUser {
-  String get userId => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
   String? get iconUrl => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   bool get isPremium => throw _privateConstructorUsedError;
@@ -34,9 +32,7 @@ abstract class $AppUserCopyWith<$Res> {
       _$AppUserCopyWithImpl<$Res, AppUser>;
   @useResult
   $Res call(
-      {String userId,
-      String name,
-      String? iconUrl,
+      {String? iconUrl,
       String? email,
       bool isPremium,
       DateTime createdAt,
@@ -56,8 +52,6 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
-    Object? name = null,
     Object? iconUrl = freezed,
     Object? email = freezed,
     Object? isPremium = null,
@@ -65,14 +59,6 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       iconUrl: freezed == iconUrl
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
@@ -105,9 +91,7 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String userId,
-      String name,
-      String? iconUrl,
+      {String? iconUrl,
       String? email,
       bool isPremium,
       DateTime createdAt,
@@ -124,8 +108,6 @@ class __$$_AppUserCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
-    Object? name = null,
     Object? iconUrl = freezed,
     Object? email = freezed,
     Object? isPremium = null,
@@ -133,14 +115,6 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? updatedAt = null,
   }) {
     return _then(_$_AppUser(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       iconUrl: freezed == iconUrl
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
@@ -167,20 +141,15 @@ class __$$_AppUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppUser implements _AppUser {
+class _$_AppUser extends _AppUser {
   const _$_AppUser(
-      {required this.userId,
-      required this.name,
-      this.iconUrl,
+      {this.iconUrl,
       this.email,
       this.isPremium = false,
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt})
+      : super._();
 
-  @override
-  final String userId;
-  @override
-  final String name;
   @override
   final String? iconUrl;
   @override
@@ -195,7 +164,7 @@ class _$_AppUser implements _AppUser {
 
   @override
   String toString() {
-    return 'AppUser(userId: $userId, name: $name, iconUrl: $iconUrl, email: $email, isPremium: $isPremium, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'AppUser(iconUrl: $iconUrl, email: $email, isPremium: $isPremium, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -203,8 +172,6 @@ class _$_AppUser implements _AppUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppUser &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.name, name) || other.name == name) &&
             (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.isPremium, isPremium) ||
@@ -216,8 +183,8 @@ class _$_AppUser implements _AppUser {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId, name, iconUrl, email,
-      isPremium, createdAt, updatedAt);
+  int get hashCode =>
+      Object.hash(runtimeType, iconUrl, email, isPremium, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -226,20 +193,15 @@ class _$_AppUser implements _AppUser {
       __$$_AppUserCopyWithImpl<_$_AppUser>(this, _$identity);
 }
 
-abstract class _AppUser implements AppUser {
+abstract class _AppUser extends AppUser {
   const factory _AppUser(
-      {required final String userId,
-      required final String name,
-      final String? iconUrl,
+      {final String? iconUrl,
       final String? email,
       final bool isPremium,
       required final DateTime createdAt,
       required final DateTime updatedAt}) = _$_AppUser;
+  const _AppUser._() : super._();
 
-  @override
-  String get userId;
-  @override
-  String get name;
   @override
   String? get iconUrl;
   @override
