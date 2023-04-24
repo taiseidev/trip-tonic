@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/setting/setting_notifier.dart';
+import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_out.dart';
 
 class SettingPage extends HookConsumerWidget {
@@ -12,19 +12,15 @@ class SettingPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final setting = ref.watch(settingNotifierProvider).asData?.value;
+    final appUser = ref.watch(appUserNotifierProvider).asData?.value;
 
-    if (setting == null) {
+    if (setting == null || appUser == null) {
       return const Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
         ),
       );
     }
-
-    final isPushNotification =
-        useState(setting.newsSetting?.isPushNotification);
-    final isPushAnnouncement =
-        useState(setting.newsSetting?.isPushAnnouncement);
 
     return Scaffold(
       appBar: AppBar(
@@ -88,10 +84,8 @@ class SettingPage extends HookConsumerWidget {
               ),
             ),
             trailing: Switch(
-              value: isPushNotification.value ?? false,
-              onChanged: (value) {
-                isPushNotification.value = value;
-              },
+              value: appUser.pushNotificationEnabled,
+              onChanged: (value) {},
             ),
           ),
           ListTile(
@@ -106,10 +100,8 @@ class SettingPage extends HookConsumerWidget {
               ),
             ),
             trailing: Switch(
-              value: isPushAnnouncement.value ?? false,
-              onChanged: (value) {
-                isPushAnnouncement.value = value;
-              },
+              value: appUser.pushAnnouncementEnabled,
+              onChanged: (value) {},
             ),
           ),
           const Padding(

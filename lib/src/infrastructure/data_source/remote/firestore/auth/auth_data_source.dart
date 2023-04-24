@@ -31,10 +31,12 @@ class FirestoreDataSource {
     final userId = auth.currentUser!.uid;
     final collectionRef =
         db.collection('${constants.versions}/$version/${constants.users}');
-    await collectionRef.doc(userId).set(<String, String>{
+    await collectionRef.doc(userId).set(<String, dynamic>{
       constants.userId: userId,
       constants.name: userName,
       constants.email: mail,
+      constants.pushNotificationEnabled: true,
+      constants.pushAnnouncementEnabled: true,
     });
   }
 }

@@ -24,6 +24,8 @@ Future<void> main() async {
   await FlutterConfig.loadEnvVariables();
   await _initFirebase();
 
+  // ユーザ情報を取得する。
+
   /// 縦固定
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

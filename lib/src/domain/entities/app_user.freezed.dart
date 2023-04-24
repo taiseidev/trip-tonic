@@ -14,14 +14,20 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AppUser _$AppUserFromJson(Map<String, dynamic> json) {
+  return _AppUser.fromJson(json);
+}
+
 /// @nodoc
 mixin _$AppUser {
+  String? get userId => throw _privateConstructorUsedError;
   String? get iconUrl => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   bool get isPremium => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  bool get pushAnnouncementEnabled => throw _privateConstructorUsedError;
+  bool get pushNotificationEnabled => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
 }
@@ -32,11 +38,12 @@ abstract class $AppUserCopyWith<$Res> {
       _$AppUserCopyWithImpl<$Res, AppUser>;
   @useResult
   $Res call(
-      {String? iconUrl,
+      {String? userId,
+      String? iconUrl,
       String? email,
       bool isPremium,
-      DateTime createdAt,
-      DateTime updatedAt});
+      bool pushAnnouncementEnabled,
+      bool pushNotificationEnabled});
 }
 
 /// @nodoc
@@ -52,13 +59,18 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userId = freezed,
     Object? iconUrl = freezed,
     Object? email = freezed,
     Object? isPremium = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? pushAnnouncementEnabled = null,
+    Object? pushNotificationEnabled = null,
   }) {
     return _then(_value.copyWith(
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
       iconUrl: freezed == iconUrl
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
@@ -71,14 +83,14 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.isPremium
           : isPremium // ignore: cast_nullable_to_non_nullable
               as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      pushAnnouncementEnabled: null == pushAnnouncementEnabled
+          ? _value.pushAnnouncementEnabled
+          : pushAnnouncementEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pushNotificationEnabled: null == pushNotificationEnabled
+          ? _value.pushNotificationEnabled
+          : pushNotificationEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -91,11 +103,12 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? iconUrl,
+      {String? userId,
+      String? iconUrl,
       String? email,
       bool isPremium,
-      DateTime createdAt,
-      DateTime updatedAt});
+      bool pushAnnouncementEnabled,
+      bool pushNotificationEnabled});
 }
 
 /// @nodoc
@@ -108,13 +121,18 @@ class __$$_AppUserCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userId = freezed,
     Object? iconUrl = freezed,
     Object? email = freezed,
     Object? isPremium = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? pushAnnouncementEnabled = null,
+    Object? pushNotificationEnabled = null,
   }) {
     return _then(_$_AppUser(
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
       iconUrl: freezed == iconUrl
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
@@ -127,29 +145,35 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value.isPremium
           : isPremium // ignore: cast_nullable_to_non_nullable
               as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      pushAnnouncementEnabled: null == pushAnnouncementEnabled
+          ? _value.pushAnnouncementEnabled
+          : pushAnnouncementEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pushNotificationEnabled: null == pushNotificationEnabled
+          ? _value.pushNotificationEnabled
+          : pushNotificationEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AppUser extends _AppUser {
   const _$_AppUser(
-      {this.iconUrl,
+      {this.userId,
+      this.iconUrl,
       this.email,
       this.isPremium = false,
-      required this.createdAt,
-      required this.updatedAt})
+      this.pushAnnouncementEnabled = false,
+      this.pushNotificationEnabled = false})
       : super._();
 
+  factory _$_AppUser.fromJson(Map<String, dynamic> json) =>
+      _$$_AppUserFromJson(json);
+
+  @override
+  final String? userId;
   @override
   final String? iconUrl;
   @override
@@ -158,13 +182,15 @@ class _$_AppUser extends _AppUser {
   @JsonKey()
   final bool isPremium;
   @override
-  final DateTime createdAt;
+  @JsonKey()
+  final bool pushAnnouncementEnabled;
   @override
-  final DateTime updatedAt;
+  @JsonKey()
+  final bool pushNotificationEnabled;
 
   @override
   String toString() {
-    return 'AppUser(iconUrl: $iconUrl, email: $email, isPremium: $isPremium, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'AppUser(userId: $userId, iconUrl: $iconUrl, email: $email, isPremium: $isPremium, pushAnnouncementEnabled: $pushAnnouncementEnabled, pushNotificationEnabled: $pushNotificationEnabled)';
   }
 
   @override
@@ -172,36 +198,52 @@ class _$_AppUser extends _AppUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppUser &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.isPremium, isPremium) ||
                 other.isPremium == isPremium) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            (identical(
+                    other.pushAnnouncementEnabled, pushAnnouncementEnabled) ||
+                other.pushAnnouncementEnabled == pushAnnouncementEnabled) &&
+            (identical(
+                    other.pushNotificationEnabled, pushNotificationEnabled) ||
+                other.pushNotificationEnabled == pushNotificationEnabled));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, iconUrl, email, isPremium, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, userId, iconUrl, email,
+      isPremium, pushAnnouncementEnabled, pushNotificationEnabled);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>
       __$$_AppUserCopyWithImpl<_$_AppUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AppUserToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AppUser extends AppUser {
   const factory _AppUser(
-      {final String? iconUrl,
+      {final String? userId,
+      final String? iconUrl,
       final String? email,
       final bool isPremium,
-      required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$_AppUser;
+      final bool pushAnnouncementEnabled,
+      final bool pushNotificationEnabled}) = _$_AppUser;
   const _AppUser._() : super._();
 
+  factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
+
+  @override
+  String? get userId;
   @override
   String? get iconUrl;
   @override
@@ -209,9 +251,9 @@ abstract class _AppUser extends AppUser {
   @override
   bool get isPremium;
   @override
-  DateTime get createdAt;
+  bool get pushAnnouncementEnabled;
   @override
-  DateTime get updatedAt;
+  bool get pushNotificationEnabled;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

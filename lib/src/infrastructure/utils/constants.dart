@@ -25,6 +25,8 @@ class Constants {
   String get announcementId => 'announcementId';
   String get name => 'name';
   String get email => 'email';
+  String get pushNotificationEnabled => 'pushNotificationEnabled';
+  String get pushAnnouncementEnabled => 'pushAnnouncementEnabled';
 
 // Function
   String get updateNotificationReadState => 'updateNotificationReadState';

@@ -8,7 +8,9 @@ part of 'get_app_version.dart';
 
 String _$getAppVersionHash() => r'b2943b7c248819b2f105881aaf97321655ddf172';
 
-/// See also [getAppVersion].
+/// アプリのバージョンを取得する
+///
+/// Copied from [getAppVersion].
 @ProviderFor(getAppVersion)
 final getAppVersionProvider = AutoDisposeFutureProvider<String>.internal(
   getAppVersion,

@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'fetch_genres.dart';
+part of 'fetch_user.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchGenresHash() => r'70d5786f608d120677589811a9f8680523b71aa5';
+String _$fetchUserHash() => r'59dca8cea6bececcce63c8dd0156500eb5ccdcd7';
 
-/// ジャンルの一覧を取得する
+/// ユーザの通知設定を取得する
 ///
-/// Copied from [fetchGenres].
-@ProviderFor(fetchGenres)
-final fetchGenresProvider = AutoDisposeFutureProvider<List<Genre>>.internal(
-  fetchGenres,
-  name: r'fetchGenresProvider',
+/// Copied from [fetchUser].
+@ProviderFor(fetchUser)
+final fetchUserProvider = AutoDisposeFutureProvider<AppUser>.internal(
+  fetchUser,
+  name: r'fetchUserProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$fetchGenresHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$fetchUserHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef FetchGenresRef = AutoDisposeFutureProviderRef<List<Genre>>;
+typedef FetchUserRef = AutoDisposeFutureProviderRef<AppUser>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

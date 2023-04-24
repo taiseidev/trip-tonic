@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SettingState {
   String get appVersion => throw _privateConstructorUsedError;
-  NewsSetting? get newsSetting => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SettingStateCopyWith<SettingState> get copyWith =>
@@ -30,7 +29,7 @@ abstract class $SettingStateCopyWith<$Res> {
           SettingState value, $Res Function(SettingState) then) =
       _$SettingStateCopyWithImpl<$Res, SettingState>;
   @useResult
-  $Res call({String appVersion, NewsSetting? newsSetting});
+  $Res call({String appVersion});
 }
 
 /// @nodoc
@@ -47,17 +46,12 @@ class _$SettingStateCopyWithImpl<$Res, $Val extends SettingState>
   @override
   $Res call({
     Object? appVersion = null,
-    Object? newsSetting = freezed,
   }) {
     return _then(_value.copyWith(
       appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      newsSetting: freezed == newsSetting
-          ? _value.newsSetting
-          : newsSetting // ignore: cast_nullable_to_non_nullable
-              as NewsSetting?,
     ) as $Val);
   }
 }
@@ -70,7 +64,7 @@ abstract class _$$_SettingStateCopyWith<$Res>
       __$$_SettingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String appVersion, NewsSetting? newsSetting});
+  $Res call({String appVersion});
 }
 
 /// @nodoc
@@ -85,17 +79,12 @@ class __$$_SettingStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? appVersion = null,
-    Object? newsSetting = freezed,
   }) {
     return _then(_$_SettingState(
       appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      newsSetting: freezed == newsSetting
-          ? _value.newsSetting
-          : newsSetting // ignore: cast_nullable_to_non_nullable
-              as NewsSetting?,
     ));
   }
 }
@@ -103,17 +92,15 @@ class __$$_SettingStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SettingState extends _SettingState {
-  const _$_SettingState({this.appVersion = '', this.newsSetting}) : super._();
+  const _$_SettingState({this.appVersion = ''}) : super._();
 
   @override
   @JsonKey()
   final String appVersion;
-  @override
-  final NewsSetting? newsSetting;
 
   @override
   String toString() {
-    return 'SettingState(appVersion: $appVersion, newsSetting: $newsSetting)';
+    return 'SettingState(appVersion: $appVersion)';
   }
 
   @override
@@ -122,13 +109,11 @@ class _$_SettingState extends _SettingState {
         (other.runtimeType == runtimeType &&
             other is _$_SettingState &&
             (identical(other.appVersion, appVersion) ||
-                other.appVersion == appVersion) &&
-            (identical(other.newsSetting, newsSetting) ||
-                other.newsSetting == newsSetting));
+                other.appVersion == appVersion));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appVersion, newsSetting);
+  int get hashCode => Object.hash(runtimeType, appVersion);
 
   @JsonKey(ignore: true)
   @override
@@ -138,15 +123,11 @@ class _$_SettingState extends _SettingState {
 }
 
 abstract class _SettingState extends SettingState {
-  const factory _SettingState(
-      {final String appVersion,
-      final NewsSetting? newsSetting}) = _$_SettingState;
+  const factory _SettingState({final String appVersion}) = _$_SettingState;
   const _SettingState._() : super._();
 
   @override
   String get appVersion;
-  @override
-  NewsSetting? get newsSetting;
   @override
   @JsonKey(ignore: true)
   _$$_SettingStateCopyWith<_$_SettingState> get copyWith =>

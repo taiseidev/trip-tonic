@@ -21,8 +21,8 @@ class AppUserDTO with _$AppUserDTO {
     final hasPremium = await isPremium();
     return AppUser(
       isPremium: hasPremium,
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
+      // createdAt: DateTime.now(),
+      // updatedAt: DateTime.now(),
     );
   }
 

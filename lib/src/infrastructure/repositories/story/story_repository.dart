@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/domain/entities/story/story.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/api/story_data_source.dart';
-import 'package:trip_tonic/src/infrastructure/repositories/user/user_repository.dart';
+import 'package:trip_tonic/src/infrastructure/repositories/app_user/user_repository.dart';
 
 class StoryRepository {
   StoryRepository(this.ref);
@@ -24,7 +24,7 @@ class StoryRepository {
           charactersJson,
         );
 
-    final userId = ref.read(userRepositoryProvider).getUserId();
+    final userId = ref.read(appUserRepositoryProvider).getUserId();
 
     if (userId == null) {
       throw Exception('userId is null');
