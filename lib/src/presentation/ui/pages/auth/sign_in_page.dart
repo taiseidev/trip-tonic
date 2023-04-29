@@ -6,9 +6,9 @@ import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/gen/assets.gen.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/timeline/timeline_page.dart';
 import 'package:trip_tonic/src/presentation/ui/templates/auth/sign_in_page_template.dart';
-import 'package:trip_tonic/src/usecase/auth/sign_in_anonymously.dart';
-import 'package:trip_tonic/src/usecase/auth/sign_in_apple.dart';
-import 'package:trip_tonic/src/usecase/auth/sign_in_google.dart';
+import 'package:trip_tonic/src/usecase/auth/sign_in_anonymously_use_case.dart';
+import 'package:trip_tonic/src/usecase/auth/sign_in_apple_use_case.dart';
+import 'package:trip_tonic/src/usecase/auth/sign_in_google_use_case.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
@@ -30,9 +30,10 @@ class SignInPage extends ConsumerWidget {
         googleText: 'Googleで登録',
         appleText: 'Appleで登録',
         imagePath: Assets.images.building.path,
-        onPressedAnonymously: () => ref.read(signInAnonymouslyProvider)(),
-        onPressedGoogle: () => ref.read(signInGoogleProvider)(),
-        onPressedApple: () => ref.read(signInAppleProvider)(),
+        onPressedAnonymously: () =>
+            ref.read(signInAnonymouslyUseCaseProvider)(),
+        onPressedGoogle: () => ref.read(signInGoogleUseCaseProvider)(),
+        onPressedApple: () => ref.read(signInAppleUseCaseProvider)(),
       ),
     );
   }

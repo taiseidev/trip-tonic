@@ -1,14 +1,15 @@
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/src/infrastructure/repositories/auth/auth_repository_impl.dart';
 
 /// 匿名でサインインする
-final signInAnonymouslyProvider =
-    Provider<SingInAnonymously>(SingInAnonymously.new);
+final signInAnonymouslyUseCaseProvider =
+    Provider<SingInAnonymouslyUseCase>(SingInAnonymouslyUseCase.new);
 
-class SingInAnonymously {
-  SingInAnonymously(this.ref);
-  final ProviderRef<SingInAnonymously> ref;
+class SingInAnonymouslyUseCase {
+  SingInAnonymouslyUseCase(this.ref);
+  final ProviderRef<SingInAnonymouslyUseCase> ref;
 
   Future<void> call() async {
     ref.read(loadingStateProvider.notifier)

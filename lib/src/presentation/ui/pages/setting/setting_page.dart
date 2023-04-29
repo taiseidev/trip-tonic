@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/setting/setting_notifier.dart';
 import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
-import 'package:trip_tonic/src/usecase/auth/sign_out.dart';
+import 'package:trip_tonic/src/usecase/auth/sign_out_use_case.dart';
 
 class SettingPage extends HookConsumerWidget {
   const SettingPage({super.key});
@@ -208,7 +208,7 @@ class SettingPage extends HookConsumerWidget {
               color: Colors.black,
               size: 18,
             ),
-            onTap: () => ref.read(signOutProvider)(),
+            onTap: () => ref.read(signOutUseCaseProvider)(),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 32),

@@ -1,4 +1,5 @@
-// 画面遷移時に渡す引数クラスを定義する
+// 画面遷移時に渡す引数用クラスを定義する
+
 class CreateStoryArgs {
   CreateStoryArgs({
     required this.genre,

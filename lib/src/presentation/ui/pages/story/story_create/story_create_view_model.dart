@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/core/utils/uuid.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_state.dart';
-import 'package:trip_tonic/src/usecase/genre/fetch_genres.dart';
+import 'package:trip_tonic/src/usecase/genre/fetch_genres_use_case.dart';
 
 part 'story_create_view_model.g.dart';
 
@@ -11,8 +11,8 @@ class StoryCreateViewModel extends AutoDisposeAsyncNotifier<StoryCreateState> {
 
   @override
   Future<StoryCreateState> build() async {
-    final genres = ref.watch(fetchGenresProvider).asData?.value;
-    return StoryCreateState(genres: genres ?? []);
+    final genres = await ref.watch(fetchGenresUsecaseProvider)();
+    return StoryCreateState(genres: genres);
   }
 
   void addCharacter({
@@ -32,6 +32,4 @@ class StoryCreateViewModel extends AutoDisposeAsyncNotifier<StoryCreateState> {
           characters: state.value!.removeCharacter(id: id),
         ),
       );
-
-  Future<void> createStory() async {}
 }

@@ -6,7 +6,7 @@ part of 'get_app_version.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getAppVersionHash() => r'b2943b7c248819b2f105881aaf97321655ddf172';
+String _$getAppVersionHash() => r'02b13c59ad4613c1a3edaa5fecb2b041f72fc0f0';
 
 /// アプリのバージョンを取得する
 ///

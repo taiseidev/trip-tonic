@@ -18,8 +18,7 @@ import 'package:trip_tonic/src/presentation/ui/pages/timeline/timeline_page.dart
 import 'package:trip_tonic/src/presentation/ui/pages/top/top_page.dart';
 import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
 
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell');
+final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 final routerProvider = Provider(name: 'routerProvider', (ref) {
   final user = ref.watch(userProvider);
