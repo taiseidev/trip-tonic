@@ -19,6 +19,8 @@ class SingInAppleUseCase with AuthMixin {
           final authResult =
               await ref.read(authRepositoryImplProvider).singInApple();
 
+          await storePreviousLoginMethod(ref: ref);
+
           // 新規会員登録の場合は発火
           if (authResult != null && authResult.additionalUserInfo!.isNewUser) {
             await commonAuthFunction(ref: ref); // mixin

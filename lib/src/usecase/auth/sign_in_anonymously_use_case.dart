@@ -20,6 +20,8 @@ class SingInAnonymouslyUseCase with AuthMixin {
         final authResult =
             await ref.read(authRepositoryImplProvider).singInAnonymously();
 
+        await storePreviousLoginMethod(ref: ref);
+
         // 新規会員登録の場合は発火
         if (authResult.additionalUserInfo!.isNewUser) {
           await commonAuthFunction(ref: ref); // mixin
