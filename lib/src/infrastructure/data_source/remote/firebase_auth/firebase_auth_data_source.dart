@@ -13,24 +13,24 @@ class AuthDataSource {
   final FirebaseAuth _auth;
 
   // FirebaseAuthにSNS認証
-  Future<void> _createUser(OAuthCredential oauthCredential) async {
+  Future<UserCredential> _createUser(OAuthCredential oauthCredential) async {
     try {
-      await _auth.signInWithCredential(oauthCredential);
+      return await _auth.signInWithCredential(oauthCredential);
     } on Exception {
       rethrow;
     }
   }
 
   // FirebaseAuthに匿名認証
-  Future<void> singInAnonymously() async {
+  Future<UserCredential> singInAnonymously() async {
     try {
-      await _auth.signInAnonymously();
+      return await _auth.signInAnonymously();
     } on FirebaseException {
       rethrow;
     }
   }
 
-  Future<GoogleSignInAccount?> signInGoogle() async {
+  Future<List<dynamic>?> signInGoogle() async {
     final googleSignIn = GoogleSignIn(
       clientId:
           '147274694288-tpq7fv2trabomfre79c6tcp7uu4p4cls.apps.googleusercontent.com',
@@ -54,8 +54,11 @@ class AuthDataSource {
         idToken: googleAuth.idToken,
       );
 
-      await _createUser(credential);
-      return account;
+      final userCredential = await _createUser(credential);
+      return [
+        userCredential,
+        account,
+      ];
     } on FirebaseAuthException catch (e) {
       if (e.code == 'account-exists-with-different-credential') {
         // エラーダイアログを表示する
@@ -68,7 +71,8 @@ class AuthDataSource {
     return null;
   }
 
-  Future<AuthorizationCredentialAppleID?> signInApple() async {
+  // TODO: Dart3のRecord型に修正
+  Future<List<dynamic>?> signInApple() async {
     try {
       // AuthorizationCredentialAppleIDのインスタンスを取得
       final appleCredential = await SignInWithApple.getAppleIDCredential(
@@ -86,8 +90,12 @@ class AuthDataSource {
         accessToken: appleCredential.authorizationCode,
       );
 
-      await _createUser(credential);
-      return appleCredential;
+      final userCredential = await _createUser(credential);
+
+      return [
+        userCredential,
+        appleCredential,
+      ];
     } on FirebaseAuthException catch (e) {
       if (e.code == 'account-exists-with-different-credential') {
         // エラーダイアログを表示する

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/url/url_data_source.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/setting/setting_notifier.dart';
 import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_out_use_case.dart';
+import 'package:trip_tonic/src/usecase/fetch_url_use_case.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingPage extends HookConsumerWidget {
   const SettingPage({super.key});
@@ -136,7 +139,14 @@ class SettingPage extends HookConsumerWidget {
               color: Colors.black,
               size: 18,
             ),
-            onTap: () {},
+            onTap: () async {
+              final url = await ref.read(fetchUrlUseCaseProvider)(
+                type: UrlType.termsOfService,
+              );
+              await launchUrl(
+                Uri.parse(url),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(
@@ -154,7 +164,14 @@ class SettingPage extends HookConsumerWidget {
               color: Colors.black,
               size: 18,
             ),
-            onTap: () {},
+            onTap: () async {
+              final url = await ref.read(fetchUrlUseCaseProvider)(
+                type: UrlType.privacyPolicy,
+              );
+              await launchUrl(
+                Uri.parse(url),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(
@@ -190,7 +207,14 @@ class SettingPage extends HookConsumerWidget {
               color: Colors.black,
               size: 18,
             ),
-            onTap: () {},
+            onTap: () async {
+              final url = await ref.read(fetchUrlUseCaseProvider)(
+                type: UrlType.contact,
+              );
+              await launchUrl(
+                Uri.parse(url),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(

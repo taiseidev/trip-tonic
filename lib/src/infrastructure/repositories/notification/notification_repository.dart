@@ -14,6 +14,10 @@ class NotificationRepository {
 
   final NotificationRepositoryRef ref;
 
+  // 新規ユーザ用のお知らせを作成
+  Future<void> createNotificationForNewUser() async =>
+      ref.read(notificationDataSourceProvider).createNotificationForNewUser();
+
   Future<NotificationList> fetchNotificationList() async {
     await Future<void>.delayed(const Duration(seconds: 3));
     // Firestoreからお知らせ一覧を取得する

@@ -13,6 +13,7 @@ class Constants {
   // Collection
   String get versions => 'versions';
   String get version => 'version';
+  String get urls => 'urls';
   String get users => 'users';
   String get genres => 'genres';
   String get notifications => 'notifications';
@@ -23,8 +24,14 @@ class Constants {
   String get userId => 'userId';
   String get notificationId => 'notificationId';
   String get announcementId => 'announcementId';
+  String get title => 'title';
+  String get content => 'content';
+  String get isRead => 'isRead';
+  String get createdAt => 'createdAt';
   String get name => 'name';
   String get email => 'email';
+  String get type => 'type';
+  String get url => 'url';
   String get pushNotificationEnabled => 'pushNotificationEnabled';
   String get pushAnnouncementEnabled => 'pushAnnouncementEnabled';
 

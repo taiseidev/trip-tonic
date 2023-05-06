@@ -3,9 +3,9 @@ import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/domain/entities/news/news.dart';
+import 'package:trip_tonic/src/usecase/news/announcement/update_announcement_read_state.dart';
 import 'package:trip_tonic/src/usecase/news/fetch_news_list.dart';
 import 'package:trip_tonic/src/usecase/news/notification/update_notification_read_state.dart';
-import 'package:trip_tonic/src/usecase/news/read_announcement/update_announcement_read_state.dart';
 
 final newsNotifierProvider =
     AsyncNotifierProvider.autoDispose<NewsNotifier, News>(NewsNotifier.new);

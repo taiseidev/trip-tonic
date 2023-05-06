@@ -78,7 +78,12 @@ class ScaffoldWithNavBar extends HookConsumerWidget {
       ),
       body: body,
       floatingActionButton: FloatingActionButtonMolecules(
-        onPressed: () => context.push(StoryCreatePage.pagePath),
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (context) => StoryCreatePage(),
+          ),
+        ),
         backgroundColor: Colors.black,
         iconColor: Colors.white,
       ),

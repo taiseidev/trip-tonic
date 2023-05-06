@@ -45,6 +45,30 @@ class NotificationDataSource {
     return collectionRef.get();
   }
 
+  // 新規ユーザのお知らせを作成する
+  Future<void> createNotificationForNewUser() async {
+    final userId = auth.currentUser?.uid;
+    final userName = auth.currentUser?.displayName;
+    final docRef = db
+        .collection(
+          '${constants.versions}/$version/${constants.users}/$userId/${constants.notifications}',
+        )
+        .doc();
+
+    const guest = 'ゲスト';
+
+    await docRef.set(
+      <String, dynamic>{
+        constants.notificationId: docRef.id,
+        constants.title: '${userName ?? guest}さん！\nダウンロードしていただきありがとうございます🚀',
+        constants.content:
+            'この度は【Novel Journey】をダウンロードしていただきありがとうございます！\nNovel JourneyはOpenAI社が提供しているgpt-3.5-turboというAPIを活用して、自由に短編小説を作成することができるアプリです。あなたの想像を最大限に膨らまして面白い小説を作成してくださいね！\n\n基本的な使い方は下記をご覧ください。\n使い方説明：https:google.com \n \nまた、困ったことやバグの報告、そのほか質問がありましたら下記のフォームからご連絡ください！\nお問い合わせ：https://google.com \n \n今後ともNovel Journeyをよろしくお願いします！！',
+        constants.isRead: false,
+        constants.createdAt: DateTime.now(),
+      },
+    );
+  }
+
   // お知らせを既読にする
   Future<void> updateNotificationReadState({
     required String notificationId,

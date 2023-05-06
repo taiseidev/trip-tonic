@@ -23,6 +23,7 @@ class LoadingNotifier extends Notifier<bool> {
   void hide() => state = false;
 }
 
+/// ローディングの表示
 class Loading extends StatelessWidget {
   const Loading({super.key});
 

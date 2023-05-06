@@ -2,8 +2,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/domain/entities/announcement/announcement_list.dart';
 import 'package:trip_tonic/src/domain/entities/news/news.dart';
 import 'package:trip_tonic/src/usecase/news/announcement/fetch_announcement_list.dart';
+import 'package:trip_tonic/src/usecase/news/announcement/fetch_read_announcement.dart';
 import 'package:trip_tonic/src/usecase/news/notification/fetch_notification_list.dart';
-import 'package:trip_tonic/src/usecase/news/read_announcement/fetch_read_announcement.dart';
 
 // TODO: リファクタリング
 final fetchNewsListProvider = FutureProvider.autoDispose<News>(

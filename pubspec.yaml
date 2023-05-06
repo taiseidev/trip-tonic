@@ -15,7 +15,7 @@ dependencies:
 
   # Firebase
   firebase_core: ^2.8.0
-  firebase_auth: ^4.3.0
+  firebase_auth: any
   cloud_firestore: ^4.4.5
   cloud_functions: ^4.1.1
 
@@ -42,7 +42,7 @@ dependencies:
   # Localization
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
+  intl: any
   lyrebird: ^0.5.0+1
 
   # API Client

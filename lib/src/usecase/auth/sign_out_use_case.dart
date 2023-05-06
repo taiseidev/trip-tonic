@@ -13,7 +13,9 @@ class SignOutUseCase {
     ref.read(loadingStateProvider.notifier)
       ..state = const AsyncValue.loading()
       ..state = await AsyncValue.guard(
-        () async => ref.read(authRepositoryImplProvider).signOut(),
+        () async {
+          await ref.read(authRepositoryImplProvider).signOut();
+        },
       );
   }
 }
