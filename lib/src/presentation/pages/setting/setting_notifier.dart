@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/setting/setting_state.dart';
+import 'package:trip_tonic/src/presentation/pages/setting/setting_state.dart';
 import 'package:trip_tonic/src/usecase/get_app_version.dart';
 
 part 'setting_notifier.g.dart';

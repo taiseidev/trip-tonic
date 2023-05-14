@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/components/bubble_painter.dart';
+import 'package:trip_tonic/src/presentation/pages/story/story_create/components/bubble_painter.dart';
 
 class CustomTooltip extends HookWidget {
   const CustomTooltip({

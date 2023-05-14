@@ -3,10 +3,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/domain/entities/story/story.dart';
+import 'package:trip_tonic/src/presentation/pages/story/story_read/story_read_page.dart';
+import 'package:trip_tonic/src/presentation/pages/story/waiting_game/components/completed_widget.dart';
+import 'package:trip_tonic/src/presentation/pages/story/waiting_game/components/loading_widget.dart';
 import 'package:trip_tonic/src/presentation/router/args.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/story/story_read/story_read_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/components/completed_widget.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/components/loading_widget.dart';
 import 'package:trip_tonic/src/usecase/novel/create_novel.dart';
 
 // ChatGPTのAPIのレスポンスが遅いので、待っている間に簡単な

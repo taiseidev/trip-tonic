@@ -6,8 +6,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/datetime_extension.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/news/news_detail_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/news/news_notifier.dart';
+import 'package:trip_tonic/src/presentation/pages/news/news_detail_page.dart';
+import 'package:trip_tonic/src/presentation/pages/news/news_notifier.dart';
 import 'package:trip_tonic/src/usecase/news/fetch_news_list.dart';
 
 // TODO: お知らせのロジックを運営からのとお知らせで分ける

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/profile/widgets/user_profile_section.dart';
+import 'package:trip_tonic/src/presentation/pages/profile/widgets/user_profile_section.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -9,9 +9,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
-        children: const [
+        children: [
           Padding(
             padding: EdgeInsets.symmetric(vertical: 40),
             child: UserProfileSection(),

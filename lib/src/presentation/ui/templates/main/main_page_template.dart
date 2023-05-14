@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:trip_tonic/src/presentation/pages/history/history_page.dart';
+import 'package:trip_tonic/src/presentation/pages/main/scaffold_with_nav_bar.dart';
+import 'package:trip_tonic/src/presentation/pages/news/news_page.dart';
+import 'package:trip_tonic/src/presentation/pages/profile/profile_page.dart';
+import 'package:trip_tonic/src/presentation/pages/timeline/timeline_page.dart';
 import 'package:trip_tonic/src/presentation/ui/atoms/stack_atoms.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/history/history_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/main/scaffold_with_nav_bar.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/news/news_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/profile/profile_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/timeline/timeline_page.dart';
 
 class MainPageTemplate extends StatelessWidget {
   const MainPageTemplate({

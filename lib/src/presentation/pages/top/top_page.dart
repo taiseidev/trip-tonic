@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/url/url_data_source.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/auth/sign_in_page.dart';
+import 'package:trip_tonic/src/presentation/pages/auth/sign_in_page.dart';
+import 'package:trip_tonic/src/presentation/widgets/primary_modal_bottom_sheet.dart';
 import 'package:trip_tonic/src/usecase/fetch_url_use_case.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,17 +28,8 @@ class TopPage extends HookConsumerWidget {
       await showDialog<void>(
         context: context,
         barrierDismissible: false,
-        builder: (context) => AlertDialog(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.transparent,
-          title: const Text(
-            'Novel Journey',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
+        builder: (context) => PrimaryModalBottomSheet(
+          title: 'Novel Journey',
           content: RichText(
             text: TextSpan(
               style: Theme.of(context).textTheme.bodyMedium,
@@ -66,40 +58,12 @@ class TopPage extends HookConsumerWidget {
               ],
             ),
           ),
-          actions: [
-            ElevatedButton(
-              onPressed: () => context.pop(),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey,
-                shape: const StadiumBorder(),
-              ),
-              child: const Text(
-                '同意しない',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => context
-                ..pop()
-                ..push(SignInPage.pagePath),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                shape: const StadiumBorder(),
-              ),
-              child: const Text(
-                '同意する',
-                style: TextStyle(
-                  color: Color(0xffe5a323),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ],
+          okText: '同意する',
+          ngText: '同意しない',
+          onOk: () => context
+            ..pop()
+            ..push(SignInPage.pagePath),
+          onNg: () => context.pop(),
         ),
       );
     }
@@ -145,7 +109,7 @@ class TopPage extends HookConsumerWidget {
                       shape: const StadiumBorder(),
                     ),
                     child: const Text(
-                      '始める',
+                      'Novel Journeyを始める',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,

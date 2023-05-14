@@ -2,7 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/domain/entities/app_user.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/app_user/app_user_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/repositories/firebase/firebase_auth_repository.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/news/news_page.dart';
+import 'package:trip_tonic/src/presentation/pages/news/news_page.dart';
 
 final appUserRepositoryProvider = Provider<AppUserRepository>(
   AppUserRepository.new,

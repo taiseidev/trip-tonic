@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/extensions/ref_extension.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/gen/assets.gen.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/timeline/timeline_page.dart';
+import 'package:trip_tonic/src/presentation/pages/timeline/timeline_page.dart';
 import 'package:trip_tonic/src/presentation/ui/templates/auth/sign_in_page_template.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_anonymously_use_case.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_in_apple_use_case.dart';

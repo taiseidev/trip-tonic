@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/main.dart';
 import 'package:trip_tonic/src/infrastructure/utils/constants.dart';
 import 'package:trip_tonic/src/infrastructure/utils/providers.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/news/news_page.dart';
+import 'package:trip_tonic/src/presentation/pages/news/news_page.dart';
 
 part 'app_user_data_source.g.dart';
 

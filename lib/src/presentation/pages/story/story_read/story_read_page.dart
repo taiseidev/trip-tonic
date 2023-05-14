@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/domain/entities/story/story.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/main/scaffold_with_nav_bar.dart';
+import 'package:trip_tonic/src/presentation/pages/main/scaffold_with_nav_bar.dart';
 
 class StoryReadPage extends HookConsumerWidget {
   const StoryReadPage({

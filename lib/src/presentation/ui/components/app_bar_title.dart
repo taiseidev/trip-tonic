@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trip_tonic/core/extensions/context_extension.dart';
+import 'package:trip_tonic/src/presentation/pages/main/scaffold_with_nav_bar.dart';
 import 'package:trip_tonic/src/presentation/ui/atoms/text_atoms.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/main/scaffold_with_nav_bar.dart';
 
 /// ローカライズするため、タイトルのみtypeで切り替え
 class AppBarTitle extends StatelessWidget {

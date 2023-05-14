@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/src/infrastructure/repositories/app_user/user_repository.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/news/news_page.dart';
+import 'package:trip_tonic/src/presentation/pages/news/news_page.dart';
 
 /// 匿名でサインインする
 final updateIsPushNewsStateUseCaseProvider =

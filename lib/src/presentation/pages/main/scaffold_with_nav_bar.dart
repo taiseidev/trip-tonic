@@ -4,14 +4,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/presentation/hooks/user_effect_once.dart';
+import 'package:trip_tonic/src/presentation/pages/history/history_page.dart';
+import 'package:trip_tonic/src/presentation/pages/news/news_page.dart';
+import 'package:trip_tonic/src/presentation/pages/profile/profile_page.dart';
+import 'package:trip_tonic/src/presentation/pages/setting/setting_page.dart';
+import 'package:trip_tonic/src/presentation/pages/story/story_create/story_create_page.dart';
+import 'package:trip_tonic/src/presentation/pages/timeline/timeline_page.dart';
 import 'package:trip_tonic/src/presentation/ui/components/app_bar_title.dart';
 import 'package:trip_tonic/src/presentation/ui/molecules/floating_action_button_molecules.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/history/history_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/news/news_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/profile/profile_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/setting/setting_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_page.dart';
-import 'package:trip_tonic/src/presentation/ui/pages/timeline/timeline_page.dart';
 import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
 
 // ドロワー表示用のキー
