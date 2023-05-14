@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:rive/rive.dart';
+import 'package:trip_tonic/gen/assets.gen.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/url/url_data_source.dart';
 import 'package:trip_tonic/src/presentation/pages/auth/sign_in_page.dart';
 import 'package:trip_tonic/src/presentation/widgets/primary_modal_bottom_sheet.dart';
@@ -73,13 +75,8 @@ class TopPage extends HookConsumerWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            const Align(
-              child: Text(
-                'アニメーション付きのイラストを挿入する',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
+            Align(
+              child: RiveAnimation.asset(Assets.images.book),
             ),
             const Padding(
               padding: EdgeInsets.only(

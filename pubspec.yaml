@@ -75,6 +75,7 @@ dependencies:
   package_info_plus: ^3.1.0
   timezone: ^0.9.2
   shared_preferences: ^2.1.0
+  rive: ^0.10.4
 
 dev_dependencies:
   flutter_test:

@@ -18,6 +18,9 @@ class $AssetsIconGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/book.riv
+  String get book => 'assets/images/book.riv';
+
   /// File path: assets/images/building.jpeg
   AssetGenImage get building =>
       const AssetGenImage('assets/images/building.jpeg');
@@ -26,7 +29,7 @@ class $AssetsImagesGen {
   AssetGenImage get un => const AssetGenImage('assets/images/un.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [building, un];
+  List<dynamic> get values => [book, building, un];
 }
 
 class $AssetsIconMarkersGen {
