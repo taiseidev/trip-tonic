@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:trip_tonic/src/presentation/hooks/user_effect_once.dart';
 import 'package:trip_tonic/src/presentation/ui/components/app_bar_title.dart';
 import 'package:trip_tonic/src/presentation/ui/molecules/floating_action_button_molecules.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/history/history_page.dart';
@@ -11,6 +12,7 @@ import 'package:trip_tonic/src/presentation/ui/pages/profile/profile_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/setting/setting_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/story_create/story_create_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/timeline/timeline_page.dart';
+import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
 
 // ドロワー表示用のキー
 final drawerKeyProvider = Provider((ref) => GlobalKey<ScaffoldState>());
@@ -48,6 +50,12 @@ class ScaffoldWithNavBar extends HookConsumerWidget {
     final currentIndex = useState<int>(defaultIndex);
     // アクティブなページのタイプを保持
     final currentTabType = TabType.values[currentIndex.value];
+
+    useEffectOnce(() {
+      // ログインユーザ情報を取得
+      Future(() => ref.read(appUserNotifierProvider.future));
+      return null;
+    });
 
     // タブを切り替える
     void onItemTapped(int index) {

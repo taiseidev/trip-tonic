@@ -4,9 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/color_schemes.g.dart';
 import 'package:trip_tonic/core/utils/loading.dart';
 import 'package:trip_tonic/core/utils/scaffold_messenger_key.dart';
-import 'package:trip_tonic/src/presentation/hooks/user_effect_once.dart';
 import 'package:trip_tonic/src/presentation/router/router.dart';
-import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
 
 class App extends HookConsumerWidget {
   const App({super.key});
@@ -15,11 +13,6 @@ class App extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    useEffectOnce(() {
-      // ログインユーザ情報を取得
-      Future(() => ref.read(appUserNotifierProvider.future));
-      return null;
-    });
     return MaterialApp.router(
       title: 'TRIP TONIC',
       debugShowCheckedModeBanner: false,
