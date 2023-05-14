@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/domain/entities/story/story.dart';
-import 'package:trip_tonic/src/infrastructure/data_source/api/story_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/repositories/app_user/user_repository.dart';
 
 class StoryRepository {
@@ -17,12 +14,12 @@ class StoryRepository {
     required List<String> characters,
   }) async {
     // 登場人物の一覧をJSONに変換する
-    final charactersJson = jsonEncode(characters);
-    final result = await ref.read(storyDataSourceProvider).createStory(
-          genre,
-          keyWord,
-          charactersJson,
-        );
+    // final charactersJson = jsonEncode(characters);
+    // final result = await ref.read(storyDataSourceProvider).createStory(
+    //       genre,
+    //       keyWord,
+    //       charactersJson,
+    //     );
 
     final userId = ref.read(appUserRepositoryProvider).getUserId();
 

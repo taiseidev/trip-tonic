@@ -69,6 +69,12 @@ final routerProvider = Provider(name: 'routerProvider', (ref) {
             const NewsDetailPage(),
       ),
 
+      GoRoute(
+        path: SettingPage.pagePath,
+        builder: (BuildContext context, GoRouterState state) =>
+            const SettingPage(),
+      ),
+
       // タブ切り替え
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
@@ -99,13 +105,6 @@ final routerProvider = Provider(name: 'routerProvider', (ref) {
             path: ProfilePage.pagePath,
             builder: (BuildContext context, GoRouterState state) =>
                 const ProfilePage(),
-            routes: [
-              GoRoute(
-                path: SettingPage.pagePath,
-                builder: (BuildContext context, GoRouterState state) =>
-                    const SettingPage(),
-              ),
-            ],
           ),
         ],
       ),

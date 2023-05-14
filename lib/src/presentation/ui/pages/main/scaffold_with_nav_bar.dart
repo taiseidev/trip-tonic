@@ -65,12 +65,7 @@ class ScaffoldWithNavBar extends HookConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: IconButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (context) => const SettingPage(),
-                ),
-              ),
+              onPressed: () => context.push(SettingPage.pagePath),
               icon: const Icon(Icons.settings),
             ),
           ),

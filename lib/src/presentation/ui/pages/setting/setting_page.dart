@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/url/url_data_source.dart';
+import 'package:trip_tonic/src/presentation/ui/pages/news/news_page.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/setting/setting_notifier.dart';
 import 'package:trip_tonic/src/usecase/app_user/app_user_provider.dart';
+import 'package:trip_tonic/src/usecase/app_user/update_is_push_news_state.dart';
 import 'package:trip_tonic/src/usecase/auth/sign_out_use_case.dart';
 import 'package:trip_tonic/src/usecase/fetch_url_use_case.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+///設定画面
 class SettingPage extends HookConsumerWidget {
   const SettingPage({super.key});
 
-  static const pagePath = 'setting';
+  static const pageName = 'setting';
+  static const pagePath = '/setting';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,6 +29,10 @@ class SettingPage extends HookConsumerWidget {
         ),
       );
     }
+
+    // お知らせに関するローカルステート
+    final pushNotificationEnabled = useState(appUser.pushNotificationEnabled);
+    final pushAnnouncementEnabled = useState(appUser.pushAnnouncementEnabled);
 
     return Scaffold(
       appBar: AppBar(
@@ -87,8 +96,14 @@ class SettingPage extends HookConsumerWidget {
               ),
             ),
             trailing: Switch(
-              value: appUser.pushNotificationEnabled,
-              onChanged: (value) {},
+              value: pushNotificationEnabled.value,
+              onChanged: (value) async {
+                await ref.read(updateIsPushNewsStateUseCaseProvider)(
+                  type: NewsType.notice,
+                  state: value,
+                );
+                pushNotificationEnabled.value = value;
+              },
             ),
           ),
           ListTile(
@@ -103,8 +118,14 @@ class SettingPage extends HookConsumerWidget {
               ),
             ),
             trailing: Switch(
-              value: appUser.pushAnnouncementEnabled,
-              onChanged: (value) {},
+              value: pushAnnouncementEnabled.value,
+              onChanged: (value) async {
+                await ref.read(updateIsPushNewsStateUseCaseProvider)(
+                  type: NewsType.news,
+                  state: value,
+                );
+                pushAnnouncementEnabled.value = value;
+              },
             ),
           ),
           const Padding(

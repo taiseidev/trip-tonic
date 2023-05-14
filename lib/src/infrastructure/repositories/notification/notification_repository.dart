@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/domain/entities/notification/notification_list.dart';
-import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/notification/notification_data_source.dart';
+import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/news/notification/notification_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/models/notification/notification_dto.dart';
 
 part 'notification_repository.g.dart';

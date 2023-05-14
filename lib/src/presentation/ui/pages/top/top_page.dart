@@ -2,10 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trip_tonic/gen/assets.gen.dart';
 import 'package:trip_tonic/src/presentation/ui/organisms/primary_dialog_organisms.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/auth/sign_in_page.dart';
-import 'package:trip_tonic/src/presentation/ui/templates/top/top_page_template.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TopPage extends HookWidget {
@@ -45,12 +43,49 @@ class TopPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TopPageTemplate(
-        appTitle: 'Novel Journey',
-        logoText: 'ここにロゴを表示する',
-        startText: '始める',
-        onPressed: () async => _showModalBottomSheet(context),
-        imagePath: Assets.images.building.path,
+      body: Stack(
+        children: [
+          // ImageAssetAtoms(path: imagePath),
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 80,
+              left: 24,
+            ),
+            child: Text(
+              'Novel Journey',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 80),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () async => _showModalBottomSheet(context),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: const StadiumBorder(),
+                  ),
+                  child: const Text(
+                    '始める',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

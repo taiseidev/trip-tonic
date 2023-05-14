@@ -20,9 +20,9 @@ class _StoryDataSource implements StoryDataSource {
 
   @override
   Future<String> createStory(
-    genre,
-    keyWord,
-    character,
+    String genre,
+    String keyWord,
+    String character,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{

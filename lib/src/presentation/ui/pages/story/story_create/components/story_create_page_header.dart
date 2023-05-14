@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trip_tonic/src/presentation/ui/pages/story/waiting_game/waiting_game_page.dart';
 
 class StoryCreatePageHeader extends HookConsumerWidget
-    with PreferredSizeWidget {
+    implements PreferredSizeWidget {
   const StoryCreatePageHeader({super.key});
 
   @override

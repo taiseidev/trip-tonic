@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trip_tonic/src/domain/entities/read_announcement/read_announcement_list.dart';
-import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/readAnnouncements/read_announcements_data_source.dart';
+import 'package:trip_tonic/src/infrastructure/data_source/remote/firestore/news/readAnnouncements/read_announcements_data_source.dart';
 import 'package:trip_tonic/src/infrastructure/models/read_announcement/read_announcement_dto.dart';
 
 part 'read_announcement_repository.g.dart';
